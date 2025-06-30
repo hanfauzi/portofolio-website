@@ -45,19 +45,39 @@ export const TimelineExperience = () => {
   ];
 
   return (
-    <div className="bg-[#2d4545] text-white py-10 px-4">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Experiences</h2>
-      <div className="grid grid-flex grid-cols-[50%_50%] relative border border-r-black my-4">
-        <div className="border border-r-black">dsadsa</div>
-        <div className="border bg-red-600 border-black">dsadsa</div>
-      
-   
+    <section id='experience' className="bg-[#181c1c] text-white py-16 px-4 font-mono">
+      <h2 className="text-3xl font-bold text-center mb-12">Experiences</h2>
 
+      <div className="relative max-w-4xl mx-auto">
+        {/* Garis vertikal */}
+        <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-gray-500 -translate-x-1/2 z-0" />
 
+        <div className="space-y-10 relative z-10">
+          {experiences.map((exp, idx) => (
+            <div
+              key={idx}
+              className="grid grid-cols-[1fr_40px_1fr] items-center"
+            >
+              {/* Kiri: Date */}
+              <div className="text-right  text-green-300 text-sm">
+                {exp.date}
+              </div>
 
-     
-        
+              {/* Tengah: Dot */}
+              <div className="flex justify-center items-center">
+                <div className="w-2.5 h-2.5 bg-[#395b64] rounded-full  shadow-md" />
+              </div>
+
+              {/* Kanan: Experience */}
+              <div >
+                <h3 className="font-semibold">{exp.title}</h3>
+                <p className="text-sm">{exp.company}</p>
+                <p className="text-xs text-gray-300">{exp.location}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };

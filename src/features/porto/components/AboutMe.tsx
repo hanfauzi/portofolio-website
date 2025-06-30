@@ -2,7 +2,7 @@
 
 export const AboutMe = () => {
   return (
-    <div className="min-h-screen bg-[#181c1c] font-mono p-4">
+    <div id='about' className="min-h-screen bg-[#181c1c] font-mono p-4">
       <div className="max-w-6xl mx-auto border border-white flex flex-col md:grid grid-cols-[2fr_1fr] gap-4 text-white">
         {/* Kanan (Mobile: Atas): Gambar Profil */}
         <div className="space-y-4 border-t lg:border-t-0 lg:border-r border-white p-2">

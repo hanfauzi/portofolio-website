@@ -1,26 +1,26 @@
 export const Hero = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-[#181c1c] font-mono relative overflow-hidden px-4 py-10 sm:px-8 sm:py-16">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-[#181c1c] font-mono relative overflow-hidden px-4 py-10 md:px-8 md:py-16">
       {/* Gambar PNG di sisi kanan background */}
       <img
         src="/nobg.png"
         alt="Background Decoration"
-        className="absolute right-0 top-1/2 -translate-y-1/2 w-[300px] sm:w-[400px] opacity-20 pointer-events-none z-0"
+        className="absolute right-0 top-1/2 -translate-y-1/2 w-[200px] md:w-[300px] lg:w-[400px] opacity-20 pointer-events-none z-0"
       />
 
       {/* Konten utama */}
-      <div className="border border-white w-full max-w-5xl space-y-4 text-white relative z-10 bg-[#181c1c]/80 p-4 sm:p-6">
+      <div className="border border-white w-full max-w-full md:max-w-5xl space-y-4 text-white relative z-10 bg-[#181c1c]/80 p-4 md:p-6">
         {/* Header */}
-        <div className="border border-white p-2 sm:p-3">
-          <h1 className="text-lg sm:text-xl font-bold">Hello Everyone!</h1>
+        <div className="border border-white p-2 md:p-3">
+          <h1 className="text-base md:text-lg font-bold">Hello Everyone!</h1>
         </div>
 
         {/* Greetings Section */}
-        <div className="grid grid-cols-1 sm:grid-cols-[150px_1fr] border border-white">
-          <div className="border-b sm:border-b-0 sm:border-r border-white p-2 text-green-300">
+        <div className="grid grid-cols-1 md:grid-cols-[150px_1fr] border border-white">
+          <div className="border-b md:border-b-0 md:border-r border-white p-2 text-green-300 text-sm">
             Greetings.
           </div>
-          <div className="p-2 text-sm text-justify">
+          <div className="p-2 text-sm text-justify leading-relaxed">
             I'm Muhammad Hanif Fauzi, a Full-Stack Web Developer based in
             Tangerang Selatan, Banten, with a passion for building scalable and
             high-performance web solutions tailored to real business needs.
@@ -34,11 +34,11 @@ export const Hero = () => {
         </div>
 
         {/* Pages Section */}
-        <div className="grid grid-cols-1 sm:grid-cols-[150px_1fr] border border-white">
-          <div className="border-b sm:border-b-0 sm:border-r border-white p-2 text-green-300">
+        <div className="grid grid-cols-1 md:grid-cols-[150px_1fr] border border-white">
+          <div className="border-b md:border-b-0 md:border-r border-white p-2 text-green-300 text-sm">
             Pages.
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 p-2 text-xs">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-2 p-2 text-xs">
             <a
               href="#"
               className="border border-white p-2 hover:bg-white hover:text-black text-center"
@@ -46,7 +46,7 @@ export const Hero = () => {
               Home
             </a>
             <a
-              href="#"
+              href="#experience"
               className="border border-white p-2 hover:bg-white hover:text-black text-center"
             >
               Experiences
@@ -58,7 +58,7 @@ export const Hero = () => {
               Contacts
             </a>
             <a
-              href="#"
+              href="#about"
               className="border border-white p-2 hover:bg-white hover:text-black text-center"
             >
               About
@@ -76,7 +76,7 @@ export const Hero = () => {
               Download My Resume
             </a>
             <a
-              href="#"
+              href="#skills"
               className="border border-white p-2 hover:bg-white hover:text-black text-center"
             >
               Skills
