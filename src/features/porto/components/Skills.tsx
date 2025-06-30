@@ -50,7 +50,7 @@ const Skills = () => {
     <section id="skills" className="bg-[#181c1c] text-white py-16 px-4 text-center font-mono ">
       <h2 className="text-3xl font-bold font-mono mb-2">Skills</h2>
       <p className="text-gray-300 mb-8 ">
-        Just a few of my skills using some programming lang that I've learned
+        Just a few of my skills using some programming lang that I&apos;ve learned
         and mastered.
       </p>
 

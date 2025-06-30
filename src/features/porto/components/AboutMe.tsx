@@ -13,7 +13,7 @@ export const AboutMe = () => {
 
           <div className="border border-white p-2">
             <p>
-              Hello! I'm Muhammad Hanif Fauzi. I am a Full-stack Web Developer,
+              Hello! I&apos;m Muhammad Hanif Fauzi. I am a Full-stack Web Developer,
               currently focusing and deeply developing my skills as a Frontend
               Developer using Next.js.
             </p>

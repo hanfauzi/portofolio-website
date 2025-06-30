@@ -1,10 +1,14 @@
+import Image from "next/image";
+
 export const Hero = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-[#181c1c] font-mono relative overflow-hidden px-4 py-10 md:px-8 md:py-16">
       {/* Gambar PNG di sisi kanan background */}
-      <img
+      <Image
         src="/nobg.png"
-        alt="Background Decoration"
+        alt="Background"
+        width={400}
+        height={400}
         className="absolute right-0 top-1/2 -translate-y-1/2 w-[200px] md:w-[300px] lg:w-[400px] opacity-20 pointer-events-none z-0"
       />
 
@@ -21,7 +25,7 @@ export const Hero = () => {
             Greetings.
           </div>
           <div className="p-2 text-sm text-justify leading-relaxed">
-            I'm Muhammad Hanif Fauzi, a Full-Stack Web Developer based in
+            I&apos;m Muhammad Hanif Fauzi, a Full-Stack Web Developer based in
             Tangerang Selatan, Banten, with a passion for building scalable and
             high-performance web solutions tailored to real business needs.
             Proficient in modern technologies like React, Next.js, Node.js, and
