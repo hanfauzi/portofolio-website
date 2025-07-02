@@ -10,15 +10,15 @@ import { AnimatePresence, motion } from "motion/react";
 import Image, { ImageProps } from "next/image";
 import React, {
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useRef,
   useState,
 } from "react";
 
-// ✅ useOutsideClick with fixed typing
 export function useOutsideClick(
-  ref: React.RefObject<HTMLDivElement>,
+  ref: React.RefObject<HTMLDivElement | null>,
   handler: () => void
 ) {
   useEffect(() => {
@@ -141,13 +141,14 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
 
 export const Card = ({ card, index, layout = false }: { card: Card; index: number; layout?: boolean }) => {
   const [open, setOpen] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
   const { onCardClose } = useContext(CarouselContext);
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setOpen(false);
     onCardClose(index);
-  };
+  }, [index, onCardClose]);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -157,7 +158,7 @@ export const Card = ({ card, index, layout = false }: { card: Card; index: numbe
     document.body.style.overflow = open ? "hidden" : "auto";
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [open]);
+  }, [open, handleClose]);
 
   useOutsideClick(containerRef, handleClose);
 
