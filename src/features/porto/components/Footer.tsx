@@ -1,42 +1,43 @@
-import {
-  FaInstagram,
-  FaLinkedinIn,
-  FaWhatsapp,
-  FaGithub,
-} from "react-icons/fa";
+"use client";
+
+import React, { useEffect, useState } from "react";
+import { HyperText } from "@/components/magicui/hyper-text";
 
 export const Footer = () => {
+  const [time, setTime] = useState<string>("");
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      const localTime = now.toLocaleTimeString("id-ID", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      });
+      setTime(localTime);
+    };
+
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <footer className="footer footer-horizontal footer-center bg-base-200 text-base-content rounded p-10 bg-[#393E46]/10 backdrop-blur-md border-b border-white/20 shadow-md text-black">
-      <div className=" container mx-auto flex justify-between items-center p-6">
-        <nav className="grid grid-flow-col gap-4">
-          <a className="link link-hover">Home</a>
-          <a className="link link-hover">About</a>
-          <a className="link link-hover">Service</a>
-          <a className="link link-hover">Contact</a>
-        </nav>
-        <nav>
-          <div className="grid grid-flow-col gap-4">
-            <div className="text-2xl">
-              <FaGithub />
-            </div>
-            <div className="text-2xl">
-              <FaInstagram />
-            </div>
-            <div className="text-2xl">
-              <FaLinkedinIn />
-            </div>
-            <div className="text-2xl">
-              <FaWhatsapp />
-            </div>
-          </div>
-        </nav>
-        <aside>
-          <p>
-            Copyright © {new Date().getFullYear()} - All right reserved by ACME
-            Industries Ltd
-          </p>
-        </aside>
+    <footer className="w-full bg-[#DEEAE4] text-[#1f2f2d] text-sm font-mono px-4 py-4">
+      <div className="w-full max-w-6xl mx-auto flex flex-row justify-between items-start flex-wrap">
+        {/* Kiri */}
+        <div className="flex flex-col space-y-1 min-w-[150px]">
+          <HyperText className="text-sm">
+            Tangerang Selatan, Banten - Indonesia
+          </HyperText>
+          <span className="text-sm">{`UTC+7 - ${time}`}</span>
+        </div>
+
+        {/* Kanan */}
+        <div className="flex flex-col text-right space-y-1 min-w-[100px]">
+          <HyperText className="text-sm">Arunika Version</HyperText>
+          <HyperText className="text-sm">1.0</HyperText>
+        </div>
       </div>
     </footer>
   );

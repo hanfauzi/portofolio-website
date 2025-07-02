@@ -1,51 +1,74 @@
+import { motion } from "framer-motion";
+
 export const TimelineExperience = () => {
   const experiences = [
     {
-      date: "December 2024 – Present",
-      title: "Front-end Developer",
-      company: "Agensi Pekerjaan Ajobthing Sdn Bhd",
-      location: "Sleman, Yogyakarta – Indonesia",
+      date: "June 2025 – Present",
+      title: "Front-end Engineer",
+      company: "Google",
+      location: "Singapore",
     },
     {
-      date: "July 2023 – December 2024",
-      title: "Front-end Developer",
-      company: "Itsavirus",
-      location: "Denpasar, Bali – Indonesia",
+      date: "February 2025 – May 2025",
+      title: "Freelance Full-stack Developer",
+      company: "Personal Finance Tracker Project",
+      location: "Remote",
     },
     {
-      date: "September 2022 – April 2023",
+      date: "September 2024 – January 2025",
+      title: "Software Engineer Intern",
+      company: "Apple",
+      location: "Cupertino, California – USA (Remote)",
+    },
+    {
+      date: "June 2024 – September 2024",
       title: "Full-stack Developer",
-      company: "LnData Indonesia",
-      location: "Surabaya, East Java – Indonesia",
+      company: "Real Estate Listing Platform Project",
+      location: "Remote",
     },
     {
-      date: "August 2022 – September 2022",
-      title: "Engineer Intern",
-      company: "Unilever Indonesia",
-      location: "Surabaya, East Java – Indonesia",
+      date: "March 2024 – June 2024",
+      title: "AI Resume Tool Developer",
+      company: "Independent Project",
+      location: "Remote",
     },
     {
-      date: "February 2022 – July 2022",
-      title: "Mobile Development Cohort",
-      company: "Bangkit Academy 2022",
-      location: "Surabaya, East Java – Indonesia",
+      date: "November 2023 – March 2024",
+      title: "Back-end Engineer",
+      company: "EduPro LMS Project",
+      location: "Remote",
     },
     {
-      date: "May 2021 – February 2023",
-      title: "Founder & Full-stack Developer",
-      company: "Breakpoint Indonesia",
-      location: "Surabaya, East Java – Indonesia",
+      date: "July 2023 – November 2023",
+      title: "Mobile Developer",
+      company: "Restaurant Booking App Project",
+      location: "Remote",
     },
     {
-      date: "January 2020 – August 2023",
-      title: "Team Coach Extracurricular",
-      company: "SMAN 1 Sidoarjo",
-      location: "Sidoarjo, East Java – Indonesia",
+      date: "February 2023 – July 2023",
+      title: "Frontend Engineer",
+      company: "Internal Performance Dashboard Project",
+      location: "Remote",
+    },
+    {
+      date: "September 2021 – December 2022",
+      title: "BSc Computer Science",
+      company: "International University of Technology",
+      location: "Munich, Germany",
+    },
+    {
+      date: "July 2019 – August 2021",
+      title: "A-Level Diploma (STEM)",
+      company: "British International School",
+      location: "Jakarta, Indonesia",
     },
   ];
 
   return (
-    <section id='experience' className="bg-[#181c1c] text-white py-16 px-4 font-mono">
+    <section
+      id="experience"
+      className="bg-[#181c1c] text-white py-16 px-4 font-mono"
+    >
       <h2 className="text-3xl font-bold text-center mb-12">Experiences</h2>
 
       <div className="relative max-w-4xl mx-auto">
@@ -59,9 +82,15 @@ export const TimelineExperience = () => {
               className="grid grid-cols-[1fr_40px_1fr] items-center"
             >
               {/* Kiri: Date */}
-              <div className="text-right  text-green-300 text-sm">
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                viewport={{ once: false, amount: 0.3 }}
+                className="text-right text-green-300 text-sm"
+              >
                 {exp.date}
-              </div>
+              </motion.div>
 
               {/* Tengah: Dot */}
               <div className="flex justify-center items-center">
@@ -69,11 +98,16 @@ export const TimelineExperience = () => {
               </div>
 
               {/* Kanan: Experience */}
-              <div >
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                viewport={{ once: false, amount: 0.3 }}
+              >
                 <h3 className="font-semibold">{exp.title}</h3>
                 <p className="text-sm">{exp.company}</p>
                 <p className="text-xs text-gray-300">{exp.location}</p>
-              </div>
+              </motion.div>
             </div>
           ))}
         </div>
