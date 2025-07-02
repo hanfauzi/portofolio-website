@@ -125,7 +125,7 @@ export const Hero = () => {
                 download: true,
               },
               { label: "Skills", href: "#skills" },
-            ].map((link, idx) => (
+            ].map((link) => (
               <motion.a
                 key={link.label}
                 href={link.href}

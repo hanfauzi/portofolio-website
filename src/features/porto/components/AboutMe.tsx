@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export const AboutMe = () => {
   return (
@@ -8,11 +9,8 @@ export const AboutMe = () => {
       <div className="max-w-6xl mx-auto flex flex-col md:grid md:grid-cols-[2fr_1fr] gap-4">
         {/* Gambar Profil */}
         <div className="flex justify-center items-start p-4 order-first md:order-last">
-          <img
-            src="/nobg.png"
-            alt="Foto Hanif"
-            className="rounded-lg w-full max-w-xs object-cover"
-          />
+          import Image from "next/image";
+          <Image src="/nobg.png" alt="Foto Hanif" width={300} height={300} />
         </div>
 
         {/* Konten Tulisan */}
