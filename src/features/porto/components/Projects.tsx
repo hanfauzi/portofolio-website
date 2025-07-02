@@ -25,14 +25,14 @@ const data = [
     category: "Finance / Next.js",
     title: "Personal Finance Tracker Web App",
     technologies: "Next.js, Tailwind CSS, Firebase, Chart.js",
-    src: "https://design4users.com/wp-content/uploads/2020/02/finance-tracking-dashboard.png",
+    src: "/tracker.jpeg",
     content: (
       <DummyContent
         situation="Many individuals struggle with managing their daily expenses. I created a web-based finance tracker targeting young professionals."
         task="My goal was to build a responsive full-stack application for tracking income, expenses, and goals."
         action="I used Next.js with Firebase for real-time sync and Chart.js for interactive charts."
         result="300+ users in first month, many reported reducing spending by 15–20%."
-        image="https://design4users.com/wp-content/uploads/2020/02/finance-tracking-dashboard.png"
+        image="/tracker.jpeg"
       />
     ),
   },

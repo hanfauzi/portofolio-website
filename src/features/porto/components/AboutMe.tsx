@@ -9,7 +9,7 @@ export const AboutMe = () => {
       <div className="max-w-6xl mx-auto flex flex-col md:grid md:grid-cols-[2fr_1fr] gap-4">
         {/* Gambar Profil */}
         <div className="flex justify-center items-start p-4 order-first md:order-last">
-          <Image src="/fotohanif.jfif" alt="Foto Hanif" width={300} height={300} className="border-2 rounded-sm border-white" />
+          <Image src="/fotohanif.jpeg" alt="Foto Hanif" width={300} height={300} className="border-2 rounded-sm border-white" />
         </div>
 
         {/* Konten Tulisan */}
