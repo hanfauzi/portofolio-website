@@ -7,6 +7,8 @@ import Testimonials from "@/features/porto/components/Testimonials";
 import Contact from "@/features/porto/components/Contact";
 import { metadata } from "./static-metadata/metadata";
 
+
+
 export { metadata };
 
 export default function PortoPage() {
