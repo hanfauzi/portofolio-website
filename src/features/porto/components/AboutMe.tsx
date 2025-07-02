@@ -9,7 +9,7 @@ export const AboutMe = () => {
       <div className="max-w-6xl mx-auto flex flex-col md:grid md:grid-cols-[2fr_1fr] gap-4">
         {/* Gambar Profil */}
         <div className="flex justify-center items-start p-4 order-first md:order-last">
-          <Image src="/nobg.png" alt="Foto Hanif" width={300} height={300} />
+          <Image src="/fotohanif.jfif" alt="Foto Hanif" width={300} height={300} className="border-2 rounded-sm border-white" />
         </div>
 
         {/* Konten Tulisan */}
@@ -69,7 +69,7 @@ export const AboutMe = () => {
 
           <div className="p-2 mt-8">
             <p className="text-green-300">My Role is</p>
-            <p className="font-bold">Full-Stack Web Developer</p>
+            <p >Full-Stack Web Developer</p>
           </div>
 
           <div className="grid grid-cols-2 gap-2">
