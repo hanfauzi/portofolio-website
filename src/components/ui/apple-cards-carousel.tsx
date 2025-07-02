@@ -1,29 +1,29 @@
 "use client";
-import React, {
-  useEffect,
-  useRef,
-  useState,
-  createContext,
-  useContext,
-} from "react";
+
+import { cn } from "@/lib/utils";
 import {
   IconArrowNarrowLeft,
   IconArrowNarrowRight,
   IconX,
 } from "@tabler/icons-react";
-import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "motion/react";
 import Image, { ImageProps } from "next/image";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
-// Updated useOutsideClick with generic support
+// ✅ useOutsideClick with fixed typing
 export function useOutsideClick(
-  ref: React.RefObject<HTMLElement | null>,
+  ref: React.RefObject<HTMLDivElement>,
   handler: () => void
-)
- {
+) {
   useEffect(() => {
     const listener = (event: MouseEvent | TouchEvent) => {
-      const el = ref?.current;
+      const el = ref.current;
       if (!el || el.contains(event.target as Node)) return;
       handler();
     };
@@ -141,9 +141,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
 
 export const Card = ({ card, index, layout = false }: { card: Card; index: number; layout?: boolean }) => {
   const [open, setOpen] = useState(false);
- const containerRef = useRef<HTMLDivElement | null>(null);
-
-
+  const containerRef = useRef<HTMLDivElement>(null);
   const { onCardClose } = useContext(CarouselContext);
 
   const handleClose = () => {

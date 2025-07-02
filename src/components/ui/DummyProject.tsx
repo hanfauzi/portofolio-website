@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 interface DummyContentProps {
   situation: string;
   task: string;
@@ -34,14 +36,15 @@ export const DummyContent = ({
         </div>
       </div>
 
-      <img
-        src={image}
-        alt="Project mockup"
-        className="md:w-1/2 md:h-1/2 h-full w-full mx-auto mt-10 object-contain"
-        width={500}
-        height={500}
-      />
+      <div className="relative w-full h-64 md:h-96 mt-10">
+        <Image
+          src={image}
+          alt="Project mockup"
+          className="object-contain"
+          fill
+          sizes="(min-width: 768px) 50vw, 100vw"
+        />
+      </div>
     </div>
   );
 };
-
