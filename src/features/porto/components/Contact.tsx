@@ -12,6 +12,7 @@ import {
 } from "react-icons/fa";
 import { BsArrowUpRight } from "react-icons/bs";
 import { toast } from "react-toastify";
+import { HyperText } from "@/components/magicui/hyper-text";
 
 export default function ContactSection() {
   const [copied, setCopied] = useState(false);
@@ -70,9 +71,9 @@ export default function ContactSection() {
                 </div>
                 <BsArrowUpRight className="text-white text-sm" />
               </div>
-              <span className="mt-8 md:mt-12 text-sm font-mono text-white">
+              <HyperText className="mt-8 md:mt-12 text-sm font-mono text-white">
                 {item.label}
-              </span>
+              </HyperText>
             </a>
           ))}
         </div>
