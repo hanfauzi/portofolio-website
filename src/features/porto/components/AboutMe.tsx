@@ -25,7 +25,7 @@ export const AboutMe = () => {
             <p>Muhammad Hanif Fauzi</p>
           </div>
 
-          <div className="p-2">
+          <div className="p-2 text-justify">
             <p>
               Hello! I&apos;m Muhammad Hanif Fauzi. I am a Full-stack Web
               Developer, currently focusing and deeply developing my skills as a

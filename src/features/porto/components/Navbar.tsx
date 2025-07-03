@@ -36,10 +36,10 @@ useEffect(() => {
       </div>
 
       {/* Spacer so content doesn't overlap logo */}
-      <HyperText className="pl-[80px] font-bold md:pl-[120px] text-xs md:text-base">
+      <HyperText className="pl-[80px] font-bold md:pl-[120px] text-sm md:text-base">
         Hanif.Fauzi-Porto
       </HyperText>
-      <span className="text-sm font-bold">{`UTC+7 - ${time}`}</span>
+      <span className="text-xs font-bold">{`UTC+7 - ${time}`}</span>
 
      
     </nav>
