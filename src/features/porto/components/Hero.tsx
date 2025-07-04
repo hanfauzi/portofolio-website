@@ -41,8 +41,8 @@ export const Hero = () => {
             Greetings.
           </div>
 
-          <div
-            className="p-2 text-xs md:text-sm text-justify leading-relaxed"
+          <p
+            className="p-2 text-xs md:text-sm text-justify"
           >
             I&apos;m Muhammad Hanif Fauzi, a Full-Stack Web Developer based in
             Tangerang Selatan, Banten, with a passion for building scalable and
@@ -53,7 +53,7 @@ export const Hero = () => {
             code, performance optimization, and user experience, I aim to turn
             complex ideas into elegant, reliable applications that drive
             meaningful results.
-          </div>
+          </p>
         </div>
 
         {/* Pages Section */}
