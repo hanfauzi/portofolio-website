@@ -60,7 +60,7 @@ const Skills = () => {
       className="bg-[#181c1c] text-white py-12 px-4 md:py-16 md:px-8 text-center font-mono text-sm md:text-base"
     >
       <h2 className="text-2xl md:text-3xl font-bold mb-2">Skills</h2>
-      <p className="text-gray-300 mb-8">
+      <p className="text-white mb-8">
         Just a few of my skills using some programming lang that I&apos;ve
         learned and mastered.
       </p>
@@ -142,8 +142,15 @@ const Skills = () => {
           ].map(({ icon: Icon, name, href }) => (
             <Tooltip key={name}>
               <TooltipTrigger>
-                <Link href={href} target="_blank">
-                  <Icon className="hover:scale-150 transition-transform" />
+                <Link
+                  href={href}
+                  target="_blank"
+                  aria-label={name} // ✅ Ini yang bikin lolos audit aksesibilitas
+                >
+                  <Icon
+                    className="hover:scale-150 transition-transform"
+                    title={name} // Opsional
+                  />
                 </Link>
               </TooltipTrigger>
               <TooltipContent className="bg-[#181c1c] font-mono text-xs md:text-sm">

@@ -13,13 +13,7 @@ export const AboutMe = () => {
         </div>
 
         {/* Konten Tulisan */}
-        <motion.div
-          className="space-y-4 p-2 text-sm"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: false, amount: 0.3 }}
-        >
+        <div>
           <div className="p-2 bg-[#181c1c]">
             <p className="text-green-300">About</p>
             <p>Muhammad Hanif Fauzi</p>
@@ -83,7 +77,7 @@ export const AboutMe = () => {
               <p>Jakarta, Indonesia</p>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

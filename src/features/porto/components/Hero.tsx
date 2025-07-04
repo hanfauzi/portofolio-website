@@ -2,35 +2,8 @@
 
 import { motion } from "framer-motion";
 import { FlipWords } from "@/components/ui/flip-words";
-import type { Variants } from "framer-motion";
 
-// Animasi dari kiri
-const fadeLeft: Variants = {
-  hidden: { opacity: 0, x: -30 },
-  visible: (i: number = 1) => ({
-    opacity: 1,
-    x: 0,
-    transition: {
-      delay: i * 0.2,
-      duration: 0.6,
-      ease: "easeOut",
-    },
-  }),
-};
 
-// Animasi dari kanan
-const fadeRight: Variants = {
-  hidden: { opacity: 0, x: 30 },
-  visible: (i: number = 1) => ({
-    opacity: 1,
-    x: 0,
-    transition: {
-      delay: i * 0.2,
-      duration: 0.6,
-      ease: "easeOut",
-    },
-  }),
-};
 
 const words = [
   "Everyone!",
@@ -47,7 +20,7 @@ export const Hero = () => {
 
         {/* Header */}
         <motion.div
-          variants={fadeLeft}
+         
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.3 }}
@@ -61,23 +34,14 @@ export const Hero = () => {
 
         {/* Greetings Section */}
         <div className="grid grid-cols-1 md:grid-cols-[150px_1fr]">
-          <motion.div
-            variants={fadeLeft}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.3 }}
-            custom={2}
+          <div
+        
             className="p-2 text-green-300 text-sm md:text-base"
           >
             Greetings.
-          </motion.div>
+          </div>
 
-          <motion.div
-            variants={fadeRight}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.3 }}
-            custom={3}
+          <div
             className="p-2 text-xs md:text-sm text-justify leading-relaxed"
           >
             I&apos;m Muhammad Hanif Fauzi, a Full-Stack Web Developer based in
@@ -89,28 +53,20 @@ export const Hero = () => {
             code, performance optimization, and user experience, I aim to turn
             complex ideas into elegant, reliable applications that drive
             meaningful results.
-          </motion.div>
+          </div>
         </div>
 
         {/* Pages Section */}
         <div className="grid grid-cols-1 md:grid-cols-[150px_1fr]">
-          <motion.div
-            variants={fadeLeft}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.3 }}
-            custom={4}
+          <div
+
             className="p-2 text-green-300 text-sm md:text-base"
           >
             Pages.
-          </motion.div>
+          </div>
 
-          <motion.div
-            variants={fadeRight}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.3 }}
-            custom={5}
+          <div
+
             className="grid grid-cols-2 md:grid-cols-3 gap-2 p-2 text-xs md:text-sm underline-offset-4"
           >
             {[
@@ -137,7 +93,7 @@ export const Hero = () => {
                 {link.label}
               </motion.a>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>
