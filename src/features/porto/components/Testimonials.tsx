@@ -5,14 +5,14 @@ import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 export default function TestimonialsPage() {
   return (
     <div className="min-h-screen px-4 py-12 md:px-10 md:py-20 flex flex-col antialiased bg-[#181c1c] items-center justify-center relative overflow-hidden">
-      <div className="mb-10 text-2xl md:text-3xl font-mono font-bold text-white text-center">
+      <div className="mb-10 text-2xl md:text-3xl font-bold text-white text-center">
         Testimonials
       </div>
       <InfiniteMovingCards
         items={testimonials}
         direction="right"
         speed="slow"
-        className="font-mono w-full  max-w-sm md:max-w-5xl"
+        className=" w-full  max-w-sm md:max-w-5xl"
       />
     </div>
   );

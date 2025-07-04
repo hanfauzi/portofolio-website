@@ -49,7 +49,7 @@ export default function ContactSection() {
   ];
 
   return (
-    <div id="contacts"className="min-h-screen bg-[#181c1c] text-white font-mono px-4 py-12 md:px-6 md:py-20">
+    <div id="contacts"className="min-h-screen bg-[#181c1c] text-white px-4 py-12 md:px-6 md:py-20">
       <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 md:mb-16">
         Contact Me
       </h2>

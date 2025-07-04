@@ -17,7 +17,7 @@ export const DummyContent = ({
 }: DummyContentProps) => {
   return (
     <div className="bg-[#181c1c] dark:bg-neutral-800 p-8 md:p-14 rounded-3xl mb-4">
-      <div className="max-w-3xl mx-auto text-white font-mono text-base md:text-lg space-y-6">
+      <div className="max-w-3xl mx-auto text-white text-base md:text-lg space-y-6">
         <div>
           <h3 className="font-bold text-white mb-1">Situation:</h3>
           <p>{situation}</p>

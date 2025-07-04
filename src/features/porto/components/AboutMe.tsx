@@ -4,11 +4,18 @@ import Image from "next/image";
 
 export const AboutMe = () => {
   return (
-    <div id="about" className="bg-[#181c1c] font-mono p-4 text-white">
+    <div id="about" className="bg-[#181c1c] p-4 text-white">
       <div className="max-w-6xl mx-auto flex flex-col md:grid md:grid-cols-[2fr_1fr] gap-4">
         {/* Gambar Profil */}
         <div className="flex justify-center items-start p-4 order-first md:order-last">
-          <Image src="/fotohanif.jpeg" alt="Foto Hanif" width={300} height={300} className="border-2 rounded-sm border-white" />
+          <Image
+  src="/fotohanif.jpeg"
+  alt="Foto Hanif"
+  width={300}
+  height={300}
+  sizes="(max-width: 768px) 100vw, 300px"
+  className="border-2 rounded-sm border-white"
+/>
         </div>
 
         {/* Konten Tulisan */}

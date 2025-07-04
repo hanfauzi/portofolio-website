@@ -15,7 +15,7 @@ const words = [
 
 export const Hero = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-[#181c1c] font-mono relative overflow-hidden px-4 py-10 md:px-8 md:py-16">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-[#181c1c]  relative overflow-hidden px-4 py-10 md:px-8 md:py-16">
       <div className="w-full max-w-full md:max-w-5xl space-y-4 text-white relative z-10 p-4 md:p-6">
 
         {/* Header */}

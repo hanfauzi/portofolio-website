@@ -57,7 +57,7 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="bg-[#181c1c] text-white py-12 px-4 md:py-16 md:px-8 text-center font-mono text-sm md:text-base"
+      className="bg-[#181c1c] text-white py-12 px-4 md:py-16 md:px-8 text-center text-sm md:text-base"
     >
       <h2 className="text-2xl md:text-3xl font-bold mb-2">Skills</h2>
       <p className="text-white mb-8">
@@ -153,7 +153,7 @@ const Skills = () => {
                   />
                 </Link>
               </TooltipTrigger>
-              <TooltipContent className="bg-[#181c1c] font-mono text-xs md:text-sm">
+              <TooltipContent className="bg-[#181c1c]  text-xs md:text-sm">
                 <p>{name}</p>
               </TooltipContent>
             </Tooltip>

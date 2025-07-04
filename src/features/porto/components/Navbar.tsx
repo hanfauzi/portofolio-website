@@ -23,7 +23,7 @@ useEffect(() => {
 
 
   return (
-    <nav className="relative flex justify-between items-center p-4 md:p-6 font-mono bg-[#DEEAE4] text-[#1f2f2d] z-50">
+    <nav className="relative flex justify-between items-center p-4 md:p-6  bg-[#DEEAE4] text-[#1f2f2d] z-50">
       {/* Logo - absolute positioning */}
       <div className="absolute left-5 top-1/2  -translate-y-1/2 bg-[#DEEAE4] z-50">
         <Image

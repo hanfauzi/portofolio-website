@@ -181,7 +181,7 @@ export const Card = ({ card, index, layout = false }: { card: Card; index: numbe
               exit={{ opacity: 0 }}
               ref={containerRef}
               layoutId={layout ? `card-${card.title}` : undefined}
-              className="relative z-[60] mx-auto my-10 h-fit max-w-5xl rounded-3xl bg-white p-4 font-mono md:p-10 dark:bg-neutral-900"
+              className="relative z-[60] mx-auto my-10 h-fit max-w-5xl rounded-3xl bg-white p-4  md:p-10 dark:bg-neutral-900"
             >
               <button
                 className="sticky top-4 right-0 ml-auto flex h-8 w-8 items-center justify-center rounded-full bg-black dark:bg-white"
@@ -212,10 +212,10 @@ export const Card = ({ card, index, layout = false }: { card: Card; index: numbe
       >
         <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-full bg-gradient-to-b from-black/50 via-transparent to-transparent" />
         <div className="relative z-40 p-8">
-          <motion.p layoutId={layout ? `category-${card.category}` : undefined} className="text-left font-mono text-sm font-medium text-white md:text-base">
+          <motion.p layoutId={layout ? `category-${card.category}` : undefined} className="text-left  text-sm font-medium text-white md:text-base">
             {card.category}
           </motion.p>
-          <motion.p layoutId={layout ? `title-${card.title}` : undefined} className="mt-2 max-w-xs text-left font-mono text-xl font-semibold [text-wrap:balance] text-white md:text-3xl">
+          <motion.p layoutId={layout ? `title-${card.title}` : undefined} className="mt-2 max-w-xs text-left  text-xl font-semibold [text-wrap:balance] text-white md:text-3xl">
             {card.title}
           </motion.p>
         </div>

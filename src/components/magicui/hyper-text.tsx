@@ -127,7 +127,7 @@ export function HyperText({
   return (
     <MotionComponent
       ref={elementRef}
-      className={cn("overflow-hidden py-2 font-mono", className)}
+      className={cn("overflow-hidden py-2", className)}
       onMouseEnter={handleAnimationTrigger}
       {...props}
     >
@@ -135,7 +135,7 @@ export function HyperText({
         {displayText.map((letter, index) => (
           <motion.span
             key={index}
-            className={cn("font-mono", letter === " " ? "w-3" : "")}
+            className={cn( letter === " " ? "w-3" : "")}
           >
             {letter}
           </motion.span>
