@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -18,7 +17,6 @@ export default function ContactSection() {
   const [copied, setCopied] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const email = "nifauzi45@gmail.com";
-
   const handleCopy = async () => {
     await navigator.clipboard.writeText(email);
     setCopied(true);
@@ -49,7 +47,10 @@ export default function ContactSection() {
   ];
 
   return (
-    <div id="contacts"className="min-h-screen bg-[#181c1c] text-white px-4 py-12 md:px-6 md:py-20">
+    <div
+      id="contacts"
+      className="min-h-screen bg-[#181c1c] text-white px-4 py-12 md:px-6 md:py-20"
+    >
       <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 md:mb-16">
         Contact Me
       </h2>
@@ -105,7 +106,7 @@ export default function ContactSection() {
               });
 
               if (res.ok) {
-                toast.success("Message sent successfully!" );
+                toast.success("Message sent successfully!");
                 resetForm();
               } else {
                 toast.error("Failed to send message.");

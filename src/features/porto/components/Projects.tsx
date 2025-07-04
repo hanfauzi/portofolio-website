@@ -10,7 +10,10 @@ export default function ProjectsPage() {
   ));
 
   return (
-    <div id="projects" className="w-full min-h-screen py-12 px-4 md:px-12 bg-[#181c1c] text-white">
+    <div
+      id="projects"
+      className="w-full min-h-screen py-12 px-4 md:px-12 bg-[#181c1c] text-white"
+    >
       <h2 className="max-w-7xl text-center mx-auto text-2xl md:text-3xl font-bold  mb-8">
         Projects
       </h2>

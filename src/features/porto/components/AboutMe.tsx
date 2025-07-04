@@ -1,5 +1,4 @@
 "use client";
-
 import Image from "next/image";
 
 export const AboutMe = () => {
@@ -9,15 +8,14 @@ export const AboutMe = () => {
         {/* Gambar Profil */}
         <div className="flex justify-center items-start p-4 order-first md:order-last">
           <Image
-  src="/fotohanif.jpeg"
-  alt="Foto Hanif"
-  width={300}
-  height={300}
-  sizes="(max-width: 768px) 100vw, 300px"
-  className="border-2 rounded-sm border-white"
-/>
+            src="/fotohanif.jpeg"
+            alt="Foto Hanif"
+            width={300}
+            height={300}
+            sizes="(max-width: 768px) 100vw, 300px"
+            className="border-2 rounded-sm border-white"
+          />
         </div>
-
         {/* Konten Tulisan */}
         <div>
           <div className="p-2 bg-[#181c1c]">
@@ -69,7 +67,7 @@ export const AboutMe = () => {
 
           <div className="p-2 mt-8">
             <p className="text-green-300">My Role is</p>
-            <p >Full-Stack Web Developer</p>
+            <p>Full-Stack Web Developer</p>
           </div>
 
           <div className="grid grid-cols-2 gap-2">

@@ -65,10 +65,7 @@ export const TimelineExperience = () => {
   ];
 
   return (
-    <section
-      id="experience"
-      className="bg-[#181c1c] text-white py-16 px-4 "
-    >
+    <section id="experience" className="bg-[#181c1c] text-white py-16 px-4 ">
       <h2 className="text-3xl font-bold text-center mb-12">Experiences</h2>
 
       <div className="relative max-w-4xl mx-auto">

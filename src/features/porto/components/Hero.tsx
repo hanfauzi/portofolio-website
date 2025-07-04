@@ -1,10 +1,6 @@
 "use client";
-
 import { motion } from "framer-motion";
 import { FlipWords } from "@/components/ui/flip-words";
-
-
-
 const words = [
   "Everyone!",
   "Friends!",
@@ -17,10 +13,8 @@ export const Hero = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-[#181c1c]  relative overflow-hidden px-4 py-10 md:px-8 md:py-16">
       <div className="w-full max-w-full md:max-w-5xl space-y-4 text-white relative z-10 p-4 md:p-6">
-
         {/* Header */}
         <motion.div
-         
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.3 }}
@@ -34,16 +28,11 @@ export const Hero = () => {
 
         {/* Greetings Section */}
         <div className="grid grid-cols-1 md:grid-cols-[150px_1fr]">
-          <div
-        
-            className="p-2 text-green-300 text-sm md:text-base"
-          >
+          <div className="p-2 text-green-300 text-sm md:text-base">
             Greetings.
           </div>
 
-          <p
-            className="p-2 text-xs md:text-sm text-justify"
-          >
+          <p className="p-2 text-xs md:text-sm text-justify">
             I&apos;m Muhammad Hanif Fauzi, a Full-Stack Web Developer based in
             Tangerang Selatan, Banten, with a passion for building scalable and
             high-performance web solutions tailored to real business needs.
@@ -58,17 +47,9 @@ export const Hero = () => {
 
         {/* Pages Section */}
         <div className="grid grid-cols-1 md:grid-cols-[150px_1fr]">
-          <div
+          <div className="p-2 text-green-300 text-sm md:text-base">Pages.</div>
 
-            className="p-2 text-green-300 text-sm md:text-base"
-          >
-            Pages.
-          </div>
-
-          <div
-
-            className="grid grid-cols-2 md:grid-cols-3 gap-2 p-2 text-xs md:text-sm underline-offset-4"
-          >
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-2 p-2 text-xs md:text-sm underline-offset-4">
             {[
               { label: "Home", href: "#" },
               { label: "Experiences", href: "#experience" },

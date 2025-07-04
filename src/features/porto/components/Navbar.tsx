@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 
 export const Navbar = () => {
   const [time, setTime] = useState<string>("");
-useEffect(() => {
+  useEffect(() => {
     const updateTime = () => {
       const now = new Date();
       const localTime = now.toLocaleTimeString("id-ID", {
@@ -20,7 +20,6 @@ useEffect(() => {
     const interval = setInterval(updateTime, 1000);
     return () => clearInterval(interval);
   }, []);
-
 
   return (
     <nav className="relative flex justify-between items-center p-4 md:p-6  bg-[#DEEAE4] text-[#1f2f2d] z-50">
@@ -40,8 +39,6 @@ useEffect(() => {
         Hanif.Fauzi-Porto
       </HyperText>
       <span className="text-xs font-bold">{`UTC+7 - ${time}`}</span>
-
-     
     </nav>
   );
 };
