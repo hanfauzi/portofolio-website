@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-
 export const TimelineExperience = () => {
   const experiences = [
     {
@@ -79,15 +77,9 @@ export const TimelineExperience = () => {
               className="grid grid-cols-[1fr_40px_1fr] items-center"
             >
               {/* Kiri: Date */}
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                viewport={{ once: false, amount: 0.3 }}
-                className="text-right text-green-300 text-sm"
-              >
+              <div className="text-right text-green-300 text-sm">
                 {exp.date}
-              </motion.div>
+              </div>
 
               {/* Tengah: Dot */}
               <div className="flex justify-center items-center">
@@ -95,16 +87,11 @@ export const TimelineExperience = () => {
               </div>
 
               {/* Kanan: Experience */}
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                viewport={{ once: false, amount: 0.3 }}
-              >
+              <div>
                 <h3 className="font-semibold">{exp.title}</h3>
                 <p className="text-sm">{exp.company}</p>
                 <p className="text-xs text-gray-300">{exp.location}</p>
-              </motion.div>
+              </div>
             </div>
           ))}
         </div>

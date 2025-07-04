@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+
 import { FlipWords } from "@/components/ui/flip-words";
 const words = [
   "Everyone!",
@@ -14,17 +14,11 @@ export const Hero = () => {
     <div className="min-h-screen flex flex-col items-center justify-center bg-[#181c1c]  relative overflow-hidden px-4 py-10 md:px-8 md:py-16">
       <div className="w-full max-w-full md:max-w-5xl space-y-4 text-white relative z-10 p-4 md:p-6">
         {/* Header */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.3 }}
-          custom={1}
-          className="p-2 md:p-3 text-sm md:text-lg font-bold"
-        >
+        <div className="p-2 md:p-3 text-sm md:text-lg font-bold">
           <span className="text-white">
             Hello <FlipWords words={words} className="text-white" />
           </span>
-        </motion.div>
+        </div>
 
         {/* Greetings Section */}
         <div className="grid grid-cols-1 md:grid-cols-[150px_1fr]">
@@ -63,16 +57,14 @@ export const Hero = () => {
               },
               { label: "Skills", href: "#skills" },
             ].map((link) => (
-              <motion.a
+              <a
                 key={link.label}
                 href={link.href}
                 {...(link.download ? { download: true } : {})}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
                 className="p-2 hover:bg-white hover:text-black text-center transition-all duration-200"
               >
                 {link.label}
-              </motion.a>
+              </a>
             ))}
           </div>
         </div>
