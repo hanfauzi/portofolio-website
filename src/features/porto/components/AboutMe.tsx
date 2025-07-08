@@ -5,7 +5,6 @@ export const AboutMe = () => {
   return (
     <div id="about" className="bg-[#181c1c] p-4 text-white">
       <div className="max-w-6xl mx-auto flex flex-col md:grid md:grid-cols-[2fr_1fr] gap-4">
-        {/* Gambar Profil */}
         <div className="flex justify-center items-start p-4 order-first md:order-last">
           <Image
             src="/fotohanif.jpeg"
@@ -16,7 +15,7 @@ export const AboutMe = () => {
             className="border-2 rounded-sm border-white"
           />
         </div>
-        {/* Konten Tulisan */}
+
         <div>
           <div className="p-2 bg-[#181c1c]">
             <p className="text-green-300">About</p>

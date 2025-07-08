@@ -56,7 +56,7 @@ export default function ContactSection() {
       </h2>
 
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-        {/* Socials */}
+
         <div className="grid grid-cols-2 gap-4 md:grid-cols-1 md:col-span-1">
           {socials.map((item) => (
             <a
@@ -79,7 +79,7 @@ export default function ContactSection() {
           ))}
         </div>
 
-        {/* Form */}
+
         <Formik
           initialValues={{
             name: "",

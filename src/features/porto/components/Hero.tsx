@@ -13,14 +13,12 @@ export const Hero = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-[#181c1c]  relative overflow-hidden px-4 py-10 md:px-8 md:py-16">
       <div className="w-full max-w-full md:max-w-5xl space-y-4 text-white relative z-10 p-4 md:p-6">
-        {/* Header */}
         <div className="p-2 md:p-3 text-sm md:text-lg font-bold">
           <span className="text-white">
             Hello <FlipWords words={words} className="text-white" />
           </span>
         </div>
 
-        {/* Greetings Section */}
         <div className="grid grid-cols-1 md:grid-cols-[150px_1fr]">
           <div className="p-2 text-green-300 text-sm md:text-base">
             Greetings.
@@ -39,7 +37,6 @@ export const Hero = () => {
           </p>
         </div>
 
-        {/* Pages Section */}
         <div className="grid grid-cols-1 md:grid-cols-[150px_1fr]">
           <div className="p-2 text-green-300 text-sm md:text-base">Pages.</div>
 

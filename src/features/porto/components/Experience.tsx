@@ -67,7 +67,6 @@ export const TimelineExperience = () => {
       <h2 className="text-3xl font-bold text-center mb-12">Experiences</h2>
 
       <div className="relative max-w-4xl mx-auto">
-        {/* Garis vertikal */}
         <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-gray-500 -translate-x-1/2 z-0" />
 
         <div className="space-y-10 relative z-10">
@@ -76,7 +75,6 @@ export const TimelineExperience = () => {
               key={idx}
               className="grid grid-cols-[1fr_40px_1fr] items-center"
             >
-              {/* Kiri: Date */}
               <div className="text-right text-green-300 text-sm">
                 {exp.date}
               </div>
@@ -86,7 +84,6 @@ export const TimelineExperience = () => {
                 <div className="w-2.5 h-2.5 bg-[#395b64] rounded-full  shadow-md" />
               </div>
 
-              {/* Kanan: Experience */}
               <div>
                 <h3 className="font-semibold">{exp.title}</h3>
                 <p className="text-sm">{exp.company}</p>

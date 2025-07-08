@@ -22,7 +22,6 @@ export default function ProjectsPage() {
   );
 }
 
-// ✅ Reusable data
 const data = [
   {
     category: "Finance / Next.js",

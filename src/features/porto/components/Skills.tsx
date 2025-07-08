@@ -101,7 +101,6 @@ const Skills = () => {
         </div>
       </div>
 
-      {/* Tech Stacks */}
       <div className="mt-12">
         <h3 className="text-xl md:text-2xl font-bold mb-6">Tech Stacks</h3>
 
@@ -142,14 +141,10 @@ const Skills = () => {
           ].map(({ icon: Icon, name, href }) => (
             <Tooltip key={name}>
               <TooltipTrigger>
-                <Link
-                  href={href}
-                  target="_blank"
-                  aria-label={name} // ✅ Ini yang bikin lolos audit aksesibilitas
-                >
+                <Link href={href} target="_blank" aria-label={name}>
                   <Icon
                     className="hover:scale-150 transition-transform"
-                    title={name} // Opsional
+                    title={name}
                   />
                 </Link>
               </TooltipTrigger>

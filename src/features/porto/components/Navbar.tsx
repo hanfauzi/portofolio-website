@@ -23,7 +23,6 @@ export const Navbar = () => {
 
   return (
     <nav className="relative flex justify-between items-center p-4 md:p-6  bg-[#DEEAE4] text-[#1f2f2d] z-50">
-      {/* Logo - absolute positioning */}
       <div className="absolute left-5 top-1/2  -translate-y-1/2 bg-[#DEEAE4] z-50">
         <Image
           src="/arunika-logo.png"
@@ -34,7 +33,6 @@ export const Navbar = () => {
         />
       </div>
 
-      {/* Spacer so content doesn't overlap logo */}
       <HyperText className="pl-[80px] font-bold md:pl-[120px] text-sm md:text-base">
         Hanif.Fauzi-Porto
       </HyperText>
