@@ -26,14 +26,18 @@ export const Hero = () => {
 
           <p className="p-2 text-xs md:text-sm text-justify">
             I&apos;m Muhammad Hanif Fauzi, a Full-Stack Web Developer based in
-            Tangerang Selatan, Banten, with a passion for building scalable and
-            high-performance web solutions tailored to real business needs.
-            Proficient in modern technologies like React, Next.js, Node.js, and
-            MongoDB, I specialize in crafting responsive front-end interfaces
-            and robust back-end architectures. With a strong focus on clean
-            code, performance optimization, and user experience, I aim to turn
-            complex ideas into elegant, reliable applications that drive
-            meaningful results.
+            Tangerang Selatan, Banten, proficient in JavaScript, TypeScript,
+            React, Next.js, Node.js, Express.js, and PostgreSQL. With a strong
+            passion for technology and problem-solving, I specialize in
+            designing scalable front-end interfaces and robust back-end systems
+            that deliver high performance and seamless user experience. Over
+            time, I have built event management platforms, portfolio websites,
+            and dynamic business applications, allowing me to sharpen my ability
+            to transform complex requirements into elegant, reliable solutions.
+            My development approach emphasizes clean code, performance
+            optimization, and user-focused design, ensuring every project I work
+            on not only meets technical standards but also creates meaningful
+            value for users and businesses alike.
           </p>
         </div>
 

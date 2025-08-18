@@ -24,29 +24,40 @@ export const AboutMe = () => {
 
           <div className="p-2 text-justify">
             <p>
-              Hello! I&apos;m Muhammad Hanif Fauzi. I am a Full-stack Web
-              Developer, currently focusing and deeply developing my skills as a
-              Frontend Developer using Next.js.
+              Hello! I&apos;m Muhammad Hanif Fauzi, a Full-Stack Web Developer
+              passionate about building modern and efficient web applications.
+              I&apos;m currently focusing on strengthening both frontend
+              development with Next.js and backend development with Express.js,
+              while also exploring database design and management using
+              PostgreSQL.
             </p>
           </div>
 
           <div className="p-2 text-justify">
             <p>
-              I began my journey into web development in 2020 while working on a
-              final project for a college course in Computer Programming. This
-              sparked my interest, and I further honed my skills through YouTube
-              tutorials and self-learning by undertaking various projects in my
-              own startup, which specializes in web development services.
+              I began my journey into web development in May 2025 when I joined
+              the Purwadhika Digital School bootcamp to build a solid foundation
+              in full-stack development. Since then, I have continued to sharpen
+              my skills through self-learning—exploring tutorials on YouTube,
+              experimenting with personal projects, and diving into official
+              documentation. This combination of structured learning and
+              independent practice has fueled my growth and strengthened my
+              passion for creating impactful web solutions.
             </p>
           </div>
 
           <div className="p-2 text-justify">
             <p>
-              My primary learning resources are YouTube, self-learning through
-              project work, and self-debugging with the help of Stack Overflow
-              and Google. Presently, I am concentrating on frontend development
-              using React.js and Next.js, and I am also expanding my knowledge
-              into mobile development with React Native.
+              My primary learning foundation comes from the Purwadhika Digital
+              School bootcamp, where I gained hands-on experience by working on
+              real-world projects throughout the program. To complement this, I
+              continue to pursue self-learning through YouTube tutorials and
+              official documentation, which helps me strengthen problem-solving
+              skills and broaden my technical understanding. At present, I am
+              focusing on deepening my expertise in both frontend development
+              with Next.js and backend development with Express.js, while also
+              expanding my knowledge of programming languages and modern web
+              technologies to become a more versatile developer.
             </p>
           </div>
 
@@ -72,12 +83,12 @@ export const AboutMe = () => {
           <div className="grid grid-cols-2 gap-2">
             <div className="p-2">
               <p className="text-green-300">Currently Working On</p>
-              <p>Masih Rahasia Banget</p>
+              <p>-</p>
             </div>
 
             <div className="p-2">
               <p className="text-green-300">Working At</p>
-              <p>Jakarta, Indonesia</p>
+              <p>-</p>
             </div>
           </div>
         </div>
