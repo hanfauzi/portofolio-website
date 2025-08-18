@@ -5,12 +5,17 @@ import {
   TbBrandNextjs,
   TbBrandTailwind,
   TbBrandNodejs,
-  TbBrandHtml5,
   TbBrandReact,
-  TbBrandDjango,
-  TbBrandAngularFilled,
-  TbBrandFramer,
+  TbBrandGithub,
 } from "react-icons/tb";
+import {
+  SiExpress,
+  SiPostgresql,
+  SiJavascript,
+  SiTypescript,
+  SiPostman,
+  SiVercel,
+} from "react-icons/si";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import {
@@ -112,31 +117,64 @@ const Skills = () => {
               href: "https://nextjs.org/",
             },
             {
+              icon: TbBrandReact,
+              name: "React",
+              href: "https://react.dev/",
+            },
+            {
               icon: TbBrandTailwind,
               name: "Tailwind CSS",
               href: "https://tailwindcss.com/",
             },
+
+            // BACKEND
             {
               icon: TbBrandNodejs,
               name: "Node.js",
               href: "https://nodejs.org/en",
             },
-            { icon: TbBrandHtml5, name: "HTML", href: "https://html.com/" },
-            { icon: TbBrandReact, name: "React", href: "https://react.dev/" },
             {
-              icon: TbBrandAngularFilled,
-              name: "Angular",
-              href: "https://angular.dev/",
+              icon: SiExpress, // dari react-icons/si
+              name: "Express.js",
+              href: "https://expressjs.com/",
+            },
+
+            // DATABASE
+            {
+              icon: SiPostgresql,
+              name: "PostgreSQL",
+              href: "https://www.postgresql.org/",
+            },
+
+            // LANGUAGES
+            {
+              icon: SiJavascript,
+              name: "JavaScript",
+              href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
             },
             {
-              icon: TbBrandDjango,
-              name: "Django",
-              href: "https://www.djangoproject.com/",
+              icon: SiTypescript,
+              name: "TypeScript",
+              href: "https://www.typescriptlang.org/",
+            },
+
+            // TOOLS
+            {
+              icon: TbBrandGithub,
+              name: "Git & GitHub",
+              href: "https://github.com/",
             },
             {
-              icon: TbBrandFramer,
-              name: "Framer",
-              href: "https://motion.dev/",
+              icon: SiPostman,
+              name: "Postman",
+              href: "https://www.postman.com/",
+            },
+
+            // DEPLOYMENT (opsional)
+            {
+              icon: SiVercel,
+              name: "Vercel",
+              href: "https://vercel.com/",
             },
           ].map(({ icon: Icon, name, href }) => (
             <Tooltip key={name}>
