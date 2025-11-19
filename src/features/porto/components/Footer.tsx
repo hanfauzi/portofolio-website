@@ -23,18 +23,25 @@ export const Footer = () => {
   }, []);
 
   return (
-    <footer className="w-full bg-[#DEEAE4] text-[#1f2f2d] text-sm px-4 py-4">
-      <div className="w-full max-w-6xl mx-auto flex flex-row justify-between items-start flex-wrap">
+    <footer
+      className="w-full 
+  bg-gradient-to-t from-[#dedfe2] via-[#f0f0f0] to-[#ffffff]
+  backdrop-blur-lg 
+  border-t border-black/20 
+  text-black text-sm px-4 py-6 
+  shadow-[0_-2px_10px_rgba(0,0,0,0.05)]"
+    >
+      <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
         <div className="flex flex-col space-y-1 min-w-[150px]">
-          <HyperText className="text-sm">
-            Tangerang Selatan, Banten - Indonesia
+          <HyperText className="text-xs md:text-sm">
+            Tangerang Selatan, Banten · Indonesia
           </HyperText>
-          <span className="text-sm">{`UTC+7 - ${time}`}</span>
+          <span className="text-xs md:text-sm text-gray-500">{`UTC+7 · ${time}`}</span>
         </div>
 
-        <div className="flex flex-col text-right space-y-1 min-w-[100px]">
-          <HyperText className="text-sm">Arunika Version</HyperText>
-          <HyperText className="text-sm">1.0</HyperText>
+        <div className="flex flex-col md:items-end space-y-1 min-w-[100px]">
+          <HyperText className="text-xs md:text-sm">Arunika Version</HyperText>
+          <HyperText className="text-xs md:text-sm">2.0</HyperText>
         </div>
       </div>
     </footer>

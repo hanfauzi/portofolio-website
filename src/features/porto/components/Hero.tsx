@@ -1,75 +1,72 @@
 "use client";
-
 import { FlipWords } from "@/components/ui/flip-words";
-const words = [
-  "Everyone!",
-  "Friends!",
-  "Fellas!",
-  "People!",
-  "Internet Travelers!",
-];
+import Image from "next/image";
+import Link from "next/link";
 
 export const Hero = () => {
+  const words = ["Software Engineer", "Full-stack Developer"];
+
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-[#181c1c]  relative overflow-hidden px-4 py-10 md:px-8 md:py-16">
-      <div className="w-full max-w-full md:max-w-5xl space-y-4 text-white relative z-10 p-4 md:p-6">
-        <div className="p-2 md:p-3 text-sm md:text-lg font-bold">
-          <span className="text-white">
-            Hello <FlipWords words={words} className="text-white" />
-          </span>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-[150px_1fr]">
-          <div className="p-2 text-green-300 text-sm md:text-base">
-            Greetings.
-          </div>
-
-          <p className="p-2 text-xs md:text-sm text-justify">
-            I&apos;m Muhammad Hanif Fauzi, a Full-Stack Web Developer based in
-            Tangerang Selatan, Banten, proficient in JavaScript, TypeScript,
-            React, Next.js, Node.js, Express.js, and PostgreSQL. With a strong
-            passion for technology and problem-solving, I specialize in
-            designing scalable front-end interfaces and robust back-end systems
-            that deliver high performance and seamless user experience. Over
-            time, I have built event management platforms, portfolio websites,
-            and dynamic business applications, allowing me to sharpen my ability
-            to transform complex requirements into elegant, reliable solutions.
-            My development approach emphasizes clean code, performance
-            optimization, and user-focused design, ensuring every project I work
-            on not only meets technical standards but also creates meaningful
-            value for users and businesses alike.
+    <section className="min-h-screen flex items-center justify-center px-4 md:px-8">
+      <div className="w-full max-w-6xl flex flex-col md:flex-row items-center justify-between gap-12 md:gap-20">
+        <div className="space-y-4 text-center md:text-left">
+          <p className="text-xs md:text-sm uppercase tracking-[0.25em] text-gray-500">
+            Hi, I&apos;m
           </p>
+
+          <h1 className="text-3xl md:text-5xl font-semibold leading-tight">
+            <span className="block bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent">
+              Muhammad Hanif Fauzi
+            </span>
+          </h1>
+
+          <FlipWords
+            words={words}
+            className="text-sm md:text-base text-gray-600"
+          />
+
+          <div className="flex flex-wrap items-center gap-3 justify-center md:justify-start pt-2">
+            <Link
+              href="#projects"
+              className="px-5 py-2.5 text-sm md:text-base rounded-full bg-black text-white font-medium shadow-md hover:shadow-lg hover:-translate-y-[1px] transition"
+            >
+              View Portfolio
+            </Link>
+
+            <Link
+              href="#contacts"
+              className="px-5 py-2.5 text-sm md:text-base rounded-full border border-gray-300 text-gray-800 font-medium hover:bg-gray-100 transition"
+            >
+              Contact Me
+            </Link>
+
+            <a
+              href="/Muhammad Hanif Fauzi CV.pdf"
+              download
+              className="px-5 py-2.5 text-sm md:text-base rounded-full text-gray-600 hover:text-gray-900 hover:bg-gray-100 border border-transparent transition"
+            >
+              Download CV
+            </a>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-[150px_1fr]">
-          <div className="p-2 text-green-300 text-sm md:text-base">Pages.</div>
+        <div className="relative w-[260px] h-[320px] md:w-[320px] md:h-[380px] flex items-center justify-center">
+          <div
+            className="absolute inset-0 -z-10 rounded-[2rem]
+            bg-[radial-gradient(circle,_rgba(59,130,246,0.35)_0,_transparent_70%)]"
+          />
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-2 p-2 text-xs md:text-sm underline-offset-4">
-            {[
-              { label: "Home", href: "#" },
-              { label: "Experiences", href: "#experience" },
-              { label: "Contacts", href: "#contacts" },
-              { label: "About", href: "#about" },
-              { label: "Projects", href: "#projects" },
-              {
-                label: "Download My Resume",
-                href: "/Hanif Fauzi-resume.pdf",
-                download: true,
-              },
-              { label: "Skills", href: "#skills" },
-            ].map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                {...(link.download ? { download: true } : {})}
-                className="p-2 hover:bg-white hover:text-black text-center transition-all duration-200"
-              >
-                {link.label}
-              </a>
-            ))}
+          <div className="relative w-full h-full rounded-[2rem] overflow-hidden border border-gray-200 shadow-xl bg-gray-100">
+            <Image
+              src="/fotohanif.jpeg"
+              alt="Muhammad Hanif Fauzi"
+              fill
+              sizes="(min-width: 768px) 320px, 260px"
+              className="object-cover"
+            />
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };

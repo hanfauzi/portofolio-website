@@ -1,6 +1,7 @@
 "use client";
+
 import { useState } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage, FormikHelpers } from "formik";
 import * as Yup from "yup";
 import {
   FaEnvelope,
@@ -13,15 +14,17 @@ import { BsArrowUpRight } from "react-icons/bs";
 import { toast } from "react-toastify";
 import { HyperText } from "@/components/magicui/hyper-text";
 
+type ContactFormValues = {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+};
+
 export default function ContactSection() {
   const [copied, setCopied] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const email = "nifauzi45@gmail.com";
-  const handleCopy = async () => {
-    await navigator.clipboard.writeText(email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
 
   const socials = [
     {
@@ -46,95 +49,115 @@ export default function ContactSection() {
     },
   ];
 
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  };
+
+  const validationSchema = Yup.object({
+    name: Yup.string().min(3, "Too short").required("Name is required"),
+    email: Yup.string()
+      .email("Invalid email")
+      .min(5, "Too short")
+      .required("Email is required"),
+    subject: Yup.string()
+      .min(5, "Too short")
+      .required("Subject is required"),
+    message: Yup.string().min(10, "Too short").required("Message is required"),
+  });
+
+  const handleSubmit = async (
+    values: ContactFormValues,
+    { resetForm }: FormikHelpers<ContactFormValues>
+  ) => {
+    try {
+      setIsSubmitting(true);
+      const res = await fetch("/api/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+
+      if (res.ok) {
+        toast.success("Message sent successfully! 🚀");
+        resetForm();
+      } else {
+        toast.error("Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
-    <div
-      id="contacts"
-      className="min-h-screen bg-[#181c1c] text-white px-4 py-12 md:px-6 md:py-20"
-    >
-      <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 md:mb-16">
-        Contact Me
-      </h2>
+<section
+  id="contacts"
+  className="min-h-screen text-black px-4 py-16 md:px-6 md:py-24 border-t border-white/40"
+>
 
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="text-center mb-16 space-y-2">
+        <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
+          Contact Me
+        </h2>
+        <p className="text-xs md:text-sm text-gray-500">
+          Feel free to reach out for collaborations, questions, or
+          opportunities.
+        </p>
+      </div>
 
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-1 md:col-span-1">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div className="grid grid-cols-2 md:grid-cols-1 gap-4">
           {socials.map((item) => (
             <a
               key={item.label}
               href={item.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative flex flex-col justify-between border border-[#313838] hover:border-white rounded-2xl p-4 md:p-6 transition-all duration-300"
+              className="group relative flex flex-col justify-between rounded-2xl border border-gray-200 bg-white/80 backdrop-blur-sm p-4 md:p-6 shadow-sm hover:shadow-md hover:-translate-y-[2px] transition-all duration-300"
             >
               <div className="flex justify-between items-start">
-                <div className="h-10 w-10 rounded-full border border-[#313838] flex items-center justify-center hover:border-white text-white text-lg">
+                <div className="h-10 w-10 rounded-full border border-gray-300 bg-white flex items-center justify-center text-black text-lg group-hover:border-black">
                   {item.icon}
                 </div>
-                <BsArrowUpRight className="text-white text-sm" />
+                <BsArrowUpRight className="text-black text-sm" />
               </div>
-              <HyperText className="mt-8 md:mt-12 text-sm font-mono text-white">
+              <HyperText className="mt-8 md:mt-12 text-sm font-mono text-black">
                 {item.label}
               </HyperText>
             </a>
           ))}
         </div>
 
-
-        <Formik
+        <Formik<ContactFormValues>
           initialValues={{
             name: "",
             email: "",
             subject: "",
             message: "",
           }}
-          validationSchema={Yup.object({
-            name: Yup.string().min(3).required("Name is required"),
-            email: Yup.string()
-              .min(5)
-              .email("Invalid email")
-              .required("Email is required"),
-            subject: Yup.string().min(5).required("Subject is required"),
-            message: Yup.string().required("Message is required"),
-          })}
-          onSubmit={async (values, { resetForm }) => {
-            try {
-              setIsSubmitting(true);
-              const res = await fetch("/api/submit", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(values),
-              });
-
-              if (res.ok) {
-                toast.success("Message sent successfully!");
-                resetForm();
-              } else {
-                toast.error("Failed to send message.");
-              }
-            } catch (err) {
-              console.error("Submit error:", err);
-              toast.error("Something went wrong!");
-            } finally {
-              setIsSubmitting(false);
-            }
-          }}
+          validationSchema={validationSchema}
+          onSubmit={handleSubmit}
         >
           {() => (
-            <Form className="border border-[#313838] rounded-2xl p-4 md:p-8 space-y-6 md:col-span-2">
-              <h3 className="text-base font-semibold">Drop me a message:</h3>
+            <Form className="md:col-span-2 rounded-2xl border border-gray-200 bg-white/90 backdrop-blur-sm p-6 md:p-8 space-y-6 shadow-sm">
+              <h3 className="text-base font-semibold">Send me a message:</h3>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <Field
                     type="text"
                     name="name"
-                    placeholder="Name"
-                    className="bg-transparent border border-[#313838] text-sm p-2 rounded-xl text-white placeholder:text-white focus:outline-none w-full"
+                    placeholder="Your Name"
+                    className="w-full bg-transparent border border-gray-300 text-sm p-2.5 rounded-xl text-black placeholder:text-gray-500 focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition"
                   />
                   <ErrorMessage
                     name="name"
                     component="p"
-                    className="text-sm text-red-500 mt-1"
+                    className="text-xs text-red-500 mt-1"
                   />
                 </div>
 
@@ -142,13 +165,13 @@ export default function ContactSection() {
                   <Field
                     type="email"
                     name="email"
-                    placeholder="Email"
-                    className="bg-transparent border border-[#313838] text-sm p-2 rounded-xl text-white placeholder:text-white focus:outline-none w-full"
+                    placeholder="Your Email"
+                    className="w-full bg-transparent border border-gray-300 text-sm p-2.5 rounded-xl text-black placeholder:text-gray-500 focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition"
                   />
                   <ErrorMessage
                     name="email"
                     component="p"
-                    className="text-sm text-red-500 mt-1"
+                    className="text-xs text-red-500 mt-1"
                   />
                 </div>
               </div>
@@ -158,12 +181,12 @@ export default function ContactSection() {
                   type="text"
                   name="subject"
                   placeholder="Subject"
-                  className="w-full bg-transparent border border-[#313838] text-sm p-2 rounded-xl text-white placeholder:text-white focus:outline-none"
+                  className="w-full bg-transparent border border-gray-300 text-sm p-2.5 rounded-xl text-black placeholder:text-gray-500 focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition"
                 />
                 <ErrorMessage
                   name="subject"
                   component="p"
-                  className="text-sm text-red-500 mt-1"
+                  className="text-xs text-red-500 mt-1"
                 />
               </div>
 
@@ -171,36 +194,35 @@ export default function ContactSection() {
                 <Field
                   as="textarea"
                   name="message"
-                  placeholder="Your message.."
-                  rows={4}
-                  className="w-full bg-transparent border border-[#313838] text-sm p-2 rounded-xl text-white placeholder:text-white focus:outline-none"
+                  placeholder="Your message..."
+                  rows={5}
+                  className="w-full bg-transparent border border-gray-300 text-sm p-2.5 rounded-xl text-black placeholder:text-gray-500 focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition resize-none"
                 />
                 <ErrorMessage
                   name="message"
                   component="p"
-                  className="text-sm text-red-500 mt-1"
+                  className="text-xs text-red-500 mt-1"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="bg-[#395b64] w-full py-2 rounded-xl text-white text-sm font-medium hover:bg-[#a5c8ca] hover:text-[#0d0f0f] transition-all mt-2 disabled:opacity-50"
+                className="bg-black w-full py-2.5 rounded-xl text-white text-sm font-medium hover:bg-blue-300 hover:text-black transition-all disabled:opacity-60"
               >
-                {isSubmitting ? "Sending..." : "Submit"}
+                {isSubmitting ? "Sending..." : "Send Message"}
               </button>
 
-              <div className="text-sm text-white mt-4">
-                or email me at:
+              <div className="text-sm text-black mt-4">
+                or email me directly:
                 <button
                   type="button"
                   onClick={handleCopy}
-                  className={`mt-2 w-full border border-[#313838] p-2 rounded-xl flex items-center gap-2 text-sm transition-all duration-300 
-                ${
-                  copied
-                    ? "bg-[#a5c8ca] text-[#0d0f0f]"
-                    : "hover:bg-[#a5c8ca] hover:text-[#0d0f0f]"
-                }`}
+                  className={`mt-2 w-full border border-gray-800 p-2 rounded-xl flex items-center gap-2 text-sm transition-all duration-300 ${
+                    copied
+                      ? "bg-black text-white"
+                      : "hover:bg-blue-300 hover:text-black"
+                  }`}
                 >
                   <FaEnvelope className="text-sm" />
                   <span>{copied ? "Copied!" : email}</span>
@@ -210,6 +232,6 @@ export default function ContactSection() {
           )}
         </Formik>
       </div>
-    </div>
+    </section>
   );
 }

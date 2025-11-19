@@ -22,12 +22,19 @@ export const Navbar = () => {
   }, []);
 
   return (
-    <nav className="relative flex justify-between items-center p-4 md:p-6  bg-[#DEEAE4] text-[#1f2f2d] z-50">
-      <div className="absolute left-5 top-1/2  -translate-y-1/2 bg-[#DEEAE4] z-50">
+    <nav
+      className="sticky top-0 z-50 w-full 
+  bg-[rgba(255,255,255,0.25)] 
+  backdrop-blur-xl 
+  border-b border-white/30 
+  shadow-[0_4px_20px_rgba(0,0,0,0.08)]
+  flex justify-between items-center p-4 md:p-6 text-black"
+    >
+      <div className="absolute left-5 top-1/2 -translate-y-1/2 z-50">
         <Image
-          src="/arunika-logo.png"
+          src="/HNF.png"
           alt="Logo"
-          width={60}
+          width={100}
           height={60}
           className="w-[60px] h-[60px] md:w-[100px] md:h-[100px]"
         />
@@ -36,6 +43,7 @@ export const Navbar = () => {
       <HyperText className="pl-[80px] font-bold md:pl-[120px] text-sm md:text-base">
         Hanif.Fauzi-Porto
       </HyperText>
+
       <span className="text-xs font-bold">{`UTC+7 - ${time}`}</span>
     </nav>
   );
