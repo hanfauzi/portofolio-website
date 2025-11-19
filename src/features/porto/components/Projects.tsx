@@ -1,116 +1,206 @@
 "use client";
 
-import React from "react";
-import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
-import { DummyContent } from "@/components/ui/DummyProject";
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
-export default function ProjectsPage() {
-  const cards = data.map((card, index) => (
-    <Card key={card.src} card={card} index={index} />
-  ));
+type Project = {
+  title: string;
+  category: string;
+  role: string;
+  thumbnail: string;
+  stack: string;
+  shortDescription: string;
+  details: string;
+  links?: {
+    demo?: string;
+    frontend?: string;
+    backend?: string;
+  };
+};
 
-  return (
-    <div
-      id="projects"
-      className="w-full min-h-screen py-12 px-4 md:px-12 bg-[#181c1c] text-white"
-    >
-      <h2 className="max-w-7xl text-center mx-auto text-2xl md:text-3xl font-bold  mb-8">
-        Projects
-      </h2>
-      <Carousel items={cards} />
-    </div>
-  );
-}
-
-const data = [
+const projects: Project[] = [
   {
-    category: "Finance / Next.js",
-    title: "Personal Finance Tracker Web App",
-    technologies: "Next.js, Tailwind CSS, Firebase, Chart.js",
-    src: "/tracker.jpeg",
-    content: (
-      <DummyContent
-        situation="Many individuals struggle with managing their daily expenses. I created a web-based finance tracker targeting young professionals."
-        task="My goal was to build a responsive full-stack application for tracking income, expenses, and goals."
-        action="I used Next.js with Firebase for real-time sync and Chart.js for interactive charts."
-        result="300+ users in first month, many reported reducing spending by 15–20%."
-        image="/tracker.jpeg"
-      />
-    ),
+    title: "Laundry Web Application",
+    category: "Final Project · Full-stack Web Development Bootcamp",
+    role: "Full-stack Developer · Team of 3",
+    thumbnail: "/logo-laundr.jpg",
+    stack: "Next.js · Express.js · TypeScript · Prisma · PostgreSQL · Midtrans · Tailwind CSS",
+    shortDescription:
+      "Pickup & delivery laundry web app with real-time order tracking, authentication, and online payments.",
+    details:
+      "Designed and built a full-featured laundry service platform where customers can request pickups, track order status, and complete payments online. Implemented authentication, address management, and order tracking using Next.js, Express.js, Prisma, and PostgreSQL. Integrated Midtrans for secure payments and optimized a mobile-first UI to improve accessibility and transaction reliability.",
+    links: {
+      demo: "https://laundr-project.vercel.app/",
+      frontend: "https://github.com/hanfauzi/Laundry-Web-App-FE",
+      backend: "https://github.com/hanfauzi/Laundry-Web-App-BE",
+    },
   },
   {
-    category: "Real Estate / Vue.js",
-    title: "Real Estate Listing Platform",
-    technologies: "Vue.js, Laravel, MySQL, Google Maps API",
-    src: "https://clarylifeglobal.com/wp-content/uploads/2024/02/Booking-Listing-Platform-Hero.png",
-    content: (
-      <DummyContent
-        situation="Agents and buyers struggled with outdated real estate listings."
-        task="I created a live listing platform with interactive maps and filters."
-        action="Used Vue.js for frontend, Laravel backend with MySQL, and Google Maps API for location."
-        result="Helped 500+ users find property faster. Reduced bounce rate by 30%."
-        image="https://clarylifeglobal.com/wp-content/uploads/2024/02/Booking-Listing-Platform-Hero.png"
-      />
-    ),
+    title: "Event Management Platform",
+    category: "Mini Project · Full-stack Web Development Bootcamp",
+    role: "Full-stack Developer",
+    thumbnail: "/eventmng.png",
+    stack: "Next.js · Express.js · PostgreSQL · Tailwind CSS · Nodemailer",
+    shortDescription:
+      "Event discovery & registration platform with referral system, role-based access, and payment tracking.",
+    details:
+      "Created an event platform where users can browse events, register, and use referral codes. Implemented authentication, role-based access for customers & organizers, email notifications, and dynamic dashboards to monitor attendees and sales. Focused on smooth UX and clear separation between organizer and user flows.",
+    links: {
+      frontend: "https://github.com/hanfauzi/Event-Management-Web-App-FE",
+      backend: "https://github.com/hanfauzi/Event-Management-Web-App-BE",
+    },
   },
   {
-    category: "AI / React",
-    title: "AI‑Powered Resume Builder",
-    technologies: "React, Express.js, OpenAI API, MongoDB",
-    src: "https://preview.redd.it/i-made-an-ai-resume-maker-that-turns-any-job-link-into-v0-g8jx2nibczud1.png?width=1080&crop=smart&auto=webp&s=ed34aa8efa667642c47f35da7962544dbba8fa69",
-    content: (
-      <DummyContent
-        situation="AJob seekers often struggle to write optimized resumes. This project aimed to simplify the resume creation process using AI-generated content suggestions."
-        task="I led the development of a tool that could generate personalized resume content and offer real-time feedback on tone, grammar, and keywords.."
-        action="I built a React front-end with a live Markdown editor and integrated OpenAI’s GPT model via an Express.js API. MongoDB stored user sessions and resume templates. Additional features like export to PDF and multi-language support were added."
-        result="The app was featured on Product Hunt and received 2,000+ signups in two weeks. Users praised the intelligent writing assistant and said it saved hours during their job search process."
-        image="https://preview.redd.it/i-made-an-ai-resume-maker-that-turns-any-job-link-into-v0-g8jx2nibczud1.png?width=1080&crop=smart&auto=webp&s=ed34aa8efa667642c47f35da7962544dbba8fa69"
-      />
-    ),
+    title: "Personal Portfolio Website",
+    category: "Personal Project",
+    role: "Frontend Developer",
+    thumbnail: "/HNF.png",
+    stack: "Next.js · TypeScript · Tailwind CSS · Shadcn UI",
+    shortDescription:
+      "Portfolio website to showcase projects, skills, and experience.",
+    details:
+      "Built a responsive portfolio website to present my projects, experience, and skills. Focused on clean layout, readable typography, and modern UI composition using Tailwind CSS and Shadcn components.",
+    links: {
+      demo: "https://haniffauzi.vercel.app/",
+      frontend: "https://github.com/hanfauzi/portofolio-website",
+    },
   },
   {
-    category: "EdTech / Angular",
-    title: "Learning Management System (LMS) for EduPro",
-    technologies: "Angular, Node.js, PostgreSQL, AWS S3",
-    src: "https://miro.medium.com/v2/resize:fit:900/1*DGJtDQlKMs8fOSnganoGsA.jpeg",
-    content: (
-      <DummyContent
-        situation="EduPro, an online course provider, needed a custom LMS to host video courses, manage users, and track progress and certifications."
-        task="My task was to build a scalable system to deliver video content, quiz modules, and generate progress reports for both students and instructors."
-        action="I used Angular for the front-end and Node.js for the RESTful API layer. PostgreSQL handled relational data, while AWS S3 was used for secure video storage. The system also included role-based access control and progress tracking dashboards."
-        result="Over 1,000 students enrolled within the first month, with a course completion rate of 78%. Instructors praised the admin dashboard’s clarity, and the platform contributed to a 20% increase in course purchases."
-        image="https://miro.medium.com/v2/resize:fit:900/1*DGJtDQlKMs8fOSnganoGsA.jpeg"
-      />
-    ),
-  },
-  {
-    category: "Mobile / Flutter",
-    title: "Restaurant Table Booking App",
-    technologies: "Flutter, Firebase, Google Maps API",
-    src: "https://mir-s3-cdn-cf.behance.net/projects/404/a17e47119064629.Y3JvcCw3NjE0LDU5NTUsMCww.jpg",
-    content: (
-      <DummyContent
-        situation="Restaurants in busy urban areas were struggling with walk-ins and manual reservations. I developed a cross-platform mobile app to let users reserve tables at nearby restaurants."
-        task="I was responsible for the UI/UX design and core logic to allow time-slot booking, table selection, and map navigation."
-        action="Using Flutter, I built for both Android and iOS with a single codebase. Firebase handled user auth and database sync. Google Maps API was integrated to let users explore nearby dining options."
-        result="The app reached 5,000+ downloads in 2 months with high engagement during peak dining hours. Restaurant partners reported smoother operations and a 30% increase in table turnover efficiency."
-        image="https://mir-s3-cdn-cf.behance.net/projects/404/a17e47119064629.Y3JvcCw3NjE0LDU5NTUsMCww.jpg"
-      />
-    ),
-  },
-  {
-    category: "Analytics / React",
-    title: "Internal Dashboard for Performance Analytics",
-    technologies: "React, Recharts, Supabase, Tailwind CSS",
-    src: "https://images.ctfassets.net/fevtq3bap7tj/4Z3xdca3bymwimUoa408Ck/8c3bf8a8d2335a9613131d03c650131b/Energy_Dashboard_2x.jpg.png",
-    content: (
-      <DummyContent
-        situation="A growing startup needed a data dashboard to visualize KPIs across departments in real time and replace their manual spreadsheet tracking."
-        task="I was tasked with creating an interactive analytics dashboard with charts, filters, and role-based access for different team members."
-        action="I used React and Tailwind CSS for the front-end, connected to Supabase for instant data updates, and used Recharts for visualizing performance indicators. I also implemented JWT-based authentication and caching strategies to boost load times."
-        result="The dashboard reduced reporting prep time by 60%. Department heads reported better visibility into trends, which helped in decision-making and resource allocation."
-        image="https://images.ctfassets.net/fevtq3bap7tj/4Z3xdca3bymwimUoa408Ck/8c3bf8a8d2335a9613131d03c650131b/Energy_Dashboard_2x.jpg.png"
-      />
-    ),
+    title: "Company Profile Website",
+    category: "Client-style Practice Project",
+    role: "Full-stack / Frontend-focused",
+    thumbnail: "/companylogo.png",
+    stack: "Next.js · Headless CMS · Tailwind CSS · Authentication",
+    shortDescription:
+      "Company profile with CMS-powered content and blog management.",
+    details:
+      "Built a company profile with CMS integration for dynamic content. Implemented authentication to restrict blog creation and management. Focused on mobile-first UI and clean branding.",
+    links: {
+      demo: "https://arunikacompany.vercel.app/",
+      frontend: "https://github.com/hanfauzi/company-profile",
+    },
   },
 ];
+
+export default function ProjectsSection() {
+  const [selected, setSelected] = useState<Project | null>(null);
+
+  return (
+    <section
+      id="projects"
+      className="w-full  text-black py-16 px-4 md:px-8 border-t border-gray-100"
+    >
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-10 space-y-2">
+          <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
+            Projects
+          </h2>
+          <p className="text-xs md:text-sm text-gray-500">
+            A selection of the projects I&apos;ve built.
+          </p>
+        </div>
+
+        <div className="grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-2">
+          {projects.map((project) => (
+            <article
+              key={project.title}
+              onClick={() => setSelected(project)}
+              className="cursor-pointer group relative flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
+            >
+              <div className="relative aspect-video w-full overflow-hidden">
+                <Image
+                  src={project.thumbnail}
+                  alt={project.title}
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
+
+              <div className="flex flex-1 flex-col p-4 space-y-3 text-left">
+                <div className="space-y-1">
+                  <p className="text-[11px] font-medium uppercase tracking-wide text-blue-600">
+                    {project.category}
+                  </p>
+                  <h3 className="text-sm md:text-base font-semibold">
+                    {project.title}
+                  </h3>
+                  <p className="text-[11px] text-gray-500">{project.role}</p>
+                </div>
+
+                <p className="text-xs md:text-sm text-gray-600 line-clamp-2">
+                  {project.shortDescription}
+                </p>
+
+                <p className="text-[11px] text-gray-400">{project.stack}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        {selected && (
+          <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex justify-center items-center z-50 p-4">
+            <div className="bg-white rounded-2xl max-w-lg w-full p-5 shadow-xl relative animate-fadeIn">
+              <button
+                onClick={() => setSelected(null)}
+                className="absolute right-4 top-4 text-gray-600 hover:text-black"
+              >
+                ✕
+              </button>
+
+              <div className="relative w-full aspect-video rounded-lg overflow-hidden mb-4">
+                <Image
+                  src={selected.thumbnail}
+                  alt={selected.title}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+
+              <h3 className="text-lg md:text-xl font-semibold mb-1">
+                {selected.title}
+              </h3>
+              <p className="text-xs text-blue-600 mb-3">{selected.category}</p>
+
+              <p className="text-sm text-gray-700 mb-4">{selected.details}</p>
+
+              <p className="text-xs text-gray-500 mb-4">{selected.stack}</p>
+
+              {selected.links && (
+                <div className="flex flex-wrap gap-2 text-xs">
+                  {selected.links.demo && (
+                    <Link
+                      href={selected.links.demo}
+                      target="_blank"
+                      className="rounded-full border border-gray-300 px-3 py-1 hover:bg-black hover:text-white transition"
+                    >
+                      Live Demo
+                    </Link>
+                  )}
+                  {selected.links.frontend && (
+                    <Link
+                      href={selected.links.frontend}
+                      target="_blank"
+                      className="rounded-full border border-gray-300 px-3 py-1 hover:bg-black hover:text-white transition"
+                    >
+                      Frontend Repo
+                    </Link>
+                  )}
+                  {selected.links.backend && (
+                    <Link
+                      href={selected.links.backend}
+                      target="_blank"
+                      className="rounded-full border border-gray-300 px-3 py-1 hover:bg-black hover:text-white transition"
+                    >
+                      Backend Repo
+                    </Link>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
