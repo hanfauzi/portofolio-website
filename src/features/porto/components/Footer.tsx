@@ -38,10 +38,10 @@ export const Footer = () => {
       <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
         <div className="flex flex-col space-y-1 min-w-[150px]">
           <HyperText className="text-xs md:text-sm">
-            Tangerang Selatan, Banten · Indonesia
+            Tangerang Selatan, Banten, Indonesia
           </HyperText>
           <span className="text-xs md:text-sm text-gray-500 dark:text-gray-400">
-            {`UTC+7 · ${time}`}
+            {`UTC+7 - ${time}`}
           </span>
         </div>
 
