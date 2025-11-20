@@ -22,11 +22,11 @@ type Project = {
 const projects: Project[] = [
   {
     title: "Laundry Web Application",
-    category: "Final Project · Full-stack Web Development Bootcamp",
-    role: "Full-stack Developer · Team of 3",
+    category: "Final Project / Full-stack Web Development Bootcamp",
+    role: "Full-stack Developer / Team of 3",
     thumbnail: "/logo-laundr.jpg",
     stack:
-      "Next.js · Express.js · TypeScript · Prisma · PostgreSQL · Midtrans · Tailwind CSS",
+      "Next.js, Express.js, TypeScript, Prisma, PostgreSQL, Midtrans, Tailwind CSS",
     shortDescription:
       "Pickup & delivery laundry web app with real-time order tracking, authentication, and online payments.",
     details:
@@ -39,10 +39,10 @@ const projects: Project[] = [
   },
   {
     title: "Event Management Platform",
-    category: "Mini Project · Full-stack Web Development Bootcamp",
+    category: "Mini Project / Full-stack Web Development Bootcamp",
     role: "Full-stack Developer",
     thumbnail: "/eventmng.png",
-    stack: "Next.js · Express.js · PostgreSQL · Tailwind CSS · Nodemailer",
+    stack: "Next.js, Express.js, PostgreSQL,Tailwind CSS, Nodemailer",
     shortDescription:
       "Event discovery & registration platform with referral system, role-based access, and payment tracking.",
     details:
@@ -57,7 +57,7 @@ const projects: Project[] = [
     category: "Personal Project",
     role: "Frontend Developer",
     thumbnail: "/HNF.png",
-    stack: "Next.js · TypeScript · Tailwind CSS · Shadcn UI",
+    stack: "Next.js, TypeScript, Tailwind CSS, Shadcn UI",
     shortDescription:
       "Portfolio website to showcase projects, skills, and experience.",
     details:
@@ -72,7 +72,7 @@ const projects: Project[] = [
     category: "Client-style Practice Project",
     role: "Full-stack / Frontend-focused",
     thumbnail: "/companylogo.png",
-    stack: "Next.js · Headless CMS · Tailwind CSS · Authentication",
+    stack: "Next.js, Headless CMS, Tailwind CSS, Authentication",
     shortDescription:
       "Company profile with CMS-powered content and blog management.",
     details:
