@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTheme } from "next-themes";
 import {
   TbBrandNextjs,
   TbBrandTailwind,
@@ -62,22 +63,36 @@ console.log(greeting());`,
 const Skills = () => {
   const [selectedLang, setSelectedLang] =
     useState<keyof typeof codeSnippets>("Javascript");
+  const { resolvedTheme } = useTheme();
+
+  const editorTheme = resolvedTheme === "dark" ? "vs-dark" : "light";
 
   return (
-  <section
-  id="skills"
-  className="text-black py-16 px-4 md:px-8 border-t border-white/40"
->
+    <section
+      id="skills"
+      className="text-black dark:text-white py-16 px-4 md:px-8 border-t border-white/40 dark:border-white/10"
+    >
       <div className="max-w-5xl mx-auto text-center space-y-10">
         <div className="space-y-2">
           <h2 className="text-2xl md:text-3xl font-bold">Skills</h2>
-          <p className="text-xs md:text-sm text-gray-500">
+          <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400">
             Tools and technologies I work with across frontend, backend, and
             deployment.
           </p>
         </div>
 
-        <div className="rounded-2xl border border-gray-200 bg-gradient-to-br from-slate-900 via-slate-950 to-black px-4 py-6 text-white shadow-xl">
+        {/* CARD CODE EDITOR */}
+        <div
+          className="
+          rounded-2xl border 
+          border-gray-200 dark:border-slate-700 
+          bg-linear-to-br from-slate-50 via-slate-100 to-slate-200 
+          dark:from-slate-900 dark:via-slate-950 dark:to-black
+          px-4 py-6 
+          text-black dark:text-white 
+          shadow-xl
+        "
+        >
           <div className="mb-4 inline-flex flex-wrap gap-3 border-b border-white/10 pb-3">
             {Object.keys(codeSnippets).map((lang) => {
               const active = selectedLang === lang;
@@ -89,8 +104,8 @@ const Skills = () => {
                   }
                   className={`px-3 py-1.5 rounded-full text-xs md:text-sm font-medium transition-all ${
                     active
-                      ? "bg-white text-slate-900"
-                      : "bg-white/5 text-gray-300 hover:bg-white/10"
+                      ? "bg-black text-white dark:bg-white dark:text-slate-900"
+                      : "bg-white/70 text-slate-800 hover:bg-white dark:bg-white/5 dark:text-gray-300 dark:hover:bg-white/10"
                   }`}
                 >
                   {lang}
@@ -99,12 +114,12 @@ const Skills = () => {
             })}
           </div>
 
-          <div className="rounded-xl overflow-hidden border border-white/10 h-[260px] md:h-[300px]">
+          <div className="rounded-xl overflow-hidden border border-white/40 dark:border-white/10 h-[260px] md:h-[300px] bg-white/80 dark:bg-transparent">
             <MonacoEditor
               key={selectedLang}
               language={codeSnippets[selectedLang].language}
               value={codeSnippets[selectedLang].code}
-              theme="vs-dark"
+              theme={editorTheme}
               options={{
                 readOnly: true,
                 minimap: { enabled: false },
@@ -116,6 +131,7 @@ const Skills = () => {
           </div>
         </div>
 
+        {/* TECH STACKS */}
         <div className="space-y-4">
           <h3 className="text-xl md:text-2xl font-bold">Tech Stacks</h3>
 
@@ -200,7 +216,7 @@ const Skills = () => {
                     <Icon title={name} />
                   </Link>
                 </TooltipTrigger>
-                <TooltipContent className="bg-[#181c1c] text-xs md:text-sm">
+                <TooltipContent className="bg-[#181c1c] text-xs md:text-sm text-white">
                   <p>{name}</p>
                 </TooltipContent>
               </Tooltip>

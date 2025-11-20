@@ -25,7 +25,8 @@ const projects: Project[] = [
     category: "Final Project · Full-stack Web Development Bootcamp",
     role: "Full-stack Developer · Team of 3",
     thumbnail: "/logo-laundr.jpg",
-    stack: "Next.js · Express.js · TypeScript · Prisma · PostgreSQL · Midtrans · Tailwind CSS",
+    stack:
+      "Next.js · Express.js · TypeScript · Prisma · PostgreSQL · Midtrans · Tailwind CSS",
     shortDescription:
       "Pickup & delivery laundry web app with real-time order tracking, authentication, and online payments.",
     details:
@@ -89,7 +90,7 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="w-full  text-black py-16 px-4 md:px-8 border-t border-gray-100"
+      className="w-full text-black dark:text-white py-16 px-4 md:px-8 border-t border-gray-100 dark:border-white/10"
     >
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-10 space-y-2">
@@ -106,7 +107,10 @@ export default function ProjectsSection() {
             <article
               key={project.title}
               onClick={() => setSelected(project)}
-              className="cursor-pointer group relative flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
+              className="cursor-pointer group relative flex flex-col overflow-hidden rounded-2xl 
+  border border-gray-200 bg-white shadow-sm 
+  transition-all duration-200 hover:-translate-y-1 hover:shadow-lg
+  dark:border-white/10 dark:bg-white/5"
             >
               <div className="relative aspect-video w-full overflow-hidden">
                 <Image
@@ -140,10 +144,14 @@ export default function ProjectsSection() {
 
         {selected && (
           <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex justify-center items-center z-50 p-4">
-            <div className="bg-white rounded-2xl max-w-lg w-full p-5 shadow-xl relative animate-fadeIn">
+            <div
+              className="bg-white dark:bg-[#050608] dark:text-gray-100 
+    rounded-2xl max-w-lg w-full p-8 shadow-xl relative animate-fadeIn 
+    border border-gray-200 dark:border-white/10"
+            >
               <button
                 onClick={() => setSelected(null)}
-                className="absolute right-4 top-4 text-gray-600 hover:text-black"
+                className="absolute cursor-pointer right-4 top-4 text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white"
               >
                 ✕
               </button>
@@ -162,9 +170,12 @@ export default function ProjectsSection() {
               </h3>
               <p className="text-xs text-blue-600 mb-3">{selected.category}</p>
 
-              <p className="text-sm text-gray-700 mb-4">{selected.details}</p>
-
-              <p className="text-xs text-gray-500 mb-4">{selected.stack}</p>
+              <p className="text-sm text-justify text-gray-700 dark:text-gray-200 mb-4">
+                {selected.details}
+              </p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mb-4">
+                {selected.stack}
+              </p>
 
               {selected.links && (
                 <div className="flex flex-wrap gap-2 text-xs">
@@ -172,7 +183,9 @@ export default function ProjectsSection() {
                     <Link
                       href={selected.links.demo}
                       target="_blank"
-                      className="rounded-full border border-gray-300 px-3 py-1 hover:bg-black hover:text-white transition"
+                      className="rounded-full border border-gray-300 dark:border-gray-600 
+      px-3 py-1 hover:bg-black hover:text-white 
+      dark:hover:bg-white dark:hover:text-black transition"
                     >
                       Live Demo
                     </Link>
