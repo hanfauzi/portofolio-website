@@ -56,7 +56,7 @@ const projects: Project[] = [
     title: "Personal Portfolio Website",
     category: "Personal Project",
     role: "Frontend Developer",
-    thumbnail: "/HNF.png",
+    thumbnail: "/HNF.jpeg",
     stack: "Next.js, TypeScript, Tailwind CSS, Shadcn UI",
     shortDescription:
       "Portfolio website to showcase projects, skills, and experience.",
@@ -71,7 +71,7 @@ const projects: Project[] = [
     title: "Company Profile Website",
     category: "Client-style Practice Project",
     role: "Full-stack / Frontend-focused",
-    thumbnail: "/companylogo.png",
+    thumbnail: "/arunika.jpeg",
     stack: "Next.js, Headless CMS, Tailwind CSS, Authentication",
     shortDescription:
       "Company profile with CMS-powered content and blog management.",
