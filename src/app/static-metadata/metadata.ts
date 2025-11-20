@@ -1,11 +1,11 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "ARUNIKA",
+  title: "HNF",
   description: "Muhammad Hanif Fauzi Portofolio",
   keywords: ["full-stack developer", "software engineer", "portofolio"],
   openGraph: {
-    title: "ARUNIKA",
+    title: "HNF",
     description: "Muhammad Hanif Fauzi Portofolio",
     images: [
       {

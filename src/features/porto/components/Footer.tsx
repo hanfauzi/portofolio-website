@@ -24,19 +24,25 @@ export const Footer = () => {
 
   return (
     <footer
-      className="w-full 
-  bg-gradient-to-t from-[#dedfe2] via-[#f0f0f0] to-[#ffffff]
-  backdrop-blur-lg 
-  border-t border-black/20 
-  text-black text-sm px-4 py-6 
-  shadow-[0_-2px_10px_rgba(0,0,0,0.05)]"
+      className="
+      w-full 
+      bg-[rgba(255,255,255,0.25)]
+      dark:bg-[rgba(15,15,15,0.75)]
+      backdrop-blur-xl
+      border-t border-white/30 dark:border-white/10
+      shadow-[0_-4px_20px_rgba(0,0,0,0.08)]
+      text-black dark:text-white
+      text-sm px-4 py-6
+    "
     >
       <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
         <div className="flex flex-col space-y-1 min-w-[150px]">
           <HyperText className="text-xs md:text-sm">
             Tangerang Selatan, Banten · Indonesia
           </HyperText>
-          <span className="text-xs md:text-sm text-gray-500">{`UTC+7 · ${time}`}</span>
+          <span className="text-xs md:text-sm text-gray-500 dark:text-gray-400">
+            {`UTC+7 · ${time}`}
+          </span>
         </div>
 
         <div className="flex flex-col md:items-end space-y-1 min-w-[100px]">
