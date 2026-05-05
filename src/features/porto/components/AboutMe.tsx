@@ -1,102 +1,104 @@
 "use client";
+import { motion } from "framer-motion";
 
 export const AboutMe = () => {
   return (
     <section
       id="about"
-      className="py-16 px-4 text-black dark:text-white border-t border-white/40 dark:border-white/10"
+      className="py-24 px-6 md:px-16 lg:px-24 transition-colors duration-500"
     >
-      <div className="max-w-5xl mx-auto space-y-8">
-        <div className="text-center space-y-2">
-          <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
-            About Me
-          </h2>
-          <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400">
-            A quick snapshot of who I am and what I do.
-          </p>
-        </div>
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+          <div className="lg:col-span-5 space-y-8">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-5xl md:text-7xl font-black tracking-tight text-foreground"
+            >
+              Background <br />
+              <span className="text-primary italic">& Philosophy</span>
+            </motion.h2>
 
-        <div className="grid gap-10 md:grid-cols-[1.7fr_1.3fr] items-start">
-          <div className="space-y-4 text-sm md:text-base leading-relaxed text-gray-700 dark:text-gray-300">
-            <p className="text-justify">
-              Hello! I&apos;m{" "}
-              <span className="font-semibold">Muhammad Hanif Fauzi</span>, a{" "}
-              <span className="font-semibold">Full-Stack Web Developer</span>{" "}
-              based in South Tangerang, Indonesia. I enjoy building clean,
-              efficient, and modern web applications using{" "}
-              <span className="font-medium">Next.js</span>,{" "}
-              <span className="font-medium">Express.js</span>,{" "}
-              <span className="font-medium">TypeScript</span>, and{" "}
-              <span className="font-medium">PostgreSQL</span>.
-            </p>
-
-            <p className="text-justify">
-              I transitioned into the tech industry from a background in Islamic
-              Family Law, bringing analytical thinking and adaptability into my
-              development workflow. My full-stack journey began at{" "}
-              <span className="font-medium">
-                Purwadhika Digital Technology School
-              </span>
-              , where I built real-world applications through hands-on projects
-              and Agile collaboration.
-            </p>
-
-            <p className="text-justify">
-              Since then, I&apos;ve continued sharpening my skills through
-              self-learning, documentation deep-dives, and personal projects.
-              My experience includes authentication systems, RESTful APIs,
-              payment integrations (Midtrans), deployment pipelines, and
-              building scalable web architectures.
-            </p>
-
-            <p className="text-justify">
-              I&apos;m passionate about writing maintainable code, learning new
-              technologies, and building products that create meaningful impact
-              for users and businesses. This website is a space for me to share
-              my work, my growth, and the things I&apos;m building along the way.
-            </p>
+            <div className="space-y-6">
+              {[
+                {
+                  label: "Role",
+                  value: "Full-Stack Developer",
+                  color:
+                    "bg-blue-200/50 dark:bg-white/5 text-blue-900 dark:text-foreground/70",
+                },
+                {
+                  label: "Status",
+                  value: "Open to Work",
+                  color:
+                    "bg-blue-200/50 dark:bg-white/5 text-blue-900 dark:text-foreground/70",
+                },
+                {
+                  label: "Location",
+                  value: "South Tangerang, ID",
+                  color:
+                    "bg-blue-200/50 dark:bg-white/5 text-blue-900 dark:text-foreground/70",
+                },
+              ].map((item, i) => (
+                <motion.div
+                  key={item.label}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  viewport={{ once: true }}
+                  className={`p-6 rounded-3xl border border-foreground/10 shadow-sm ${item.color}`}
+                >
+                  <p className="text-[10px] uppercase tracking-[0.3em] font-black opacity-60 mb-2">
+                    {item.label}
+                  </p>
+                  <p className="text-xl font-black">{item.value}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
 
-          <div className="space-y-3 text-sm md:text-base">
-            <div className="rounded-2xl border border-gray-200 bg-gray-50/60 p-4 
-              dark:border-white/10 dark:bg-white/5"
+          <div className="lg:col-span-7">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="space-y-8 text-2xl text-foreground/70 font-medium leading-snug"
             >
-              <p className="font-semibold uppercase tracking-wide text-black dark:text-white">
-                Role
+              <p>
+                Hello! I&apos;m{" "}
+                <span className="text-foreground font-black border-b-4 border-primary/20">
+                  Muhammad Hanif Fauzi
+                </span>
+                , a Full-stack Web Developer currently working at Notch,
+                contributing to client projects and internal system development.
               </p>
-              <p className="mt-1 font-medium text-gray-500 dark:text-gray-300">
-                Full-Stack Web Developer / Software Engineer
-              </p>
-            </div>
 
-            <div className="rounded-2xl border border-gray-200 bg-gray-50/60 p-4 
-              dark:border-white/10 dark:bg-white/5"
-            >
-              <p className="font-semibold uppercase tracking-wide text-black dark:text-white">
-                Status
+              <p>
+                My development journey began at Purwadhika Digital Technology
+                School, where I built a strong foundation in full-stack web
+                development. Today, I work on maintaining legacy systems,
+                developing modern applications, and delivering reliable
+                solutions for real business needs.
               </p>
-              <p className="mt-1 font-medium text-blue-600 dark:text-blue-400">
-                Open to Full-time / Freelance / Intern Opportunities
-              </p>
-            </div>
 
-            <div className="rounded-2xl border border-gray-200 bg-gray-50/60 p-4 
-              dark:border-white/10 dark:bg-white/5"
-            >
-              <p className="font-semibold uppercase tracking-wide text-black dark:text-white">
-                Based in
+              <p>
+                I have hands-on experience with{" "}
+                <span className="text-foreground font-black italic">
+                  Next.js, TypeScript, NestJS, Express.js, Prisma, and PostgreSQL
+                </span>
+                , with a focus on building scalable, maintainable, and
+                user-centered web applications.
               </p>
-              <p className="mt-1 text-gray-500 dark:text-gray-300">
-                South Tangerang, Banten, Indonesia
+
+              <p className="text-3xl font-black text-foreground italic pt-8 border-t border-foreground/10">
+                &ldquo;I build reliable web solutions that balance clean
+                engineering, scalability, and real user needs.&rdquo;
               </p>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
     </section>
   );
 };
-
-
-
-            

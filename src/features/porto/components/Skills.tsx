@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { useTheme } from "next-themes";
+import { motion } from "framer-motion";
 import {
   TbBrandNextjs,
   TbBrandTailwind,
@@ -17,11 +16,10 @@ import {
   SiPostman,
   SiVercel,
   SiPrisma,
-  SiRailway,
-  SiCloudinary,
-  SiLeaflet,
+  SiDocker,
+  SiNestjs,
+  SiRedis,
 } from "react-icons/si";
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import {
   Tooltip,
@@ -29,197 +27,68 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-const MonacoEditor = dynamic(() => import("@monaco-editor/react"), {
-  ssr: false,
-});
-
-const codeSnippets: Record<string, { code: string; language: string }> = {
-  Javascript: {
-    language: "javascript",
-    code: `// JavaScript
-const arr = ["Muhammad", "Hanif", "Fauzi"];
-
-function greeting() {
-  const name = arr.find((item) => item === "Hanif");
-  return \`Hello, \${name}!\`;
-}
-
-console.log(greeting());`,
-  },
-  Typescript: {
-    language: "typescript",
-    code: `// TypeScript
-const arr: string[] = ["Muhammad", "Hanif", "Fauzi"];
-
-function greeting(): string {
-  const name = arr.find((item) => item === "Hanif");
-  return \`Hello, \${name}!\`;
-}
-
-console.log(greeting());`,
-  },
-};
+const techStacks = [
+  { icon: TbBrandNextjs, name: "Next.js", href: "https://nextjs.org/", color: "bg-black text-white" },
+  { icon: SiNestjs, name: "NestJS", href: "https://nestjs.com/", color: "bg-red-100 text-red-600 shadow-red-100" },
+  { icon: TbBrandReact, name: "React", href: "https://react.dev/", color: "bg-blue-100 text-blue-600 shadow-blue-100" },
+  { icon: TbBrandTailwind, name: "Tailwind CSS", href: "https://tailwindcss.com/", color: "bg-cyan-100 text-cyan-600 shadow-cyan-100" },
+  { icon: TbBrandNodejs, name: "Node.js", href: "https://nodejs.org/", color: "bg-green-100 text-green-600 shadow-green-100" },
+  { icon: SiExpress, name: "Express.js", href: "https://expressjs.com/", color: "bg-white text-black border-2" },
+  { icon: SiPostgresql, name: "PostgreSQL", href: "https://postgresql.org/", color: "bg-indigo-100 text-indigo-600 shadow-indigo-100" },
+  { icon: SiRedis, name: "Redis", href: "https://redis.io/", color: "bg-rose-100 text-rose-600 shadow-rose-100" },
+  { icon: SiDocker, name: "Docker", href: "https://www.docker.com/", color: "bg-sky-100 text-sky-600 shadow-sky-100" },
+  { icon: SiPrisma, name: "Prisma ORM", href: "https://prisma.io/", color: "bg-teal-100 text-teal-600 shadow-teal-100" },
+  { icon: SiJavascript, name: "JavaScript", href: "https://developer.mozilla.org/", color: "bg-yellow-100 text-yellow-700 shadow-yellow-100" },
+  { icon: SiTypescript, name: "TypeScript", href: "https://typescriptlang.org/", color: "bg-blue-200 text-blue-800 shadow-blue-200" },
+  { icon: SiPostman, name: "Postman", href: "https://postman.com/", color: "bg-orange-100 text-orange-600 shadow-orange-100" },
+  { icon: TbBrandGithub, name: "GitHub", href: "https://github.com/", color: "bg-white text-black border-2" },
+  { icon: SiVercel, name: "Vercel", href: "https://vercel.com/", color: "bg-black text-white" },
+];
 
 const Skills = () => {
-  const [selectedLang, setSelectedLang] =
-    useState<keyof typeof codeSnippets>("Javascript");
-  const { resolvedTheme } = useTheme();
-
-  const editorTheme = resolvedTheme === "dark" ? "vs-dark" : "light";
-
   return (
-    <section
-      id="skills"
-      className="text-black dark:text-white py-16 px-4 md:px-8 border-t border-white/40 dark:border-white/10"
-    >
-      <div className="max-w-5xl mx-auto text-center space-y-10">
-        <div className="space-y-2">
-          <h2 className="text-2xl md:text-3xl font-bold">Skills</h2>
-          <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400">
-            Tools and technologies I work with across frontend, backend, and
-            deployment.
-          </p>
-        </div>
-
-        {/* CARD CODE EDITOR */}
-        <div
-          className="
-          rounded-2xl border 
-          border-gray-200 dark:border-slate-700 
-          bg-linear-to-br from-slate-50 via-slate-100 to-slate-200 
-          dark:from-slate-900 dark:via-slate-950 dark:to-black
-          px-4 py-6 
-          text-black dark:text-white 
-          shadow-xl
-        "
-        >
-          <div className="mb-4 inline-flex flex-wrap gap-3 border-b border-white/10 pb-3">
-            {Object.keys(codeSnippets).map((lang) => {
-              const active = selectedLang === lang;
-              return (
-                <button
-                  key={lang}
-                  onClick={() =>
-                    setSelectedLang(lang as keyof typeof codeSnippets)
-                  }
-                  className={`px-3 py-1.5 rounded-full text-xs md:text-sm font-medium transition-all ${
-                    active
-                      ? "bg-black text-white dark:bg-white dark:text-slate-900"
-                      : "bg-white/70 text-slate-800 hover:bg-white dark:bg-white/5 dark:text-gray-300 dark:hover:bg-white/10"
-                  }`}
-                >
-                  {lang}
-                </button>
-              );
-            })}
+    <section id="skills" className="py-32 px-6 md:px-16 lg:px-24 transition-colors duration-500">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-start">
+          <div className="space-y-10">
+            <motion.h2 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="text-5xl md:text-7xl font-black tracking-tighter text-foreground"
+            >
+              Mastered <br />
+              <span className="text-primary italic">Technologies</span>
+            </motion.h2>
+            <p className="text-2xl text-foreground/60 max-w-md font-medium leading-tight">
+              Specializing in the <span className="text-foreground font-black italic">modern web ecosystem</span>, focused on performance and scalability.
+            </p>
           </div>
 
-          <div className="rounded-xl overflow-hidden border border-white/40 dark:border-white/10 h-[260px] md:h-[300px] bg-white/80 dark:bg-transparent">
-            <MonacoEditor
-              key={selectedLang}
-              language={codeSnippets[selectedLang].language}
-              value={codeSnippets[selectedLang].code}
-              theme={editorTheme}
-              options={{
-                readOnly: true,
-                minimap: { enabled: false },
-                fontSize: 14,
-                scrollBeyondLastLine: false,
-                automaticLayout: true,
-              }}
-            />
-          </div>
-        </div>
-
-        {/* TECH STACKS */}
-        <div className="space-y-4">
-          <h3 className="text-xl md:text-2xl font-bold">Tech Stacks</h3>
-
-          <div className="mt-6 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-6 md:gap-8 justify-items-center text-2xl md:text-3xl">
-            {[
-              {
-                icon: TbBrandNextjs,
-                name: "Next.js",
-                href: "https://nextjs.org/",
-              },
-              { icon: TbBrandReact, name: "React", href: "https://react.dev/" },
-              {
-                icon: TbBrandTailwind,
-                name: "Tailwind CSS",
-                href: "https://tailwindcss.com/",
-              },
-              {
-                icon: TbBrandNodejs,
-                name: "Node.js",
-                href: "https://nodejs.org/",
-              },
-              {
-                icon: SiExpress,
-                name: "Express.js",
-                href: "https://expressjs.com/",
-              },
-              {
-                icon: SiPostgresql,
-                name: "PostgreSQL",
-                href: "https://postgresql.org/",
-              },
-              {
-                icon: SiPrisma,
-                name: "Prisma ORM",
-                href: "https://prisma.io/",
-              },
-              {
-                icon: SiRailway,
-                name: "Railway",
-                href: "https://railway.app/",
-              },
-              {
-                icon: SiCloudinary,
-                name: "Cloudinary",
-                href: "https://cloudinary.com/",
-              },
-              {
-                icon: SiLeaflet,
-                name: "Leaflet Maps",
-                href: "https://leafletjs.com/",
-              },
-              {
-                icon: SiJavascript,
-                name: "JavaScript",
-                href: "https://developer.mozilla.org/",
-              },
-              {
-                icon: SiTypescript,
-                name: "TypeScript",
-                href: "https://typescriptlang.org/",
-              },
-              {
-                icon: SiPostman,
-                name: "Postman",
-                href: "https://postman.com/",
-              },
-              {
-                icon: TbBrandGithub,
-                name: "Git & GitHub",
-                href: "https://github.com/",
-              },
-              { icon: SiVercel, name: "Vercel", href: "https://vercel.com/" },
-            ].map(({ icon: Icon, name, href }) => (
-              <Tooltip key={name}>
-                <TooltipTrigger asChild>
-                  <Link
-                    href={href}
-                    target="_blank"
-                    aria-label={name}
-                    className="transition-transform hover:-translate-y-1 hover:scale-110"
-                  >
-                    <Icon title={name} />
-                  </Link>
-                </TooltipTrigger>
-                <TooltipContent className="bg-[#181c1c] text-xs md:text-sm text-white">
-                  <p>{name}</p>
-                </TooltipContent>
-              </Tooltip>
+          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-8">
+            {techStacks.map(({ icon: Icon, name, href, color }, index) => (
+              <motion.div
+                key={name}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: index * 0.05, type: "spring", stiffness: 200 }}
+                viewport={{ once: true }}
+              >
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Link
+                      href={href}
+                      target="_blank"
+                      className={`flex items-center justify-center aspect-square rounded-3xl border border-foreground/10 hover:scale-110 active:scale-95 transition-all duration-300 group shadow-sm ${color} dark:bg-card dark:text-foreground`}
+                    >
+                      <Icon className="text-4xl md:text-5xl transition-transform group-hover:rotate-12" />
+                    </Link>
+                  </TooltipTrigger>
+                  <TooltipContent className="bg-foreground text-background font-black uppercase tracking-widest text-[10px] py-2 px-4 rounded-full">
+                    <p>{name}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </motion.div>
             ))}
           </div>
         </div>

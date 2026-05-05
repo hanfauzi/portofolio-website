@@ -1,270 +1,73 @@
 "use client";
 
-import { useState } from "react";
-import {
-  Formik,
-  Form,
-  Field,
-  ErrorMessage,
-  FormikHelpers,
-} from "formik";
-import * as Yup from "yup";
-import {
-  FaEnvelope,
-  FaInstagram,
-  FaWhatsapp,
-  FaGithub,
-  FaLinkedin,
-} from "react-icons/fa";
-import { BsArrowUpRight } from "react-icons/bs";
-import { toast } from "react-toastify";
-import { HyperText } from "@/components/magicui/hyper-text";
-
-type ContactFormValues = {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-};
+import { motion } from "framer-motion";
+import { FaInstagram, FaWhatsapp, FaGithub, FaLinkedin } from "react-icons/fa";
+import { BsArrowUpRight, BsCalendarCheck, BsDownload, BsChatText } from "react-icons/bs";
+import Link from "next/link";
 
 export default function ContactSection() {
-  const [copied, setCopied] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const email = "nifauzi45@gmail.com";
-
   const socials = [
-    {
-      label: "Instagram",
-      icon: <FaInstagram />,
-      href: "https://www.instagram.com/hnfzii/",
-    },
-    {
-      label: "WhatsApp",
-      icon: <FaWhatsapp />,
-      href: "https://wa.me/6281384878500",
-    },
-    {
-      label: "GitHub",
-      icon: <FaGithub />,
-      href: "https://github.com/hanfauzi",
-    },
-    {
-      label: "LinkedIn",
-      icon: <FaLinkedin />,
-      href: "https://www.linkedin.com/in/muhammad-hanif-fauzi-10223a207/",
-    },
+    { label: "Instagram", icon: <FaInstagram />, href: "https://www.instagram.com/hnfzii/", color: "bg-lime-200/60 dark:bg-white/5 text-lime-950 dark:text-foreground/70", size: "col-span-2 row-span-1 md:col-span-2 md:row-span-2" },
+    { label: "LinkedIn", icon: <FaLinkedin />, href: "https://www.linkedin.com/in/muhammad-hanif-fauzi-10223a207/", color: "bg-lime-200/60 dark:bg-white/5 text-lime-950 dark:text-foreground/70", size: "col-span-2 row-span-1 md:col-span-2 md:row-span-1" },
+    { label: "GitHub", icon: <FaGithub />, href: "https://github.com/hanfauzi", color: "bg-lime-200/60 dark:bg-white/5 text-lime-950 dark:text-foreground/70", size: "col-span-2 row-span-1 md:col-span-1 md:row-span-1" },
+    { label: "WhatsApp", icon: <FaWhatsapp />, href: "https://wa.me/6281384878500", color: "bg-lime-200/60 dark:bg-white/5 text-lime-950 dark:text-foreground/70", size: "col-span-2 row-span-1" },
   ];
 
-  const handleCopy = async () => {
-    await navigator.clipboard.writeText(email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1500);
-  };
-
-  const validationSchema = Yup.object({
-    name: Yup.string().min(3, "Too short").required("Name is required"),
-    email: Yup.string()
-      .email("Invalid email")
-      .min(5, "Too short")
-      .required("Email is required"),
-    subject: Yup.string().min(5, "Too short").required("Subject is required"),
-    message: Yup.string().min(10, "Too short").required("Message is required"),
-  });
-
-  const handleSubmit = async (
-    values: ContactFormValues,
-    { resetForm }: FormikHelpers<ContactFormValues>
-  ) => {
-    try {
-      setIsSubmitting(true);
-      const res = await fetch("/api/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
-      });
-
-      if (res.ok) {
-        toast.success("Message sent successfully! 🚀");
-        resetForm();
-      } else {
-        toast.error("Failed to send message. Please try again.");
-      }
-    } catch (error) {
-      console.error(error);
-      toast.error("Something went wrong. Please try again.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   return (
-    <section
-      id="contacts"
-      className="min-h-screen text-black dark:text-white px-4 py-16 md:px-6 md:py-24 border-t border-white/40 dark:border-white/10"
-    >
-      <div className="text-center mb-16 space-y-2">
-        <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
-          Contact Me
-        </h2>
-        <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400">
-          Feel free to reach out for collaborations, questions, or opportunities.
-        </p>
-      </div>
-
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
-        <div className="grid grid-cols-2 md:grid-cols-1 gap-4">
-          {socials.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative flex flex-col justify-between rounded-2xl 
-              border border-gray-200 bg-white/80 backdrop-blur-sm 
-              p-4 md:p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 
-              transition-all duration-300
-              dark:border-white/10 dark:bg-white/5"
+    <section id="contacts" className="py-32 px-6 md:px-16 lg:px-24 transition-colors duration-500">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-24 items-start">
+          {/* Left Side: Big Typography Heading */}
+          <div className="lg:col-span-4 space-y-8 lg:sticky lg:top-32 self-start">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-5xl md:text-7xl font-black tracking-tighter text-foreground leading-[0.8]"
             >
-              <div className="flex justify-between items-start">
-                <div className="h-10 w-10 rounded-full border border-gray-300 bg-white 
-                  flex items-center justify-center text-black text-lg 
-                  group-hover:border-black
-                  dark:bg-black dark:text-white dark:border-gray-500 dark:group-hover:border-white"
+              LETS <br />
+              <span className="text-primary italic">TALK</span>
+            </motion.h2>
+            <p className="text-xl text-foreground/60 font-medium leading-tight max-w-xs">
+              Open for collaborations, new opportunities, or just a casual chat.
+            </p>
+          </div>
+
+          {/* Right Side: Unique Bento Social Grid */}
+          <div className="lg:col-span-8">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 auto-rows-[180px] md:auto-rows-[220px]">
+              {socials.map((item, i) => (
+                <motion.a
+                  key={item.label}
+                  href={item.href}
+                  target="_blank"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: i * 0.1 }}
+                  viewport={{ once: true }}
+                  className={`group relative flex flex-col justify-between p-8 md:p-12 rounded-4xl border border-foreground/10 shadow-sm transition-all duration-500 hover:rotate-1 active:scale-95 overflow-hidden ${item.size} ${item.color}`}
                 >
-                  {item.icon}
-                </div>
-                <BsArrowUpRight className="text-black dark:text-white text-sm" />
-              </div>
-              <HyperText className="mt-8 md:mt-12 text-sm font-mono text-black dark:text-white">
-                {item.label}
-              </HyperText>
-            </a>
-          ))}
+                  <div className="flex justify-between items-start relative z-10">
+                    <span className="text-4xl md:text-6xl">{item.icon}</span>
+                    <BsArrowUpRight className="text-3xl opacity-0 group-hover:opacity-100 transition-all group-hover:translate-x-1 group-hover:-translate-y-1" />
+                  </div>
+                  
+                  <div className="relative z-10">
+                    <span className="text-xs font-black uppercase tracking-[0.3em] opacity-40 mb-2 block">Connect on</span>
+                    <span className="text-3xl md:text-5xl font-black tracking-tighter leading-none group-hover:text-primary transition-colors">
+                      {item.label}
+                    </span>
+                  </div>
+
+                  {/* Decorative Background Icon */}
+                  <div className="absolute bottom-[-20%] right-[-10%] text-9xl md:text-[12rem] opacity-[0.03] group-hover:opacity-[0.07] transition-all duration-700 rotate-[-15deg] group-hover:rotate-0 pointer-events-none">
+                    {item.icon}
+                  </div>
+                </motion.a>
+              ))}
+            </div>
+          </div>
         </div>
-
-        <Formik<ContactFormValues>
-          initialValues={{
-            name: "",
-            email: "",
-            subject: "",
-            message: "",
-          }}
-          validationSchema={validationSchema}
-          onSubmit={handleSubmit}
-        >
-          {() => (
-            <Form
-              className="md:col-span-2 rounded-2xl border border-gray-200 bg-white/90 
-              backdrop-blur-sm p-6 md:p-8 space-y-6 shadow-sm
-              dark:border-white/10 dark:bg-[#050608]"
-            >
-              <h3 className="text-base font-semibold">Send me a message:</h3>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <Field
-                    type="text"
-                    name="name"
-                    placeholder="Your Name"
-                    className="w-full bg-transparent border border-gray-300 dark:border-gray-600 
-                    text-sm p-2.5 rounded-xl text-black dark:text-white 
-                    placeholder:text-gray-500 dark:placeholder:text-gray-500 
-                    focus:outline-none focus:border-black focus:ring-1 focus:ring-black 
-                    dark:focus:border-white dark:focus:ring-white transition"
-                  />
-                  <ErrorMessage
-                    name="name"
-                    component="p"
-                    className="text-xs text-red-500 mt-1"
-                  />
-                </div>
-
-                <div>
-                  <Field
-                    type="email"
-                    name="email"
-                    placeholder="Your Email"
-                    className="w-full bg-transparent border border-gray-300 dark:border-gray-600 
-                    text-sm p-2.5 rounded-xl text-black dark:text-white 
-                    placeholder:text-gray-500 dark:placeholder:text-gray-500 
-                    focus:outline-none focus:border-black focus:ring-1 focus:ring-black 
-                    dark:focus:border-white dark:focus:ring-white transition"
-                  />
-                  <ErrorMessage
-                    name="email"
-                    component="p"
-                    className="text-xs text-red-500 mt-1"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <Field
-                  type="text"
-                  name="subject"
-                  placeholder="Subject"
-                  className="w-full bg-transparent border border-gray-300 dark:border-gray-600 
-                  text-sm p-2.5 rounded-xl text-black dark:text-white 
-                  placeholder:text-gray-500 dark:placeholder:text-gray-500 
-                  focus:outline-none focus:border-black focus:ring-1 focus:ring-black 
-                  dark:focus:border-white dark:focus:ring-white transition"
-                />
-                <ErrorMessage
-                  name="subject"
-                  component="p"
-                  className="text-xs text-red-500 mt-1"
-                />
-              </div>
-
-              <div>
-                <Field
-                  as="textarea"
-                  name="message"
-                  placeholder="Your message..."
-                  rows={5}
-                  className="w-full bg-transparent border border-gray-300 dark:border-gray-600 
-                  text-sm p-2.5 rounded-xl text-black dark:text-white 
-                  placeholder:text-gray-500 dark:placeholder:text-gray-500 
-                  focus:outline-none focus:border-black focus:ring-1 focus:ring-black 
-                  dark:focus:border-white dark:focus:ring-white transition resize-none"
-                />
-                <ErrorMessage
-                  name="message"
-                  component="p"
-                  className="text-xs text-red-500 mt-1"
-                />
-              </div>
-
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="bg-black w-full py-2.5 rounded-xl text-white text-sm font-medium 
-                hover:bg-blue-300 hover:text-black 
-                dark:bg-white dark:text-black dark:hover:bg-sky-500 dark:hover:text-white
-                transition-all disabled:opacity-60"
-              >
-                {isSubmitting ? "Sending..." : "Send Message"}
-              </button>
-
-              <div className="text-sm text-black dark:text-white mt-4">
-                or email me directly:
-                <button
-                  type="button"
-                  onClick={handleCopy}
-                  className={`mt-2 w-full border border-gray-800 dark:border-gray-400 
-                  p-2 rounded-xl flex items-center gap-2 text-sm transition-all duration-300 ${
-                    copied
-                      ? "bg-black text-white dark:bg-white dark:text-black"
-                      : "hover:bg-blue-300 hover:text-black dark:hover:bg-sky-500 dark:hover:text-white"
-                  }`}
-                >
-                  <FaEnvelope className="text-sm" />
-                  <span>{copied ? "Copied!" : email}</span>
-                </button>
-              </div>
-            </Form>
-          )}
-        </Formik>
       </div>
     </section>
   );
