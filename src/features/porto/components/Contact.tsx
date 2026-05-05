@@ -7,10 +7,10 @@ import Link from "next/link";
 
 export default function ContactSection() {
   const socials = [
-    { label: "Instagram", icon: <FaInstagram />, href: "https://www.instagram.com/hnfzii/", color: "bg-lime-200/60 dark:bg-white/5 text-lime-950 dark:text-foreground/70", size: "col-span-2 row-span-1 md:col-span-2 md:row-span-2" },
-    { label: "LinkedIn", icon: <FaLinkedin />, href: "https://www.linkedin.com/in/muhammad-hanif-fauzi-10223a207/", color: "bg-lime-200/60 dark:bg-white/5 text-lime-950 dark:text-foreground/70", size: "col-span-2 row-span-1 md:col-span-2 md:row-span-1" },
+    { label: "LinkedIn", icon: <FaLinkedin />, href: "https://www.linkedin.com/in/muhammad-hanif-fauzi-10223a207/", color: "bg-lime-200/60 dark:bg-white/5 text-lime-950 dark:text-foreground/70", size: "col-span-2 row-span-1 md:col-span-2 md:row-span-2" },
+    { label: "Instagram", icon: <FaInstagram />, href: "https://www.instagram.com/hnfzii/", color: "bg-lime-200/60 dark:bg-white/5 text-lime-950 dark:text-foreground/70", size: "col-span-2 row-span-1 md:col-span-1 md:row-span-1" },
     { label: "GitHub", icon: <FaGithub />, href: "https://github.com/hanfauzi", color: "bg-lime-200/60 dark:bg-white/5 text-lime-950 dark:text-foreground/70", size: "col-span-2 row-span-1 md:col-span-1 md:row-span-1" },
-    { label: "WhatsApp", icon: <FaWhatsapp />, href: "https://wa.me/6281384878500", color: "bg-lime-200/60 dark:bg-white/5 text-lime-950 dark:text-foreground/70", size: "col-span-2 row-span-1" },
+    { label: "WhatsApp", icon: <FaWhatsapp />, href: "https://wa.me/6281384878500", color: "bg-lime-200/60 dark:bg-white/5 text-lime-950 dark:text-foreground/70", size: "col-span-2 row-span-1 md: col-span-3" },
   ];
 
   return (
@@ -28,7 +28,7 @@ export default function ContactSection() {
               LETS <br />
               <span className="text-primary italic">TALK</span>
             </motion.h2>
-            <p className="text-xl text-foreground/60 font-medium leading-tight max-w-xs">
+            <p className="text-base text-foreground/60 font-medium leading-tight max-w-xs">
               Open for collaborations, new opportunities, or just a casual chat.
             </p>
           </div>
@@ -53,8 +53,8 @@ export default function ContactSection() {
                   </div>
                   
                   <div className="relative z-10">
-                    <span className="text-xs font-black uppercase tracking-[0.3em] opacity-40 mb-2 block">Connect on</span>
-                    <span className="text-3xl md:text-5xl font-black tracking-tighter leading-none group-hover:text-primary transition-colors">
+                    <span className="text-[10px] font-black uppercase tracking-[0.3em] opacity-40 mb-2 block">Connect on</span>
+                    <span className="text-xl md:text-3xl font-black tracking-tighter leading-none group-hover:text-primary transition-colors">
                       {item.label}
                     </span>
                   </div>

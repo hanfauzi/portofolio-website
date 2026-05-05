@@ -6,7 +6,7 @@ export const TimelineExperience = () => {
     {
       date: "Jan 2026 - Present",
       title: "Junior Web Developer",
-      company: "NOTCH Creative Agency",
+      company: "NOTCH Creative Digital Agency",
       color: "border-green-500"
     },
     {
@@ -53,16 +53,16 @@ export const TimelineExperience = () => {
                 <div className="absolute left-[-7px] top-0 w-3 h-3 rounded-full bg-foreground shadow-md" />
                 
                 <div className="space-y-4">
-                  <p className="text-sm font-black uppercase tracking-[0.3em] text-foreground/40">
+                  <p className="text-xs font-black uppercase tracking-[0.3em] text-foreground/40">
                     {exp.date}
                   </p>
-                  <h3 className="text-3xl md:text-4xl font-black text-foreground leading-tight">
+                  <h3 className="text-xl md:text-2xl font-black text-foreground leading-tight">
                     {exp.title}
                   </h3>
-                  <p className="text-xl font-black text-primary">
+                  <p className="text-base font-black text-primary">
                     {exp.company}
                   </p>
-                  <p className="text-xl text-foreground/60 font-medium leading-tight max-w-lg">
+                  <p className="text-base text-foreground/60 font-medium leading-tight max-w-lg">
                     {exp.description}
                   </p>
                 </div>
