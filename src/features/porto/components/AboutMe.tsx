@@ -47,12 +47,12 @@ export const AboutMe = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.1 }}
                   viewport={{ once: true }}
-                  className={`p-6 rounded-3xl border border-foreground/10 shadow-sm ${item.color}`}
+                  className={`p-5 rounded-3xl border border-foreground/10 shadow-sm ${item.color}`}
                 >
                   <p className="text-[10px] uppercase tracking-[0.3em] font-black opacity-60 mb-2">
                     {item.label}
                   </p>
-                  <p className="text-xl font-black">{item.value}</p>
+                  <p className="text-base font-black">{item.value}</p>
                 </motion.div>
               ))}
             </div>
@@ -63,14 +63,14 @@ export const AboutMe = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="space-y-8 text-2xl text-foreground/70 font-medium leading-snug"
+              className="space-y-8 text-base md:text-lg text-foreground/70 font-medium leading-snug"
             >
               <p>
                 Hello! I&apos;m{" "}
                 <span className="text-foreground font-black border-b-4 border-primary/20">
                   Muhammad Hanif Fauzi
                 </span>
-                , a Full-stack Web Developer currently working at Notch,
+                , a Full-stack Web Developer currently working at NOTCH Creative Digital Agency,
                 contributing to client projects and internal system development.
               </p>
 
@@ -91,7 +91,7 @@ export const AboutMe = () => {
                 user-centered web applications.
               </p>
 
-              <p className="text-3xl font-black text-foreground italic pt-8 border-t border-foreground/10">
+              <p className="text-xl font-black text-foreground italic pt-8 border-t border-foreground/10">
                 &ldquo;I build reliable web solutions that balance clean
                 engineering, scalability, and real user needs.&rdquo;
               </p>

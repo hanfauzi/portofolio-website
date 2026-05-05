@@ -117,11 +117,11 @@ export default function ProjectsSection() {
 
               <div className="space-y-4">
                 <div className="flex justify-between items-start">
-                  <h3 className="text-3xl md:text-4xl font-black group-hover:text-primary transition-colors leading-none">
+                  <h3 className="text-xl md:text-2xl font-black group-hover:text-primary transition-colors leading-none">
                     {project.title}
                   </h3>
                 </div>
-                <p className="text-xl font-medium text-foreground/60 leading-tight line-clamp-2">
+                <p className="text-base font-medium text-foreground/60 leading-tight line-clamp-2">
                   {project.shortDescription}
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -164,11 +164,11 @@ export default function ProjectsSection() {
                   <div className="space-y-10">
                     <div className="space-y-4">
                       <p className="text-[10px] uppercase tracking-[0.4em] text-primary font-black">{selected.category}</p>
-                      <h3 className="text-4xl md:text-6xl font-black tracking-tighter leading-none">{selected.title}</h3>
-                      <p className="text-2xl font-black text-foreground/40 italic">{selected.role}</p>
+                      <h3 className="text-2xl md:text-4xl font-black tracking-tighter leading-none">{selected.title}</h3>
+                      <p className="text-lg font-black text-foreground/40 italic">{selected.role}</p>
                     </div>
 
-                    <p className="text-2xl text-foreground/60 font-medium leading-tight">
+                    <p className="text-base text-foreground/60 font-medium leading-tight">
                       {selected.details}
                     </p>
 
@@ -176,7 +176,7 @@ export default function ProjectsSection() {
                       <p className="text-[10px] font-black uppercase tracking-[0.4em] text-foreground/40">Technology Stack</p>
                       <div className="flex flex-wrap gap-2">
                         {selected.stack.split(" • ").map((tech) => (
-                          <span key={tech} className="text-sm font-black uppercase tracking-widest px-4 py-2 bg-primary/10 text-primary rounded-full border-2 border-primary/20">
+                          <span key={tech} className="text-xs font-black uppercase tracking-widest px-4 py-2 bg-primary/10 text-primary rounded-full border-2 border-primary/20">
                             {tech}
                           </span>
                         ))}
@@ -188,7 +188,7 @@ export default function ProjectsSection() {
                         <Link
                           href={selected.links.demo}
                           target="_blank"
-                          className="px-10 py-5 bg-primary text-background rounded-full font-black text-lg hover:scale-105 active:scale-95 transition-all shadow-xl shadow-primary/30"
+                          className="px-7 py-3.5 bg-primary text-background rounded-lg font-black text-sm hover:scale-105 active:scale-95 transition-all shadow-xl shadow-primary/30"
                         >
                           Launch Application
                         </Link>
@@ -197,7 +197,7 @@ export default function ProjectsSection() {
                         <Link
                           href={selected.links.frontend}
                           target="_blank"
-                          className="px-10 py-5 border border-foreground rounded-full font-black text-lg hover:bg-foreground hover:text-background transition-all active:scale-95"
+                          className="px-7 py-3.5 border border-foreground rounded-lg font-black text-sm hover:bg-foreground hover:text-background transition-all active:scale-95"
                         >
                           View Source
                         </Link>

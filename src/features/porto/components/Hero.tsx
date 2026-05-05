@@ -48,7 +48,7 @@ export const Hero = () => {
                 Full-stack Developer
               </motion.p>
    
-              <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.8] text-foreground">
+              <h1 className="text-5xl md:text-7xl lg:text-7xl font-black tracking-tighter leading-[0.8] text-foreground">
                 MUHAMMAD <br />
                 <span className="text-primary italic">HANIF FAUZI</span>
               </h1>
@@ -58,14 +58,14 @@ export const Hero = () => {
             <div className="flex flex-wrap items-center gap-6 pt-4">
               <Link
                 href="#projects"
-                className="group relative px-10 py-5 bg-primary text-background rounded-full font-black text-lg transition-all hover:scale-105 active:scale-95 shadow-xl shadow-primary/20"
+                className="group relative px-7 py-3.5 bg-primary text-background rounded-lg font-black text-base transition-all hover:scale-105 active:scale-95 shadow-xl shadow-primary/20"
               >
                 Explore Projects
               </Link>
    
               <Link
                 href="#contacts"
-                className="px-10 py-5 border border-foreground rounded-full font-black text-lg hover:bg-foreground hover:text-background transition-all active:scale-95"
+                className="px-7 py-3.5 border border-foreground rounded-lg font-black text-base hover:bg-foreground hover:text-background transition-all active:scale-95"
               >
                 Get in Touch
               </Link>
@@ -74,9 +74,9 @@ export const Hero = () => {
                 href="/Muhammad Hanif Fauzi CV - 2026.pdf"
                 download="Muhammad_Hanif_Fauzi_CV.pdf"
                 target="_blank"
-                className="group flex items-center gap-3 px-10 py-5 bg-foreground/5 border border-foreground/10 rounded-full font-black text-lg hover:bg-foreground hover:text-background transition-all active:scale-95"
+                className="group flex items-center gap-3 px-7 py-3.5 bg-foreground/5 border border-foreground/10 rounded-lg font-black text-base hover:bg-foreground hover:text-background transition-all active:scale-95"
               >
-                <FaRegFilePdf className="text-xl group-hover:scale-110 transition-transform" />
+                <FaRegFilePdf className="text-lg group-hover:scale-110 transition-transform" />
                 Download CV
               </a>
             </div>
