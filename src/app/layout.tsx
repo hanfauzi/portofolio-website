@@ -1,13 +1,19 @@
 import type { Metadata } from "next";
-import { Geist_Mono } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/features/porto/components/Navbar";
 import { Footer } from "@/features/porto/components/Footer";
 import { ToastContainer } from "react-toastify";
 import { ThemeProvider } from "@/components/ThemesProvider";
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+
+const inter = Inter({
   subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-plus-jakarta",
 });
 
 export const metadata: Metadata = {
@@ -38,7 +44,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${geistMono.variable} font-mono antialiased`}>
+      <body className={`${inter.variable} ${plusJakartaSans.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -48,7 +54,6 @@ export default function RootLayout({
         <Navbar />
           {children}
         <ToastContainer position="top-right" autoClose={3000} />
-        <Footer />
         </ThemeProvider>
       </body>
     </html>

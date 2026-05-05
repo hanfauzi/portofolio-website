@@ -1,57 +1,74 @@
+"use client";
+import { motion } from "framer-motion";
+
 export const TimelineExperience = () => {
   const experiences = [
     {
-      date: "May 2025 – October 2025",
-      title: "Bootcamp Full-stack Web Development",
-      company: "Purwadhika Digital Technology School",
-      location: "Tangerang, Indonesia",
+      date: "Jan 2026 - Present",
+      title: "Junior Web Developer",
+      company: "NOTCH Creative Agency",
+      color: "border-green-500"
     },
     {
-      date: "October 2020 – October 2024",
-      title: "Islamic Family Law (Bachelor's Degree)",
+      date: "May 2025 - Oct 2025",
+      title: "Full-stack Web Development",
+      company: "Purwadhika Digital Technology School",
+      description: "Intensive bootcamp focusing on modern web technologies and agile methodologies.",
+      color: "border-blue-500"
+    },
+    {
+      date: "Oct 2020 - Oct 2024",
+      title: "Islamic Family Law",
       company: "STDI Imam Syafi'i",
-      location: "Jember, Indonesia",
+      color: "border-orange-500"
     },
   ];
 
   return (
-    <section
-      id="experience"
-      className="text-black dark:text-white py-16 px-4 border-t border-white/40 dark:border-white/10"
-    >
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-        Experiences
-      </h2>
+    <section id="experience" className="py-32 px-6 md:px-16 lg:px-24 transition-colors duration-500">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-start">
+          <div className="lg:col-span-5 lg:sticky lg:top-32 self-start">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-5xl md:text-7xl font-black tracking-tighter text-foreground leading-[0.8]"
+            >
+              Professional <br />
+              <span className="text-primary italic">Journey</span>
+            </motion.h2>
+          </div>
 
-      <div className="relative max-w-4xl mx-auto">
-        <div className="absolute left-3 top-0 bottom-0 w-px bg-gray-200 dark:bg-gray-800" />
-
-        <div className="space-y-4">
-          {experiences.map((exp, idx) => (
-            <div key={idx} className="relative pl-8 py-4 md:py-6">
-              <div className="grid gap-4 md:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] md:items-center">
-
-                <div>
-                  <h3 className="text-base md:text-lg font-semibold">
-                    {exp.title}
-                  </h3>
-                  <p className="text-sm text-gray-700 dark:text-gray-200">
-                    {exp.company}
-                  </p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
-                    {exp.location}
-                  </p>
-                </div>
-
-                <div className="md:text-right">
-                  <p className="text-xs md:text-sm text-gray-600 dark:text-gray-300 font-medium">
+          <div className="lg:col-span-7 space-y-16">
+            {experiences.map((exp, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: idx * 0.1 }}
+                viewport={{ once: true }}
+                className={`group relative pl-12 border-l-2 ${exp.color} transition-all hover:pl-16`}
+              >
+                <div className="absolute left-[-7px] top-0 w-3 h-3 rounded-full bg-foreground shadow-md" />
+                
+                <div className="space-y-4">
+                  <p className="text-sm font-black uppercase tracking-[0.3em] text-foreground/40">
                     {exp.date}
                   </p>
+                  <h3 className="text-3xl md:text-4xl font-black text-foreground leading-tight">
+                    {exp.title}
+                  </h3>
+                  <p className="text-xl font-black text-primary">
+                    {exp.company}
+                  </p>
+                  <p className="text-xl text-foreground/60 font-medium leading-tight max-w-lg">
+                    {exp.description}
+                  </p>
                 </div>
-
-              </div>
-            </div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

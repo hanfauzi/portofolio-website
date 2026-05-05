@@ -1,55 +1,24 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { HyperText } from "@/components/magicui/hyper-text";
-
 export const Footer = () => {
-  const [time, setTime] = useState<string>("");
-
-  useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      const localTime = now.toLocaleTimeString("id-ID", {
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-      });
-      setTime(localTime);
-    };
-
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
-    <footer
-      className="
-      w-full 
-      bg-[rgba(255,255,255,0.25)]
-      dark:bg-[rgba(15,15,15,0.75)]
-      backdrop-blur-xl
-      border-t border-white/30 dark:border-white/10
-      shadow-[0_-4px_20px_rgba(0,0,0,0.08)]
-      text-black dark:text-white
-      text-sm px-4 py-6
-    "
-    >
-      <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
-        <div className="flex flex-col space-y-1 min-w-[150px]">
-          <HyperText className="text-xs md:text-sm">
-            Tangerang Selatan, Banten, Indonesia
-          </HyperText>
-          <span className="text-xs md:text-sm text-gray-500 dark:text-gray-400">
-            {`UTC+7 - ${time}`}
-          </span>
+    <footer className="py-24 px-6 md:px-16 lg:px-24 border-t border-foreground/10 transition-colors duration-500">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
+        <div className="space-y-6">
+          <div className="flex flex-col leading-[0.7]">
+            <span className="text-3xl font-black tracking-tighter">MUHAMMAD</span>
+            <span className="text-3xl font-black tracking-tighter text-primary">HANIF FAUZI</span>
+          </div>
         </div>
 
-        <div className="flex flex-col md:items-end space-y-1 min-w-[100px]">
-          <HyperText className="text-xs md:text-sm">Arunika Version</HyperText>
-          <HyperText className="text-xs md:text-sm">2.0</HyperText>
+        <div className="flex flex-wrap gap-12 md:gap-24">
+          <div className="space-y-4">
+            <p className="text-xs font-black uppercase tracking-[0.3em]">ARUNIKA v3.0</p>
+          </div>
         </div>
       </div>
+
     </footer>
   );
 };

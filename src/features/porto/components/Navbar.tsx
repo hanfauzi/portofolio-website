@@ -1,11 +1,10 @@
 "use client";
 
-import Image from "next/image";
-import { HyperText } from "@/components/magicui/hyper-text";
 import React, { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
-import { Switch } from "@/components/ui/switch";
+import { motion } from "framer-motion";
 import { Sun, Moon } from "lucide-react";
+import Link from "next/link";
 
 export const Navbar: React.FC = () => {
   const [time, setTime] = useState<string>("");
@@ -19,70 +18,75 @@ export const Navbar: React.FC = () => {
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
-      const localTime = now.toLocaleTimeString("id-ID", {
+      setTime(now.toLocaleTimeString("id-ID", {
         hour: "2-digit",
         minute: "2-digit",
-        second: "2-digit",
-      });
-      setTime(localTime);
+        hour12: false
+      }));
     };
 
     updateTime();
     const interval = setInterval(updateTime, 1000);
-
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <nav
-      className="sticky top-0 z-50 w-full 
-      bg-[rgba(255,255,255,0.25)]
-      dark:bg-[rgba(15,15,15,0.75)]
-      backdrop-blur-xl 
-      border-b border-white/30 dark:border-white/10
-      shadow-[0_4px_20px_rgba(0,0,0,0.08)]
-      flex justify-between items-center p-4 md:p-6 text-black dark:text-white"
+    <motion.nav
+      initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      className="absolute top-0 left-0 right-0 z-50 px-6 md:px-16 lg:px-24 py-8 md:py-10"
     >
-<div className="absolute left-5 top-1/2 -translate-y-1/2 z-50">
-  <Image
-    src="/HNF.png"
-    alt="Logo"
-    width={100}
-    height={60}
-    className="w-[60px] h-[60px] md:w-[100px] md:h-[100px] dark:hidden"
-  />
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
+        <div className="flex items-center gap-12">
+          <Link href="/" className="group flex flex-col leading-[0.7] transition-all">
+            <span className="text-base md:text-lg font-black tracking-tighter">MUHAMMAD</span>
+            <span className="text-base md:text-lg font-black tracking-tighter text-primary">HANIF FAUZI</span>
+          </Link>
 
-  <Image
-    src="/HNF White.png"
-    alt="Logo White"
-    width={100}
-    height={60}
-    className="hidden dark:block w-[60px] h-[60px] md:w-[100px] md:h-[100px]"
-  />
-</div>
-
-
-      <HyperText className="pl-20 font-bold md:pl-[120px] text-sm md:text-base">
-        Hanif.Fauzi-Porto
-      </HyperText>
-
-      <div className="flex items-center gap-4">
-        <span className="text-xs font-bold">{`UTC+7 - ${time}`}</span>
-
-        {mounted && (
-          <div className="flex items-center gap-2">
-            <Moon className="h-4 w-4" />
-            <Switch
-              checked={resolvedTheme === "dark"}
-              onCheckedChange={(checked: boolean) => {
-                setTheme(checked ? "dark" : "light");
-              }}
-              aria-label="Toggle dark mode"
-            />
-            <Sun className="h-4 w-4" />
+          <div className="hidden lg:flex items-center gap-10">
+            {["About", "Skills", "Projects", "Contacts"].map((item) => (
+              <Link 
+                key={item} 
+                href={`#${item.toLowerCase()}`}
+                className="text-xs font-black uppercase tracking-[0.3em] text-foreground/80 hover:text-primary transition-colors"
+              >
+                {item}
+              </Link>
+            ))}
           </div>
-        )}
+        </div>
+
+        <div className="flex items-center gap-8 md:gap-12">
+          <div className="hidden sm:flex flex-col items-end">
+            <span className="text-[8px] font-black uppercase tracking-[0.4em] text-foreground/30">Local Time</span>
+            <span className="text-xs font-black">{time} <span className="text-[10px] text-primary">WIB</span></span>
+          </div>
+
+          <button
+            onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+            className="flex items-center gap-4 py-2"
+            aria-label="Toggle theme"
+          >
+            <div className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.3em]">
+              <span className={`transition-all duration-700 ${mounted && resolvedTheme === "light" ? "text-primary" : "text-foreground/20"}`}>
+                Light
+              </span>
+              
+              <div className="relative w-8 h-px bg-foreground/10 overflow-hidden">
+                <motion.div 
+                  animate={{ x: mounted && resolvedTheme === "dark" ? 20 : -20 }}
+                  transition={{ type: "spring", stiffness: 200, damping: 40 }}
+                  className="absolute inset-0 bg-primary"
+                />
+              </div>
+
+              <span className={`transition-all duration-700 ${mounted && resolvedTheme === "dark" ? "text-primary" : "text-foreground/20"}`}>
+                Dark
+              </span>
+            </div>
+          </button>
+        </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 };
