@@ -2,14 +2,14 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: [
-      "design4users.com",
-      "clarylifeglobal.com",
-      "preview.redd.it",
-      "miro.medium.com",
-      "encrypted-tbn0.gstatic.com",
-      "mir-s3-cdn-cf.behance.net",
-      "images.ctfassets.net",
+    remotePatterns: [
+      { hostname: "design4users.com" },
+      { hostname: "clarylifeglobal.com" },
+      { hostname: "preview.redd.it" },
+      { hostname: "miro.medium.com" },
+      { hostname: "encrypted-tbn0.gstatic.com" },
+      { hostname: "mir-s3-cdn-cf.behance.net" },
+      { hostname: "images.ctfassets.net" },
     ],
   },
 };
