@@ -105,7 +105,7 @@ export default function ProjectsSection() {
               onClick={() => setSelected(project)}
               className="group cursor-pointer space-y-8"
             >
-              <div className="relative aspect-16/10 overflow-hidden rounded-4xl border border-foreground/10 bg-primary/5 shadow-sm">
+              <div className="relative aspect-16/10 overflow-hidden rounded-md border border-foreground/10 bg-primary/5 shadow-sm">
                 <Image
                   src={project.thumbnail}
                   alt={project.title}
@@ -151,11 +151,11 @@ export default function ProjectsSection() {
                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                className="relative w-full max-w-6xl max-h-[90vh] overflow-y-auto bg-projects-bg rounded-4xl border border-foreground/10 shadow-2xl p-8 md:p-16 no-scrollbar"
+                className="relative w-full max-w-6xl max-h-[90vh] overflow-y-auto bg-projects-bg rounded-md border border-foreground/10 shadow-2xl p-8 md:p-16 no-scrollbar"
               >
                 <button
                   onClick={() => setSelected(null)}
-                  className="absolute top-8 right-8 w-12 h-12 rounded-full bg-foreground/5 flex items-center justify-center hover:bg-red-500 hover:text-white transition-all z-10"
+                  className="absolute top-8 right-8 w-12 h-12 rounded-md bg-foreground/5 flex items-center justify-center hover:bg-red-500 hover:text-white transition-all z-10"
                 >
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
                 </button>
@@ -188,7 +188,7 @@ export default function ProjectsSection() {
                         <Link
                           href={selected.links.demo}
                           target="_blank"
-                          className="px-7 py-3.5 bg-primary text-background rounded-lg font-black text-sm hover:scale-105 active:scale-95 transition-all shadow-xl shadow-primary/30"
+                          className="px-7 py-3.5 bg-primary text-background rounded-md font-black text-sm hover:scale-105 active:scale-95 transition-all shadow-xl shadow-primary/30"
                         >
                           Launch Application
                         </Link>
@@ -197,7 +197,7 @@ export default function ProjectsSection() {
                         <Link
                           href={selected.links.frontend}
                           target="_blank"
-                          className="px-7 py-3.5 border border-foreground rounded-lg font-black text-sm hover:bg-foreground hover:text-background transition-all active:scale-95"
+                          className="px-7 py-3.5 border border-foreground rounded-md font-black text-sm hover:bg-foreground hover:text-background transition-all active:scale-95"
                         >
                           View Source
                         </Link>
@@ -205,7 +205,7 @@ export default function ProjectsSection() {
                     </div>
                   </div>
 
-                  <div className="relative aspect-square rounded-4xl overflow-hidden border border-foreground/10 shadow-sm bg-primary/5">
+                  <div className="relative aspect-square rounded-md overflow-hidden border border-foreground/10 shadow-sm bg-primary/5">
                     <Image
                       src={selected.thumbnail}
                       alt={selected.title}

@@ -2,27 +2,28 @@
 import { motion } from "framer-motion";
 
 export const TimelineExperience = () => {
-  const experiences = [
-    {
-      date: "Jan 2026 - Present",
-      title: "Junior Web Developer",
-      company: "NOTCH Creative Digital Agency",
-      color: "border-green-500"
-    },
-    {
-      date: "May 2025 - Oct 2025",
-      title: "Full-stack Web Development",
-      company: "Purwadhika Digital Technology School",
-      description: "Intensive bootcamp focusing on modern web technologies and agile methodologies.",
-      color: "border-blue-500"
-    },
-    {
-      date: "Oct 2020 - Oct 2024",
-      title: "Islamic Family Law",
-      company: "STDI Imam Syafi'i",
-      color: "border-orange-500"
-    },
-  ];
+const experiences = [
+  {
+    date: "Jan 2026 - Present",
+    title: "Junior Web Developer",
+    company: "NOTCH Creative Digital Agency",
+    color: "border-green-500 dark:border-[#3c3c3c]",
+  },
+  {
+    date: "May 2025 - Oct 2025",
+    title: "Full-stack Web Development Student",
+    company: "Purwadhika Digital Technology School",
+    description:
+      "Intensive bootcamp focusing on modern web technologies and agile methodologies.",
+    color: "border-blue-500 dark:border-[#1c69d4]",
+  },
+  {
+    date: "Oct 2020 - Oct 2024",
+    title: "Islamic Family Law",
+    company: "STDI Imam Syafi'i",
+    color: "border-orange-500 dark:border-[#e22718]",
+  },
+];
 
   return (
     <section id="experience" className="py-32 px-6 md:px-16 lg:px-24 transition-colors duration-500">

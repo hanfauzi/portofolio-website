@@ -45,7 +45,7 @@ export default function ContactSection() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ delay: i * 0.1 }}
                   viewport={{ once: true }}
-                  className={`group relative flex flex-col justify-between p-8 md:p-12 rounded-4xl border border-foreground/10 shadow-sm transition-all duration-500 hover:rotate-1 active:scale-95 overflow-hidden ${item.size} ${item.color}`}
+                  className={`group relative flex flex-col justify-between p-8 md:p-12 rounded-md border border-foreground/10 shadow-sm transition-all duration-500 hover:rotate-1 active:scale-95 overflow-hidden ${item.size} ${item.color}`}
                 >
                   <div className="flex justify-between items-start relative z-10">
                     <span className="text-4xl md:text-6xl">{item.icon}</span>

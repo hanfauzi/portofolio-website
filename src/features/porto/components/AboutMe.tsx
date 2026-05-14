@@ -47,7 +47,7 @@ export const AboutMe = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.1 }}
                   viewport={{ once: true }}
-                  className={`p-5 rounded-3xl border border-foreground/10 shadow-sm ${item.color}`}
+                  className={`p-5 rounded-md border border-foreground/10 shadow-sm ${item.color}`}
                 >
                   <p className="text-[10px] uppercase tracking-[0.3em] font-black opacity-60 mb-2">
                     {item.label}

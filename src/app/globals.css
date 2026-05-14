@@ -44,7 +44,7 @@
 }
 
 :root {
-  --radius: 2rem;
+  --radius: 0rem;
   --background: oklch(0.98 0.01 60); /* Soft Cream */
   --foreground: oklch(0.15 0.02 20);
   
@@ -77,41 +77,80 @@
 }
 
 .dark {
-  --background: oklch(0.12 0.03 250);
-  --foreground: oklch(0.98 0.01 250);
-  
-  --primary: oklch(0.7 0.1 250);
-  --primary-foreground: oklch(0.12 0.03 250);
-  
-  --secondary: oklch(0.18 0.04 250);
-  --secondary-foreground: oklch(0.98 0.01 250);
-  
-  --accent-pink: oklch(0.2 0.05 340);
-  --accent-orange: oklch(0.2 0.05 40);
-  --accent-blue: oklch(0.2 0.05 240);
+  --background: oklch(0 0 0); /* #000000 */
+  --foreground: oklch(1 0 0); /* #ffffff */
 
-  /* Section Backgrounds - Dark Mode */
-  --hero-bg: oklch(0.12 0.03 250);
-  --about-bg: oklch(0.14 0.03 250);
-  --skills-bg: oklch(0.16 0.03 250);
-  --experience-bg: oklch(0.14 0.03 250);
-  --projects-bg: oklch(0.15 0.04 190);
-  --contact-bg: oklch(0.18 0.04 250);
-  
-  --nav-bg: oklch(0.15 0.04 250 / 0.8);
-  
-  --card: oklch(0.15 0.04 250);
-  --border: oklch(0.25 0.05 250);
+  --primary: oklch(1 0 0); /* white CTA/text */
+  --primary-foreground: oklch(0 0 0);
+
+  --secondary: oklch(0.218 0 0); /* #1a1a1a */
+  --secondary-foreground: oklch(1 0 0);
+
+  --muted: oklch(0.159 0 0); /* #0d0d0d */
+  --muted-foreground: oklch(0.593 0 0); /* #7e7e7e */
+
+  --accent: oklch(0.269 0 0); /* #262626 */
+  --accent-foreground: oklch(1 0 0);
+
+  --card: oklch(0.218 0 0); /* #1a1a1a */
+  --card-foreground: oklch(0.792 0 0); /* #bbbbbb */
+
+  --popover: oklch(0.218 0 0);
+  --popover-foreground: oklch(1 0 0);
+
+  --border: oklch(0.356 0 0); /* #3c3c3c */
+  --input: oklch(0.218 0 0);
+  --ring: oklch(1 0 0);
+
+  --destructive: oklch(0.588 0.221 29.8); /* M Red */
+
+  /* BMW M accents */
+  --m-blue-light: oklch(0.503 0.142 250.1); /* #0066b1 */
+  --m-blue-dark: oklch(0.538 0.180 258.3); /* #1c69d4 */
+  --m-red: oklch(0.588 0.221 29.8); /* #e22718 */
+  --electric-blue: oklch(0.464 0.171 258.5); /* #0653b6 */
+
+  --accent-pink: var(--m-red);
+  --accent-orange: oklch(0.808 0.166 82.7); /* warning amber */
+  --accent-blue: var(--m-blue-dark);
+
+  /* Section backgrounds - BMW M dark rhythm */
+/* Section backgrounds - BMW M dark rhythm */
+--hero-bg: oklch(0 0 0);
+
+--about-bg: oklch(0.159 0 0); /* abu gelap / #0d0d0d */
+
+--skills-bg: oklch(0.155 0.035 255); /* biru gelap */
+
+--experience-bg: oklch(0.145 0.045 28); /* merah gelap */
+
+--projects-bg: oklch(0.218 0 0); /* abu panel / #1a1a1a */
+
+--contact-bg: oklch(0 0 0);
+
+  --nav-bg: oklch(0 0 0 / 0.88);
+
+  --sidebar: oklch(0 0 0);
+  --sidebar-foreground: oklch(0.792 0 0);
+  --sidebar-primary: oklch(1 0 0);
+  --sidebar-primary-foreground: oklch(0 0 0);
+  --sidebar-accent: oklch(0.218 0 0);
+  --sidebar-accent-foreground: oklch(1 0 0);
+  --sidebar-border: oklch(0.356 0 0);
+  --sidebar-ring: oklch(1 0 0);
+
+  --chart-1: var(--m-blue-light);
+  --chart-2: var(--m-blue-dark);
+  --chart-3: var(--m-red);
+  --chart-4: oklch(0.808 0.166 82.7);
+  --chart-5: oklch(0.624 0.187 145.9);
 }
 
 @theme inline {
-  --color-hero-bg: var(--hero-bg);
-  --color-about-bg: var(--about-bg);
-  --color-skills-bg: var(--skills-bg);
-  --color-experience-bg: var(--experience-bg);
-  --color-projects-bg: var(--projects-bg);
-  --color-contact-bg: var(--contact-bg);
-  --color-nav-bg: var(--nav-bg);
+  --color-m-blue-light: var(--m-blue-light);
+  --color-m-blue-dark: var(--m-blue-dark);
+  --color-m-red: var(--m-red);
+  --color-electric-blue: var(--electric-blue);
 }
 
 
