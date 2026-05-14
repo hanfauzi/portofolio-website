@@ -79,7 +79,7 @@ const Skills = () => {
                     <Link
                       href={href}
                       target="_blank"
-                      className={`flex items-center justify-center aspect-square rounded-3xl border border-foreground/10 hover:scale-110 active:scale-95 transition-all duration-300 group shadow-sm ${color} dark:bg-card dark:text-foreground`}
+                      className={`flex items-center justify-center aspect-square rounded-md border border-foreground/10 hover:scale-110 active:scale-95 transition-all duration-300 group shadow-sm ${color} dark:bg-card dark:text-foreground`}
                     >
                       <Icon className="text-4xl md:text-5xl transition-transform group-hover:rotate-12" />
                     </Link>
