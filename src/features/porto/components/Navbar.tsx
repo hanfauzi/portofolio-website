@@ -34,11 +34,12 @@ export const Navbar: React.FC = () => {
     <motion.nav
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      className="absolute top-0 left-0 right-0 z-50 px-6 md:px-16 lg:px-24 py-8 md:py-10"
+      transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
+      className="fixed top-0 left-0 right-0 z-50 px-6 md:px-16 lg:px-24 py-4 backdrop-blur-md bg-background/70 border-b border-foreground/5 transition-all duration-300"
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center gap-12">
-          <Link href="/" className="group flex flex-col leading-[0.7] transition-all">
+          <Link href="/" className="group flex flex-col leading-[0.7] transition-all hover:opacity-85 active:scale-98 duration-200">
             <span className="text-base md:text-lg font-black tracking-tighter">MUHAMMAD</span>
             <span className="text-base md:text-lg font-black tracking-tighter text-primary">HANIF FAUZI</span>
           </Link>
@@ -48,7 +49,7 @@ export const Navbar: React.FC = () => {
               <Link 
                 key={item} 
                 href={`#${item.toLowerCase()}`}
-                className="text-xs font-black uppercase tracking-[0.3em] text-foreground/80 hover:text-primary transition-colors"
+                className="text-xs font-black uppercase tracking-[0.3em] text-foreground/80 hover:text-primary transition-colors duration-200 ease-out-custom"
               >
                 {item}
               </Link>
@@ -64,7 +65,7 @@ export const Navbar: React.FC = () => {
 
           <button
             onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-            className="flex items-center gap-4 py-2"
+            className="flex items-center gap-4 py-2 active:scale-95 transition-transform duration-150 ease-out-custom cursor-pointer"
             aria-label="Toggle theme"
           >
             <div className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.3em]">

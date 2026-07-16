@@ -79,9 +79,9 @@ const Skills = () => {
                     <Link
                       href={href}
                       target="_blank"
-                      className={`flex items-center justify-center aspect-square rounded-md border border-foreground/10 hover:scale-110 active:scale-95 transition-all duration-300 group shadow-sm ${color} dark:bg-card dark:text-foreground`}
+                      className={`flex items-center justify-center aspect-square rounded-md border border-foreground/10 hover:scale-108 active:scale-97 transition-[transform,box-shadow,background-color] duration-200 ease-out-custom group shadow-sm ${color} dark:bg-card dark:text-foreground`}
                     >
-                      <Icon className="text-4xl md:text-5xl transition-transform group-hover:rotate-12" />
+                      <Icon className="text-4xl md:text-5xl transition-transform duration-300 ease-out-custom group-hover:rotate-8" />
                     </Link>
                   </TooltipTrigger>
                   <TooltipContent className="bg-foreground text-background font-black uppercase tracking-widest text-[10px] py-2 px-4 rounded-full">
