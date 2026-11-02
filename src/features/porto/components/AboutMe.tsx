@@ -1,102 +1,48 @@
-"use client";
-import { motion } from "framer-motion";
+import { facts } from "../data";
 
 export const AboutMe = () => {
   return (
-    <section
-      id="about"
-      className="py-24 px-6 md:px-16 lg:px-24 transition-colors duration-500"
-    >
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-          <div className="lg:col-span-5 space-y-8">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-5xl md:text-7xl font-black tracking-tight text-foreground"
-            >
-              Background <br />
-              <span className="text-primary italic">& Philosophy</span>
-            </motion.h2>
+    <section id="about" className="bg-canvas">
+      <div className="mx-auto grid max-w-[1240px] gap-14 px-4 py-24 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:py-32">
+        <div className="lg:col-span-5">
+          <h2 className="text-5xl leading-[1.02] font-semibold tracking-[-0.04em] text-ink-strong md:text-6xl">
+            The story
+            <br />
+            <span className="text-ink-2">so far</span>
+          </h2>
 
-            <div className="space-y-6">
-              {[
-                {
-                  label: "Role",
-                  value: "Full-Stack Developer",
-                  color:
-                    "bg-blue-200/50 dark:bg-white/5 text-blue-900 dark:text-foreground/70",
-                },
-                {
-                  label: "Status",
-                  value: "Open to Work",
-                  color:
-                    "bg-blue-200/50 dark:bg-white/5 text-blue-900 dark:text-foreground/70",
-                },
-                {
-                  label: "Location",
-                  value: "South Tangerang, ID",
-                  color:
-                    "bg-blue-200/50 dark:bg-white/5 text-blue-900 dark:text-foreground/70",
-                },
-              ].map((item, i) => (
-                <motion.div
-                  key={item.label}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  viewport={{ once: true }}
-                  className={`p-5 rounded-md border border-foreground/10 shadow-sm ${item.color}`}
-                >
-                  <p className="text-[10px] uppercase tracking-[0.3em] font-black opacity-60 mb-2">
-                    {item.label}
-                  </p>
-                  <p className="text-base font-black">{item.value}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
+          <dl className="mt-10 divide-y border-y">
+            {facts.map((f) => (
+              <div key={f.label} className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 py-4">
+                <dt className="text-[13px] text-ink-2">{f.label}</dt>
+                <dd className="text-[15px] font-semibold text-ink-strong">{f.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
 
-          <div className="lg:col-span-7">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="space-y-8 text-base md:text-lg text-foreground/70 font-medium leading-snug"
-            >
-              <p>
-                Hello! I&apos;m{" "}
-                <span className="text-foreground font-black border-b-4 border-primary/20">
-                  Muhammad Hanif Fauzi
-                </span>
-                , a Full-stack Web Developer currently working at NOTCH Creative Digital Agency,
-                contributing to client projects and internal system development.
-              </p>
+        <div className="space-y-6 text-[1.05rem] leading-[1.75] text-ink-2 lg:col-span-7 lg:pt-2 lg:text-lg">
+          <p>
+            Hi, I&apos;m <span className="font-semibold text-ink-strong">Muhammad Hanif Fauzi</span>, a fullstack
+            developer based in South Tangerang. I like taking a feature from the first idea all the way to the version
+            people actually use, and I care as much about what runs behind the screen as what shows on it.
+          </p>
 
-              <p>
-                My development journey began at Purwadhika Digital Technology
-                School, where I built a strong foundation in full-stack web
-                development. Today, I work on maintaining legacy systems,
-                developing modern applications, and delivering reliable
-                solutions for real business needs.
-              </p>
+          <p>
+            My path into tech wasn&apos;t a straight line. I studied Islamic Family Law, then joined Purwadhika&apos;s
+            fullstack bootcamp in 2025 and graduated as Best Student of Batch 33. Today I work at Notch Creative
+            Digital Agency, where I helped rebuild{" "}
+            <span className="font-semibold text-ink-strong">UNICEF Indonesia&apos;s donation platform</span>.
+          </p>
 
-              <p>
-                I have hands-on experience with{" "}
-                <span className="text-foreground font-black italic">
-                  Next.js, TypeScript, NestJS, Express.js, Prisma, and PostgreSQL
-                </span>
-                , with a focus on building scalable, maintainable, and
-                user-centered web applications.
-              </p>
+          <p>
+            That journey shaped how I build: begin with something small that works, get the foundations right, and
+            let it grow with the people who use it.
+          </p>
 
-              <p className="text-xl font-black text-foreground italic pt-8 border-t border-foreground/10">
-                &ldquo;I build reliable web solutions that balance clean
-                engineering, scalability, and real user needs.&rdquo;
-              </p>
-            </motion.div>
-          </div>
+          <blockquote className="border-t pt-8 text-2xl leading-snug font-semibold tracking-[-0.02em] text-ink-strong md:text-3xl">
+            &ldquo;Start small, build it right, and let it grow.&rdquo;
+          </blockquote>
         </div>
       </div>
     </section>

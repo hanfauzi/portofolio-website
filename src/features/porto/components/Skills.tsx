@@ -1,97 +1,91 @@
-"use client";
-
-import { motion } from "framer-motion";
+import type { IconType } from "react-icons";
 import {
-  TbBrandNextjs,
-  TbBrandTailwind,
-  TbBrandNodejs,
-  TbBrandReact,
-  TbBrandGithub,
-} from "react-icons/tb";
-import {
-  SiExpress,
-  SiPostgresql,
-  SiJavascript,
-  SiTypescript,
-  SiPostman,
-  SiVercel,
-  SiPrisma,
+  SiCloudflare,
   SiDocker,
+  SiExpress,
+  SiGit,
+  SiGithub,
+  SiJavascript,
+  SiMysql,
   SiNestjs,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiPostgresql,
+  SiPostman,
+  SiPrisma,
+  SiPython,
+  SiReact,
+  SiReactquery,
   SiRedis,
+  SiTailwindcss,
+  SiTypescript,
+  SiVercel,
 } from "react-icons/si";
-import Link from "next/link";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 
-const techStacks = [
-  { icon: TbBrandNextjs, name: "Next.js", href: "https://nextjs.org/", color: "bg-black text-white" },
-  { icon: SiNestjs, name: "NestJS", href: "https://nestjs.com/", color: "bg-red-100 text-red-600 shadow-red-100" },
-  { icon: TbBrandReact, name: "React", href: "https://react.dev/", color: "bg-blue-100 text-blue-600 shadow-blue-100" },
-  { icon: TbBrandTailwind, name: "Tailwind CSS", href: "https://tailwindcss.com/", color: "bg-cyan-100 text-cyan-600 shadow-cyan-100" },
-  { icon: TbBrandNodejs, name: "Node.js", href: "https://nodejs.org/", color: "bg-green-100 text-green-600 shadow-green-100" },
-  { icon: SiExpress, name: "Express.js", href: "https://expressjs.com/", color: "bg-white text-black border-2" },
-  { icon: SiPostgresql, name: "PostgreSQL", href: "https://postgresql.org/", color: "bg-indigo-100 text-indigo-600 shadow-indigo-100" },
-  { icon: SiRedis, name: "Redis", href: "https://redis.io/", color: "bg-rose-100 text-rose-600 shadow-rose-100" },
-  { icon: SiDocker, name: "Docker", href: "https://www.docker.com/", color: "bg-sky-100 text-sky-600 shadow-sky-100" },
-  { icon: SiPrisma, name: "Prisma ORM", href: "https://prisma.io/", color: "bg-teal-100 text-teal-600 shadow-teal-100" },
-  { icon: SiJavascript, name: "JavaScript", href: "https://developer.mozilla.org/", color: "bg-yellow-100 text-yellow-700 shadow-yellow-100" },
-  { icon: SiTypescript, name: "TypeScript", href: "https://typescriptlang.org/", color: "bg-blue-200 text-blue-800 shadow-blue-200" },
-  { icon: SiPostman, name: "Postman", href: "https://postman.com/", color: "bg-orange-100 text-orange-600 shadow-orange-100" },
-  { icon: TbBrandGithub, name: "GitHub", href: "https://github.com/", color: "bg-white text-black border-2" },
-  { icon: SiVercel, name: "Vercel", href: "https://vercel.com/", color: "bg-black text-white" },
+// brand: the logo's own color. null = monochrome logo, drawn in the text color so it flips with the theme.
+const stack: { name: string; href: string; icon: IconType; brand: string | null }[] = [
+  { name: "TypeScript", href: "https://www.typescriptlang.org/", icon: SiTypescript, brand: "#3178C6" },
+  { name: "JavaScript", href: "https://developer.mozilla.org/docs/Web/JavaScript", icon: SiJavascript, brand: "#E5C100" },
+  { name: "React", href: "https://react.dev/", icon: SiReact, brand: "#22B8DA" },
+  { name: "Next.js", href: "https://nextjs.org/", icon: SiNextdotjs, brand: null },
+  { name: "NestJS", href: "https://nestjs.com/", icon: SiNestjs, brand: "#E0234E" },
+  { name: "Node.js", href: "https://nodejs.org/", icon: SiNodedotjs, brand: "#5FA04E" },
+  { name: "Express", href: "https://expressjs.com/", icon: SiExpress, brand: null },
+  { name: "PostgreSQL", href: "https://www.postgresql.org/", icon: SiPostgresql, brand: "#4169E1" },
+  { name: "MySQL", href: "https://www.mysql.com/", icon: SiMysql, brand: "#4479A1" },
+  { name: "Prisma", href: "https://www.prisma.io/", icon: SiPrisma, brand: null },
+  { name: "Redis", href: "https://redis.io/", icon: SiRedis, brand: "#FF4438" },
+  { name: "TanStack Query", href: "https://tanstack.com/query", icon: SiReactquery, brand: "#FF4154" },
+  { name: "Tailwind CSS", href: "https://tailwindcss.com/", icon: SiTailwindcss, brand: "#06B6D4" },
+  { name: "Python", href: "https://www.python.org/", icon: SiPython, brand: "#3776AB" },
+  { name: "Docker", href: "https://www.docker.com/", icon: SiDocker, brand: "#2496ED" },
+  { name: "Cloudflare R2", href: "https://www.cloudflare.com/developer-platform/products/r2/", icon: SiCloudflare, brand: "#F38020" },
+  { name: "Git", href: "https://git-scm.com/", icon: SiGit, brand: "#F05032" },
+  { name: "GitHub", href: "https://github.com/", icon: SiGithub, brand: null },
+  { name: "Vercel", href: "https://vercel.com/", icon: SiVercel, brand: null },
+  { name: "Postman", href: "https://www.postman.com/", icon: SiPostman, brand: "#FF6C37" },
 ];
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-32 px-6 md:px-16 lg:px-24 transition-colors duration-500">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-start">
-          <div className="space-y-10">
-            <motion.h2 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="text-5xl md:text-7xl font-black tracking-tighter text-foreground"
-            >
-              Mastered <br />
-              <span className="text-primary italic">Technologies</span>
-            </motion.h2>
-            <p className="text-2xl text-foreground/60 max-w-md font-medium leading-tight">
-              Specializing in the <span className="text-foreground font-black italic">modern web ecosystem</span>, focused on performance and scalability.
+    <section id="skills" className="border-t">
+      <div className="mx-auto grid max-w-[1240px] gap-14 px-4 py-24 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:py-32">
+        <div className="lg:col-span-4">
+          <div className="lg:sticky lg:top-32">
+            <h2 className="text-5xl leading-[1.02] font-semibold tracking-[-0.04em] text-ink-strong md:text-6xl">
+              Tech I
+              <br />
+              <span className="text-ink-2">work with</span>
+            </h2>
+            <p className="mt-6 max-w-sm text-base leading-relaxed text-ink-2">
+              TypeScript on both ends, PostgreSQL underneath, and the tools I reach for to ship and run it.
             </p>
           </div>
-
-          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-8">
-            {techStacks.map(({ icon: Icon, name, href, color }, index) => (
-              <motion.div
-                key={name}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.05, type: "spring", stiffness: 200 }}
-                viewport={{ once: true }}
-              >
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Link
-                      href={href}
-                      target="_blank"
-                      className={`flex items-center justify-center aspect-square rounded-md border border-foreground/10 hover:scale-108 active:scale-97 transition-[transform,box-shadow,background-color] duration-200 ease-out-custom group shadow-sm ${color} dark:bg-card dark:text-foreground`}
-                    >
-                      <Icon className="text-4xl md:text-5xl transition-transform duration-300 ease-out-custom group-hover:rotate-8" />
-                    </Link>
-                  </TooltipTrigger>
-                  <TooltipContent className="bg-foreground text-background font-black uppercase tracking-widest text-[10px] py-2 px-4 rounded-full">
-                    <p>{name}</p>
-                  </TooltipContent>
-                </Tooltip>
-              </motion.div>
-            ))}
-          </div>
         </div>
+
+        <ul className="grid grid-cols-3 gap-3 sm:grid-cols-4 sm:gap-4 lg:col-span-8 lg:grid-cols-5">
+          {stack.map(({ name, href, icon: Icon, brand }) => (
+            <li key={name}>
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={brand ? ({ "--brand": brand } as React.CSSProperties) : undefined}
+                className="group flex aspect-square flex-col items-center justify-center gap-3 rounded-lg border bg-surface p-3 transition-[transform,border-color,background-color] duration-300 ease-out-soft hover:-translate-y-1 hover:border-ink-2/40 hover:bg-surface-hover"
+              >
+                <Icon
+                  aria-hidden="true"
+                  className={`size-9 transition-transform duration-300 ease-out-soft group-hover:scale-110 sm:size-11 ${
+                    brand ? "text-(--brand)" : "text-ink-strong"
+                  }`}
+                />
+                <span className="text-center text-[11px] leading-tight font-semibold text-ink-2 sm:text-xs">
+                  {name}
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

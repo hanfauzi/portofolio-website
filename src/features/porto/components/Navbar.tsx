@@ -1,93 +1,93 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { flushSync } from "react-dom";
+import Image from "next/image";
 import { useTheme } from "next-themes";
-import { motion } from "framer-motion";
-import { Sun, Moon } from "lucide-react";
-import Link from "next/link";
+import { motion, useReducedMotion } from "framer-motion";
 
-export const Navbar: React.FC = () => {
-  const [time, setTime] = useState<string>("");
+const links = [
+  { label: "About", href: "#about" },
+  { label: "Work", href: "#work" },
+  { label: "Projects", href: "#projects" },
+  { label: "Skills", href: "#skills" },
+  { label: "Contact", href: "#contact" },
+];
+
+// Glass is used on these two floating pills only, because they sit on top of the hero photo.
+const pill =
+  "rounded-full border border-black/10 bg-white/75 shadow-[inset_0_1px_1px_rgba(255,255,255,0.9),0_8px_24px_rgba(0,0,0,0.08)] backdrop-blur-xl dark:border-white/15 dark:bg-[#0b0f17]/70 dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_8px_32px_rgba(0,0,0,0.4)]";
+
+export const Navbar = () => {
   const { resolvedTheme, setTheme } = useTheme();
+  const reduce = useReducedMotion();
   const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const isDark = mounted && resolvedTheme === "dark";
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      setTime(now.toLocaleTimeString("id-ID", {
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: false
-      }));
-    };
-
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-    return () => clearInterval(interval);
-  }, []);
+  const toggleTheme = () => {
+    const next = isDark ? "light" : "dark";
+    // Cross-fade the whole page between themes instead of snapping every color at once.
+    if (reduce || !("startViewTransition" in document)) return setTheme(next);
+    document.startViewTransition(() => flushSync(() => setTheme(next)));
+  };
 
   return (
-    <motion.nav
-      initial={{ y: -20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
-      className="fixed top-0 left-0 right-0 z-50 px-6 md:px-16 lg:px-24 py-4 backdrop-blur-md bg-background/70 border-b border-foreground/5 transition-all duration-300"
-    >
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <div className="flex items-center gap-12">
-          <Link href="/" className="group flex flex-col leading-[0.7] transition-all hover:opacity-85 active:scale-98 duration-200">
-            <span className="text-base md:text-lg font-black tracking-tighter">MUHAMMAD</span>
-            <span className="text-base md:text-lg font-black tracking-tighter text-primary">HANIF FAUZI</span>
-          </Link>
+    <header className="fixed inset-x-0 top-0 z-50 flex items-center justify-between gap-3 px-4 py-4 sm:px-8 lg:px-16 lg:py-6">
+      <div className={`inline-flex items-center gap-4 px-4 py-2.5 sm:gap-5 sm:px-5 ${pill}`}>
+        {/* Brand mark, deliberately not a link: there is no other page for it to point to. */}
+        {/* HNF logo kit, variant A: the light-theme and dark-theme colour versions swap with the theme */}
+        <Image
+          src="/brand/hnf-light.svg"
+          alt="Hanif Fauzi"
+          width={347}
+          height={256}
+          priority
+          className="h-8 w-auto shrink-0 dark:hidden"
+        />
+        <Image
+          src="/brand/hnf-dark.svg"
+          alt="Hanif Fauzi"
+          width={347}
+          height={256}
+          priority
+          className="hidden h-8 w-auto shrink-0 dark:block"
+        />
 
-          <div className="hidden lg:flex items-center gap-10">
-            {["About", "Skills", "Projects", "Contacts"].map((item) => (
-              <Link 
-                key={item} 
-                href={`#${item.toLowerCase()}`}
-                className="text-xs font-black uppercase tracking-[0.3em] text-foreground/80 hover:text-primary transition-colors duration-200 ease-out-custom"
-              >
-                {item}
-              </Link>
-            ))}
-          </div>
-        </div>
+        <span className="hidden h-[18px] w-px bg-black/10 md:block dark:bg-white/20" aria-hidden="true" />
 
-        <div className="flex items-center gap-8 md:gap-12">
-          <div className="hidden sm:flex flex-col items-end">
-            <span className="text-[8px] font-black uppercase tracking-[0.4em] text-foreground/30">Local Time</span>
-            <span className="text-xs font-black">{time} <span className="text-[10px] text-primary">WIB</span></span>
-          </div>
-
-          <button
-            onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-            className="flex items-center gap-4 py-2 active:scale-95 transition-transform duration-150 ease-out-custom cursor-pointer"
-            aria-label="Toggle theme"
-          >
-            <div className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.3em]">
-              <span className={`transition-all duration-700 ${mounted && resolvedTheme === "light" ? "text-primary" : "text-foreground/20"}`}>
-                Light
-              </span>
-              
-              <div className="relative w-8 h-px bg-foreground/10 overflow-hidden">
-                <motion.div 
-                  animate={{ x: mounted && resolvedTheme === "dark" ? 20 : -20 }}
-                  transition={{ type: "spring", stiffness: 200, damping: 40 }}
-                  className="absolute inset-0 bg-primary"
-                />
-              </div>
-
-              <span className={`transition-all duration-700 ${mounted && resolvedTheme === "dark" ? "text-primary" : "text-foreground/20"}`}>
-                Dark
-              </span>
-            </div>
-          </button>
-        </div>
+        <nav aria-label="Sections" className="hidden items-center gap-5 md:flex">
+          {links.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              className="text-[0.825rem] font-medium whitespace-nowrap text-ink-2 transition-colors hover:text-ink-strong"
+            >
+              {l.label}
+            </a>
+          ))}
+        </nav>
       </div>
-    </motion.nav>
+
+      <button
+        type="button"
+        onClick={toggleTheme}
+        aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
+        className={`inline-flex cursor-pointer items-center gap-3 px-4 py-2.5 text-[10px] font-bold tracking-[0.25em] uppercase ${pill}`}
+      >
+        <span className={`transition-colors duration-500 ${mounted && !isDark ? "text-ink-strong" : "text-ink-2/60"}`}>
+          Light
+        </span>
+        <span className="relative h-px w-8 overflow-hidden bg-ink-2/30" aria-hidden="true">
+          <motion.span
+            initial={false}
+            animate={{ x: isDark ? 16 : -16 }}
+            transition={{ type: "spring", stiffness: 200, damping: 30 }}
+            className="absolute inset-0 bg-ink-strong"
+          />
+        </span>
+        <span className={`transition-colors duration-500 ${isDark ? "text-ink-strong" : "text-ink-2/60"}`}>Dark</span>
+      </button>
+    </header>
   );
 };

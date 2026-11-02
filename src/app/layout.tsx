@@ -1,59 +1,60 @@
 import type { Metadata } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Nunito, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/features/porto/components/Navbar";
-import { Footer } from "@/features/porto/components/Footer";
 import { ToastContainer } from "react-toastify";
 import { ThemeProvider } from "@/components/ThemesProvider";
 
-const inter = Inter({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-jakarta",
 });
 
-const plusJakartaSans = Plus_Jakarta_Sans({
+const nunito = Nunito({
   subsets: ["latin"],
-  variable: "--font-plus-jakarta",
+  weight: ["900"],
+  variable: "--font-nunito",
 });
 
+const title = "Muhammad Hanif Fauzi | Portfolio";
+const description =
+  "Portfolio of Muhammad Hanif Fauzi, a fullstack developer who builds web applications from start to finish.";
+
+// The preview image comes from src/app/opengraph-image.tsx (logo, name and "Portfolio").
 export const metadata: Metadata = {
-  title: "Hanif | Portofolio",
-  description: "Muhammad Hanif Fauzi Portofolio",
-  keywords: ["full-stack developer", "software engineer", "portofolio"],
+  metadataBase: new URL("https://haniffauzi.vercel.app"),
+  title,
+  description,
+  applicationName: "Hanif Fauzi Portfolio",
+  authors: [{ name: "Muhammad Hanif Fauzi", url: "https://haniffauzi.vercel.app" }],
+  keywords: ["Muhammad Hanif Fauzi", "Hanif Fauzi", "fullstack developer", "web developer", "portfolio"],
   openGraph: {
-    title: "Hanif | Portofolio",
-    description: "Portofolio Muhammad Hanif Fauzi",
-    images: [
-      {
-        url: "https://haniffauzi.vercel.app/HNF.png",
-        width: 1200,
-        height: 630,
-        alt: "Logo Arunika",
-      },
-    ],
+    type: "website",
+    url: "/",
+    siteName: "Muhammad Hanif Fauzi",
+    title,
+    description,
+    locale: "en_US",
   },
+  twitter: { card: "summary_large_image", title, description },
   icons: {
-    icon: "/HNF.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    apple: "/apple-touch-icon.png",
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} ${plusJakartaSans.variable} font-sans antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-        <Navbar />
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${jakarta.variable} ${nunito.variable} font-sans antialiased`}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <Navbar />
           {children}
-        <ToastContainer position="top-right" autoClose={3000} />
+          <ToastContainer position="top-right" autoClose={3000} />
         </ThemeProvider>
       </body>
     </html>
