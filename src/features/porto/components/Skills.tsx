@@ -55,7 +55,7 @@ const Skills = () => {
             <h2 className="text-5xl leading-[1.02] font-semibold tracking-[-0.04em] text-ink-strong md:text-6xl">
               Tech
               <br />
-              <span className="text-ink-2">I work with</span>
+              <span className="text-accent-text">I work with</span>
             </h2>
             <p className="mt-6 max-w-sm text-base leading-relaxed text-ink-2">
               The languages, frameworks and tools I use every day to build, ship and look after web applications.
@@ -71,7 +71,7 @@ const Skills = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 style={brand ? ({ "--brand": brand } as React.CSSProperties) : undefined}
-                className="group flex aspect-square flex-col items-center justify-center gap-3 rounded-lg border bg-surface p-3 transition-[transform,border-color,background-color] duration-300 ease-out-soft hover:-translate-y-1 hover:border-ink-2/40 hover:bg-surface-hover"
+                className="group flex aspect-square flex-col items-center justify-center gap-3 rounded-lg border bg-surface p-3 transition-[border-color,background-color] duration-300 ease-out-soft hover:border-highlight hover:bg-surface-hover"
               >
                 <Icon
                   aria-hidden="true"
@@ -79,7 +79,7 @@ const Skills = () => {
                     brand ? "text-(--brand)" : "text-ink-strong"
                   }`}
                 />
-                <span className="text-center text-[11px] leading-tight font-semibold text-ink-2 sm:text-xs">
+                <span className="text-center text-[0.6875rem] leading-tight font-semibold text-ink-2 sm:text-xs">
                   {name}
                 </span>
               </a>

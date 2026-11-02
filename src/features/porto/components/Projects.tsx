@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { FiArrowUpRight } from "react-icons/fi";
+import Link from "next/link";
+import { FiArrowRight, FiArrowUpRight } from "react-icons/fi";
 import { projects } from "../data";
 
 export default function ProjectsSection() {
@@ -10,7 +11,7 @@ export default function ProjectsSection() {
           <h2 className="text-5xl leading-[1.02] font-semibold tracking-[-0.04em] text-ink-strong md:text-6xl">
             Featured
             <br />
-            <span className="text-ink-2">Projects</span>
+            <span className="text-accent-text">Projects</span>
           </h2>
           <a
             href="https://github.com/hanfauzi?tab=repositories"
@@ -26,15 +27,15 @@ export default function ProjectsSection() {
         {/* Numbered list, newest first: the large index numeral is the style.ai.id "top today" device. */}
         <ol className="grid gap-x-10 gap-y-16 md:grid-cols-2">
           {projects.map((p, i) => (
-            <li key={p.name} className="group flex items-start">
+            <li key={p.name} className="group flex items-stretch">
               <span
                 aria-hidden="true"
-                className="-mr-3 shrink-0 font-index text-[72px] leading-none font-black tracking-[-0.05em] text-index transition-colors duration-300 select-none group-hover:text-ink-strong sm:text-[86px]"
+                className="-mr-3 shrink-0 self-start font-index text-[4.5rem] leading-none font-black tracking-[-0.05em] text-index transition-colors duration-300 select-none group-hover:text-highlight sm:text-[5.375rem]"
               >
                 {i + 1}
               </span>
 
-              <article className="relative min-w-0 flex-1 pt-3">
+              <article className="relative flex min-w-0 flex-1 flex-col pt-3">
                 <div className="relative aspect-[16/10] overflow-hidden rounded-[9px] bg-subtle ring-1 ring-ink/5 transition-transform duration-300 ease-out-soft ring-inset group-hover:-translate-y-[3px]">
                   {p.image ? (
                     <Image
@@ -58,31 +59,40 @@ export default function ProjectsSection() {
 
                 <div className="mt-5 flex items-center justify-between gap-3">
                   <h3 className="truncate text-lg font-semibold tracking-[-0.01em] text-ink-strong">{p.name}</h3>
-                  <span className="shrink-0 rounded-[5px] bg-subtle px-2 py-0.5 text-[11px] font-semibold text-ink-2">
+                  <span className="shrink-0 rounded-[5px] bg-subtle px-2 py-0.5 text-[0.6875rem] font-semibold text-ink-2">
                     {p.year}
                   </span>
                 </div>
-                <p className="text-[13px] text-ink-2">{p.tagline}</p>
+                <p className="text-[0.8125rem] text-ink-2">{p.tagline}</p>
 
-                <p className="mt-4 text-[15px] leading-relaxed text-ink-2">{p.summary}</p>
+                <p className="mt-4 text-[0.9375rem] leading-relaxed text-ink-2">{p.summary}</p>
 
                 <ul className="mt-4 flex flex-wrap gap-1.5" aria-label="Built with">
                   {p.stack.map((s) => (
-                    <li key={s} className="rounded-sm border px-2 py-0.5 text-[11px] font-semibold text-ink-2">
+                    <li key={s} className="rounded-sm border px-2 py-0.5 text-[0.6875rem] font-semibold text-ink-2">
                       {s}
                     </li>
                   ))}
                 </ul>
 
-                <div className="mt-5 flex flex-wrap gap-5">
-                  {p.links.length === 0 && <span className="text-[13px] text-ink-2">Private repository</span>}
+                <div className="mt-auto flex flex-wrap items-center gap-5 pt-5">
+                  {p.story && (
+                    <Link
+                      href={`/projects/${p.story}`}
+                      className="inline-flex items-center gap-1 text-[0.8125rem] font-semibold text-ink-strong underline-offset-4 hover:underline"
+                    >
+                      Read the story
+                      <FiArrowRight className="size-3.5 text-highlight" aria-hidden="true" />
+                      <span className="sr-only"> of {p.name}</span>
+                    </Link>
+                  )}
                   {p.links.map((l) => (
                     <a
                       key={l.href}
                       href={l.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-0.5 text-[13px] font-semibold text-accent-text underline-offset-4 hover:underline"
+                      className="inline-flex items-center gap-0.5 text-[0.8125rem] font-semibold text-accent-text underline-offset-4 hover:underline"
                     >
                       {l.label}
                       <FiArrowUpRight className="size-3.5" aria-hidden="true" />

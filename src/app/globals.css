@@ -16,11 +16,13 @@
   --subtle: #e2e8f0;
   --line: #cbd5e1;
   --ink: #0f172a;
-  --ink-2: #475569;
+  --ink-2: #334155;
   --ink-strong: #09090b;
   /* Accent = the blue of the HNF logo (kit A, light version) */
   --accent: #296cd8;
   --accent-text: #296cd8;
+  /* Second accent: crimson red (NestJS-like), the counterweight to the blue. Used sparingly for "current" and "open" states. */
+  --highlight: #d81e47;
   --index: rgba(15, 23, 42, 0.1);
   --shadow-card: 0 4px 16px rgba(15, 23, 42, 0.06);
 
@@ -44,17 +46,18 @@
 }
 
 .dark {
-  --canvas: #0b0f17;
-  --surface: #131b26;
-  --surface-hover: #1a2433;
-  --subtle: #1e293b;
-  --line: #243247;
-  --ink: #f1f5f9;
-  --ink-2: #94a3b8;
+  --canvas: #000000;
+  --surface: #111113;
+  --surface-hover: #1a1a1d;
+  --subtle: #1c1c1f;
+  --line: #262629;
+  --ink: #f4f4f5;
+  --ink-2: #d4d4d8;
   --ink-strong: #ffffff;
-  /* Accent = the blue of the HNF logo (kit A, dark version) */
-  --accent: #6ea2f0;
-  --accent-text: #6ea2f0;
+  /* Dark theme has its own palette: cyan as the main accent, orange as the second. */
+  --accent: #22d3ee;
+  --accent-text: #22d3ee;
+  --highlight: #fb923c;
   --index: rgba(255, 255, 255, 0.08);
   --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.25);
 }
@@ -70,6 +73,7 @@
   --color-ink-strong: var(--ink-strong);
   --color-accent: var(--accent);
   --color-accent-text: var(--accent-text);
+  --color-highlight: var(--highlight);
   --color-index: var(--index);
 
   --color-background: var(--background);
@@ -107,6 +111,17 @@
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 6rem;
+  }
+  /* Phones keep 16px. Larger screens are read from further away, so the whole rem scale steps up. */
+  @media (min-width: 1024px) {
+    html {
+      font-size: 106.25%; /* 17px */
+    }
+  }
+  @media (min-width: 1536px) {
+    html {
+      font-size: 112.5%; /* 18px */
+    }
   }
   body {
     @apply bg-canvas text-ink;

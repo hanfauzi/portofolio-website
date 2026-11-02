@@ -8,14 +8,16 @@ export const AboutMe = () => {
           <h2 className="text-5xl leading-[1.02] font-semibold tracking-[-0.04em] text-ink-strong md:text-6xl">
             The story
             <br />
-            <span className="text-ink-2">so far</span>
+            <span className="text-accent-text">so far</span>
           </h2>
 
           <dl className="mt-10 divide-y border-y">
             {facts.map((f) => (
               <div key={f.label} className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 py-4">
-                <dt className="text-[13px] text-ink-2">{f.label}</dt>
-                <dd className="text-[15px] font-semibold text-ink-strong">{f.value}</dd>
+                <dt className="text-[0.9375rem] font-medium text-accent-text">{f.label}</dt>
+                <dd className={`text-[0.9375rem] font-semibold ${f.label === "Status" ? "text-highlight" : "text-ink-strong"}`}>
+                  {f.value}
+                </dd>
               </div>
             ))}
           </dl>
@@ -23,7 +25,7 @@ export const AboutMe = () => {
 
         <div className="space-y-6 text-[1.05rem] leading-[1.75] text-ink-2 lg:col-span-7 lg:pt-2 lg:text-lg">
           <p>
-            Hi, I&apos;m <span className="font-semibold text-ink-strong">Muhammad Hanif Fauzi</span>, a fullstack
+            Hi, I&apos;m Muhammad <span className="font-semibold text-highlight">Hanif</span> Fauzi, a fullstack
             developer based in South Tangerang. I like taking a feature from the first idea all the way to the version
             people actually use, and I care as much about what runs behind the screen as what shows on it.
           </p>

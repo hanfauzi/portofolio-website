@@ -76,6 +76,8 @@ export type Project = {
   /** Project logo shown on its own brand-colored panel when there is no screenshot. */
   logo?: { src: string; bg: string };
   summary: string;
+  /** Slug of a long-form story at /projects/[slug], when the project has one. */
+  story?: string;
   stack: string[];
   links: { label: string; href: string }[];
 };
@@ -86,6 +88,7 @@ export const projects: Project[] = [
     tagline: "AI finance assistant on Telegram",
     year: "2026",
     logo: { src: "/projects/arunika-mark.svg", bg: "#14213D" },
+    story: "arunika",
     summary:
       "A Telegram bot I use every day to log spending and budgets straight into Google Sheets. The AI can only draft entries; every write is signed and checked again by a separate worker before it touches the sheet.",
     stack: ["Python", "SQLite", "Telegram Bot API", "Google Sheets API", "MCP"],
@@ -96,6 +99,7 @@ export const projects: Project[] = [
     tagline: "Coffee shop management system",
     year: "2026",
     logo: { src: "/projects/coffebar-mark.svg", bg: "#F3E9DC" },
+    story: "coffebar",
     summary:
       "A POS that costs stock first in, first out, so profit comes from the actual ingredient batches used. It also has a Gemini advisor that forecasts restocks for the next 30 days.",
     stack: ["React", "Vite", "NestJS", "Prisma", "PostgreSQL", "Gemini API"],
