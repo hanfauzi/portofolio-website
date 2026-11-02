@@ -16,7 +16,7 @@ export default function ContactSection() {
           <h2 className="text-5xl leading-[1.02] font-semibold tracking-[-0.04em] text-ink-strong md:text-6xl">
             Let&apos;s
             <br />
-            <span className="text-ink-2">talk</span>
+            <span className="text-accent-text">talk</span>
           </h2>
           <p className="mt-6 max-w-md text-base leading-relaxed text-ink-2">
             Open to fullstack roles, whether remote, hybrid or on-site, and to collaborations. Email reaches me fastest.
@@ -45,7 +45,7 @@ export default function ContactSection() {
                 <span className="inline-flex items-center gap-1 text-sm text-ink-2 transition-colors group-hover:text-ink-strong">
                   {value}
                   <FiArrowUpRight
-                    className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                    className="size-4 text-highlight transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                     aria-hidden="true"
                   />
                 </span>

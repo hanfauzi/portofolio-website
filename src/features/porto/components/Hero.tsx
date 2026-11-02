@@ -14,7 +14,7 @@ export const Hero = () => {
           fill
           priority
           sizes="(min-width: 1024px) 62vw, 100vw"
-          className="object-cover object-[50%_15%]"
+          className="object-cover object-[50%_15%] brightness-[1.18] contrast-[0.82] saturate-[0.8] dark:brightness-[0.8] dark:contrast-[1.08] dark:saturate-[0.9]"
         />
       </div>
       <div className="hero-scrim absolute inset-0" aria-hidden="true" />
@@ -28,7 +28,7 @@ export const Hero = () => {
           <h1 className="text-[2.75rem] leading-[1.04] font-semibold tracking-[-0.04em] text-ink-strong sm:text-6xl lg:text-[4.25rem]">
             Muhammad
             <br />
-            Hanif Fauzi
+            <span className="text-highlight">Hanif</span> Fauzi
           </h1>
 
           <p className="mt-6 max-w-[440px] text-base leading-relaxed text-ink-2 lg:text-[1.05rem]">
