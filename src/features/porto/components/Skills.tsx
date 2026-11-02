@@ -53,12 +53,12 @@ const Skills = () => {
         <div className="lg:col-span-4">
           <div className="lg:sticky lg:top-32">
             <h2 className="text-5xl leading-[1.02] font-semibold tracking-[-0.04em] text-ink-strong md:text-6xl">
-              Tech I
+              Tech
               <br />
-              <span className="text-ink-2">work with</span>
+              <span className="text-ink-2">I work with</span>
             </h2>
             <p className="mt-6 max-w-sm text-base leading-relaxed text-ink-2">
-              TypeScript on both ends, PostgreSQL underneath, and the tools I reach for to ship and run it.
+              The languages, frameworks and tools I use every day to build, ship and look after web applications.
             </p>
           </div>
         </div>
