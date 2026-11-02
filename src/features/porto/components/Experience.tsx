@@ -1,76 +1,65 @@
-"use client";
-import { motion } from "framer-motion";
+import { FiArrowUpRight } from "react-icons/fi";
+import { journey } from "../data";
 
 export const TimelineExperience = () => {
-const experiences = [
-  {
-    date: "Jan 2026 - Present",
-    title: "Junior Web Developer",
-    company: "NOTCH Creative Digital Agency",
-    color: "border-green-500 dark:border-[#3c3c3c]",
-  },
-  {
-    date: "May 2025 - Oct 2025",
-    title: "Full-stack Web Development Student",
-    company: "Purwadhika Digital Technology School",
-    description:
-      "Intensive bootcamp focusing on modern web technologies and agile methodologies.",
-    color: "border-blue-500 dark:border-[#1c69d4]",
-  },
-  {
-    date: "Oct 2020 - Oct 2024",
-    title: "Islamic Family Law",
-    company: "STDI Imam Syafi'i",
-    color: "border-orange-500 dark:border-[#e22718]",
-  },
-];
-
   return (
-    <section id="experience" className="py-32 px-6 md:px-16 lg:px-24 transition-colors duration-500">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-start">
-          <div className="lg:col-span-5 lg:sticky lg:top-32 self-start">
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-5xl md:text-7xl font-black tracking-tighter text-foreground leading-[0.8]"
-            >
-              Professional <br />
-              <span className="text-primary italic">Journey</span>
-            </motion.h2>
-          </div>
-
-          <div className="lg:col-span-7 space-y-16">
-            {experiences.map((exp, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: idx * 0.1 }}
-                viewport={{ once: true }}
-                className={`group relative pl-12 border-l-2 ${exp.color} transition-all hover:pl-16`}
-              >
-                <div className="absolute left-[-7px] top-0 w-3 h-3 rounded-full bg-foreground shadow-md" />
-                
-                <div className="space-y-4">
-                  <p className="text-xs font-black uppercase tracking-[0.3em] text-foreground/40">
-                    {exp.date}
-                  </p>
-                  <h3 className="text-xl md:text-2xl font-black text-foreground leading-tight">
-                    {exp.title}
-                  </h3>
-                  <p className="text-base font-black text-primary">
-                    {exp.company}
-                  </p>
-                  <p className="text-base text-foreground/60 font-medium leading-tight max-w-lg">
-                    {exp.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+    <section id="work" className="border-t">
+      <div className="mx-auto grid max-w-[1240px] gap-14 px-4 py-24 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:py-32">
+        <div className="lg:col-span-4">
+          <h2 className="text-5xl leading-[1.02] font-semibold tracking-[-0.04em] text-ink-strong md:text-6xl lg:sticky lg:top-32">
+            Professional
+            <br />
+            <span className="text-ink-2">Journey</span>
+          </h2>
         </div>
+
+        {/* Timeline: the vertical line and dots mark the order of events, newest first. */}
+        <ol className="relative space-y-16 border-l pl-8 sm:pl-12 lg:col-span-8">
+          {journey.map((m, i) => (
+            <li key={m.title} className="relative">
+              <span
+                aria-hidden="true"
+                className={`absolute top-1.5 -left-[calc(2rem+5px)] size-[9px] rounded-full sm:-left-[calc(3rem+5px)] ${
+                  i === 0 ? "bg-accent" : "bg-ink-2/50"
+                }`}
+              />
+              <p className="text-[13px] font-medium text-ink-2">{m.period}</p>
+              <h3 className="mt-2 text-2xl font-semibold tracking-[-0.02em] text-ink-strong md:text-[1.75rem]">
+                {m.title}
+              </h3>
+              <p className="mt-1 text-[15px] font-semibold text-accent-text">{m.place}</p>
+              <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-2">{m.summary}</p>
+
+              {m.highlights && (
+                <div className="mt-8 space-y-4">
+                  {m.highlights.map((h) => (
+                    <div key={h.name} className="rounded-lg border bg-surface p-5 sm:p-6">
+                      <h4 className="text-[15px] font-semibold text-ink-strong">{h.name}</h4>
+                      <p className="mt-2 text-[15px] leading-relaxed text-ink-2">{h.text}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {m.links && (
+                <div className="mt-4 flex gap-5">
+                  {m.links.map((l) => (
+                    <a
+                      key={l.href}
+                      href={l.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-0.5 text-[13px] font-semibold text-accent-text underline-offset-4 hover:underline"
+                    >
+                      {l.label}
+                      <FiArrowUpRight className="size-3.5" aria-hidden="true" />
+                    </a>
+                  ))}
+                </div>
+              )}
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   );
