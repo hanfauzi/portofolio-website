@@ -5,10 +5,12 @@ import Projects from "@/features/porto/components/Projects";
 import Skills from "@/features/porto/components/Skills";
 import Contact from "@/features/porto/components/Contact";
 import { Footer } from "@/features/porto/components/Footer";
+import { SectionBackdrop } from "@/features/porto/components/SectionBackdrop";
 
 export default function PortoPage() {
   return (
     <>
+      <SectionBackdrop />
       <main>
         <Hero />
         <AboutMe />

@@ -5,7 +5,7 @@ import { profile } from "../data";
 
 export const Hero = () => {
   return (
-    <section className="relative flex min-h-[max(100svh,640px)] overflow-hidden bg-canvas lg:min-h-[max(100svh,720px)]">
+    <section data-backdrop="hero" className="relative flex min-h-[max(100svh,640px)] overflow-hidden bg-canvas lg:min-h-[max(100svh,720px)]">
       {/* Portrait: full-bleed on mobile, right-hand side on desktop, faded into the canvas by .hero-scrim */}
       <div className="absolute inset-0 lg:left-auto lg:w-[62%]">
         <Image

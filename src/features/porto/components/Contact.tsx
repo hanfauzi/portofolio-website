@@ -10,7 +10,7 @@ const channels = [
 
 export default function ContactSection() {
   return (
-    <section id="contact" className="border-t">
+    <section id="contact" data-backdrop="contact" className="border-t">
       <div className="mx-auto grid max-w-[1240px] gap-14 px-4 py-24 sm:px-6 lg:grid-cols-2 lg:gap-20 lg:py-32">
         <div>
           <h2 className="text-5xl leading-[1.02] font-semibold tracking-[-0.04em] text-ink-strong md:text-6xl">
