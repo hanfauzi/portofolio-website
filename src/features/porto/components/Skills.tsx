@@ -48,7 +48,7 @@ const stack: { name: string; href: string; icon: IconType; brand: string | null 
 
 const Skills = () => {
   return (
-    <section id="skills" className="border-t">
+    <section id="skills" data-backdrop="skills" className="border-t">
       <div className="mx-auto grid max-w-[1240px] gap-14 px-4 py-24 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:py-32">
         <div className="lg:col-span-4">
           <div className="lg:sticky lg:top-32">

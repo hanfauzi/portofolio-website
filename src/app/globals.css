@@ -20,9 +20,13 @@
   --ink-strong: #09090b;
   /* Accent = the blue of the HNF logo (kit A, light version) */
   --accent: #296cd8;
-  --accent-text: #296cd8;
-  /* Second accent: crimson red (NestJS-like), the counterweight to the blue. Used sparingly for "current" and "open" states. */
-  --highlight: #d81e47;
+  /* Text blue one step darker than the logo blue, so it stays above 4.5:1 over the tinted section backdrops. */
+  --accent-text: #1b52ae;
+  /* Second accent: hot pink, the counterweight to the blue. Used sparingly for "current" and "open" states.
+     --highlight is the logo pink itself, for large type (hero name, 4.06:1) and non-text marks (dots, borders, icons).
+     --highlight-text is the deepened pink for small text: 4.59:1 on the pinkest backdrop. The bright pink fails there. */
+  --highlight: #d83995;
+  --highlight-text: #a82070;
   --index: rgba(15, 23, 42, 0.1);
   --shadow-card: 0 4px 16px rgba(15, 23, 42, 0.06);
 
@@ -58,6 +62,7 @@
   --accent: #22d3ee;
   --accent-text: #22d3ee;
   --highlight: #fb923c;
+  --highlight-text: #fb923c;
   --index: rgba(255, 255, 255, 0.08);
   --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.25);
 }
@@ -74,6 +79,7 @@
   --color-accent: var(--accent);
   --color-accent-text: var(--accent-text);
   --color-highlight: var(--highlight);
+  --color-highlight-text: var(--highlight-text);
   --color-index: var(--index);
 
   --color-background: var(--background);
@@ -155,6 +161,76 @@
       transparent 72%
     );
   }
+}
+
+/*
+  Section backdrops: one fixed, viewport-sized layer per section, cross-faded by SectionBackdrop.tsx
+  as each section reaches the middle of the screen. The colour change marks where you are on the page.
+  Shapes from PatternCraft (patterncraft.store, MIT), recoloured to the HNF blue (41,108,216) and
+  pink (216,57,149). Glow strength is capped (blue 0.22, pink 0.25) so the text colours above keep AA.
+*/
+.backdrop-layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.backdrop-layer[data-active="true"] {
+  opacity: 1;
+}
+/* Blue Corner Glow */
+.backdrop-about {
+  background-image:
+    radial-gradient(circle 600px at 0% 200px, rgba(41, 108, 216, 0.22), transparent),
+    radial-gradient(circle 600px at 100% 200px, rgba(41, 108, 216, 0.22), transparent);
+}
+/* Pink Corner Dream */
+.backdrop-work {
+  background-image:
+    radial-gradient(circle 600px at 0% 200px, rgba(216, 57, 149, 0.25), transparent),
+    radial-gradient(circle 600px at 100% 200px, rgba(216, 57, 149, 0.25), transparent);
+}
+/* Soft Blue Radial */
+.backdrop-projects {
+  background-image: radial-gradient(circle at top center, rgba(41, 108, 216, 0.22), transparent 70%);
+}
+/* White Grid with Dots: the one line pattern, behind the tech stack. */
+.backdrop-skills {
+  background-image:
+    linear-gradient(to right, rgba(15, 23, 42, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.08) 1px, transparent 1px),
+    radial-gradient(circle, rgba(51, 65, 85, 0.45) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+/* Top Pink Glow, flipped to rise from the bottom as the page closes. */
+.backdrop-contact {
+  background-image: radial-gradient(125% 125% at 50% 0%, transparent 40%, rgba(216, 57, 149, 0.25) 100%);
+}
+
+/* Dark set */
+/* Blue Radial Glow */
+.dark .backdrop-about {
+  background-image: radial-gradient(circle 600px at 50% 50%, rgba(41, 108, 216, 0.22), transparent);
+}
+/* Pink Radial Glow */
+.dark .backdrop-work {
+  background-image: radial-gradient(circle 500px at 50% 100px, rgba(216, 57, 149, 0.2), transparent);
+}
+/* Azure Depths */
+.dark .backdrop-projects {
+  background-image: radial-gradient(125% 125% at 50% 100%, transparent 40%, #010133 100%);
+}
+/* Dark Grid White Dots */
+.dark .backdrop-skills {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.25) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+/* Pink Radial Glow, anchored at the bottom */
+.dark .backdrop-contact {
+  background-image: radial-gradient(circle 500px at 50% calc(100% - 100px), rgba(216, 57, 149, 0.2), transparent);
 }
 
 /* Theme switch cross-fade (triggered from the navbar via document.startViewTransition) */

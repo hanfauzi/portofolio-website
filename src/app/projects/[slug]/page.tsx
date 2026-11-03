@@ -92,7 +92,7 @@ export default async function CaseStudyPage({ params }: Props) {
                   <dt className="text-[0.9375rem] font-medium text-accent-text">{f.label}</dt>
                   <dd
                     className={`text-right text-[0.9375rem] font-semibold ${
-                      f.label === "Status" ? "text-highlight" : "text-ink-strong"
+                      f.label === "Status" ? "text-highlight-text" : "text-ink-strong"
                     }`}
                   >
                     {f.value}

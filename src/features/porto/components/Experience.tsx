@@ -3,7 +3,7 @@ import { journey } from "../data";
 
 export const TimelineExperience = () => {
   return (
-    <section id="work" className="border-t">
+    <section id="work" data-backdrop="work" className="border-t">
       <div className="mx-auto grid max-w-[1240px] gap-14 px-4 py-24 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:py-32">
         <div className="lg:col-span-4">
           <h2 className="text-5xl leading-[1.02] font-semibold tracking-[-0.04em] text-ink-strong md:text-6xl lg:sticky lg:top-32">
@@ -23,7 +23,7 @@ export const TimelineExperience = () => {
                   i === 0 ? "bg-highlight ring-4 ring-highlight/20" : "bg-ink-2/50"
                 }`}
               />
-              <p className={`text-[0.8125rem] font-medium ${i === 0 ? "text-highlight" : "text-ink-2"}`}>{m.period}</p>
+              <p className={`text-[0.8125rem] font-medium ${i === 0 ? "text-highlight-text" : "text-ink-2"}`}>{m.period}</p>
               <h3 className="mt-2 text-2xl font-semibold tracking-[-0.02em] text-ink-strong md:text-[1.75rem]">
                 {m.title}
               </h3>

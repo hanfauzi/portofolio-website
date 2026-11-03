@@ -5,7 +5,7 @@ import { projects } from "../data";
 
 export default function ProjectsSection() {
   return (
-    <section id="projects" className="border-t">
+    <section id="projects" data-backdrop="projects" className="border-t">
       <div className="mx-auto max-w-[1240px] px-4 py-24 sm:px-6 lg:py-32">
         <div className="mb-14 flex flex-wrap items-end justify-between gap-6">
           <h2 className="text-5xl leading-[1.02] font-semibold tracking-[-0.04em] text-ink-strong md:text-6xl">
