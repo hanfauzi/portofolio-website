@@ -21,6 +21,69 @@ export type CaseStudy = {
 
 export const caseStudies: CaseStudy[] = [
   {
+    slug: "hnf-office",
+    name: "HNF Office",
+    tagline: "Virtual office for my AI agents",
+    logo: { src: "/projects/hnf-office-mark.svg", bg: "#EAF4F2" },
+    intro:
+      "An isometric office in the browser where my personal AI agents work. Every message, transaction and report they handle shows up as a character moving around the office, and the same page is where I chat with them and approve what they want to do.",
+    facts: [
+      { label: "Period", value: "November 2026" },
+      { label: "Role", value: "Solo, from design to deploy" },
+      { label: "Agents", value: "Arunika (finance), Swastamita (HR)" },
+    ],
+    problem: [
+      "After Arunika was in daily use I wanted more agents, each with its own job. The problem was visibility: an agent working through Telegram is a black box. I could see its replies, but not what it was reading, waiting on or doing in the background.",
+      "I also did not want every new agent to bring its own bot, dashboard and approval flow. So I turned the Arunika repo into a platform: one office where every agent shows up, one place to talk to them, and one approval path that every agent has to go through.",
+    ],
+    flow: {
+      title: "From a real event to a character on screen",
+      steps: [
+        "An agent does something real: receives a message, reads report data, offers approval buttons or records a transaction.",
+        "It appends that as an event, tagged with its agent id, to the platform's event log.",
+        "The office server tails the logs and streams new events to the browser over Server-Sent Events.",
+        "A \"director\" in the frontend turns each event into movement: the agent walks to the shared memory to read data, to the printer for a PDF report, to the archive cabinet when a transaction is recorded, and to my room to deliver a report.",
+        "Approval buttons show up in the chat panel. Pressing one drops a request into that agent's inbox, and the agent checks it exactly like a Telegram button press before anything is written.",
+      ],
+    },
+    features: [
+      { name: "Live isometric office", text: "Hand-drawn on a canvas: desks, a boss room, pantry, game room, meeting room and a musholla, with characters that find the shortest route along the walkways." },
+      { name: "A day that feels real", text: "Work hours, breaks and prayer times come from the server, so agents leave their desks for lunch and walk to the musholla together at prayer time." },
+      { name: "Chat with every agent", text: "One channel per agent plus an \"all agents\" channel. A message there without a name becomes an announcement and every agent answers it." },
+      { name: "HR agent with approval", text: "Swastamita lives only in the office and manages work hours and office rules. She can only propose a change; it applies after I press approve, and every version is kept." },
+      { name: "Visitor mode", text: "A read-only view for guests: the live office, agent profiles and the office schedule, without chat, amounts or anything private." },
+      { name: "Adding an agent is config", text: "A new agent is one entry in agents.json with its name, role, seat and colours. Its character, seat and chat channel appear on their own." },
+    ],
+    hardParts: [
+      {
+        name: "The office must never become a back door",
+        text: "A web page that can approve financial writes is a new attack surface. The office server has no power of its own: it only drops a request file into the agent's inbox with an atomic write, and the agent runs the same signed Ed25519 approval check it uses for Telegram. The server listens on localhost only and is opened through an authenticated tunnel.",
+      },
+      {
+        name: "Live updates with no database and no Node on the server",
+        text: "The server is plain Python standard library. It tails the agents' event logs and streams them with chunked Server-Sent Events, so proxies like Vite and Cloudflare forward each event immediately instead of buffering. The frontend is a static Vite build, so the VPS does not need Node.js.",
+      },
+      {
+        name: "Showing the office without showing my data",
+        text: "Visitor access is decided on the server by host name, not by the frontend. Visitor hosts can only load the page and two public endpoints; every POST and the chat, history and stream endpoints are refused, so chat text, amounts and HR proposals never leave the server.",
+      },
+      {
+        name: "Making characters move like people",
+        text: "Real events arrive at random moments, often while a character is already walking. The director queues animations per actor and re-routes from the current position instead of teleporting, at a strolling pace, so the office stays calm even when several events land at once.",
+      },
+    ],
+    outcome: [
+      "I can now see what my agents are doing at a glance, talk to them from the browser and approve their work in the same place, with the same safety checks as Telegram.",
+      "The second agent, Swastamita, was added as a config entry plus her own logic, without touching the office frontend, which was the point of building a platform instead of another bot.",
+    ],
+    lessons: [
+      "A new interface should reuse the existing safety path, not get a shortcut around it.",
+      "Privacy rules belong on the server. Hiding something in the frontend is not hiding it.",
+      "Building the platform before the second agent made the second agent cheap.",
+    ],
+    links: [],
+  },
+  {
     slug: "arunika",
     name: "Arunika",
     tagline: "AI finance assistant on Telegram",

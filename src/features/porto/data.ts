@@ -84,6 +84,17 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    name: "HNF Office",
+    tagline: "Virtual office for my AI agents",
+    year: "2026",
+    logo: { src: "/projects/hnf-office-mark.svg", bg: "#EAF4F2" },
+    story: "hnf-office",
+    summary:
+      "An isometric office in the browser where my AI agents work in real time. Each agent is a character that walks to its desk, reacts to real events and answers chat, and every risky action still waits for my approval.",
+    stack: ["React", "TypeScript", "Vite", "Python", "Server-Sent Events", "systemd"],
+    links: [],
+  },
+  {
     name: "Arunika",
     tagline: "AI finance assistant on Telegram",
     year: "2026",
