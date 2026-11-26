@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
+import { ViewTransition } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { FiArrowLeft, FiArrowRight, FiArrowUpRight } from "react-icons/fi";
-import { caseStudies, getCaseStudy } from "@/features/porto/case-studies";
+import { caseStudies, getCaseStudies, getCaseStudy } from "@/features/porto/case-studies";
 import { Footer } from "@/features/porto/components/Footer";
+import { Link } from "@/i18n/navigation";
+import type { Locale } from "@/i18n/routing";
 
-type Props = { params: Promise<{ slug: string }> };
+type Props = { params: Promise<{ slug: string; locale: string }> };
 
 export const dynamicParams = false;
 
@@ -15,11 +18,16 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const study = getCaseStudy((await params).slug);
+  const { slug, locale } = await params;
+  const study = getCaseStudy(slug, locale as Locale);
   if (!study) return {};
   return {
     title: `${study.name} | Muhammad Hanif Fauzi`,
     description: study.intro,
+    alternates: {
+      canonical: locale === "id" ? `/id/projects/${slug}` : `/projects/${slug}`,
+      languages: { en: `/projects/${slug}`, id: `/id/projects/${slug}` },
+    },
     openGraph: { title: `${study.name}: ${study.tagline}`, description: study.intro },
   };
 }
@@ -35,11 +43,18 @@ function Block({ title, children }: { title: string; children: React.ReactNode }
 }
 
 export default async function CaseStudyPage({ params }: Props) {
-  const study = getCaseStudy((await params).slug);
+  const { slug, locale: rawLocale } = await params;
+  // The layout has already rejected unknown locales.
+  const locale = rawLocale as Locale;
+  setRequestLocale(locale);
+  const t = await getTranslations("caseStudy");
+
+  const studies = getCaseStudies(locale);
+  const study = getCaseStudy(slug, locale);
   if (!study) notFound();
 
-  const index = caseStudies.indexOf(study);
-  const next = caseStudies[(index + 1) % caseStudies.length];
+  const index = studies.indexOf(study);
+  const next = studies[(index + 1) % studies.length];
 
   return (
     <>
@@ -49,15 +64,18 @@ export default async function CaseStudyPage({ params }: Props) {
           className="inline-flex items-center gap-2 text-[0.85rem] font-semibold text-ink-2 transition-colors hover:text-ink-strong"
         >
           <FiArrowLeft className="size-4" aria-hidden="true" />
-          All projects
+          {t("allProjects")}
         </Link>
 
         <header className="mt-10 grid gap-12 pb-16 lg:grid-cols-12 lg:gap-16 lg:pb-20">
           <div className="lg:col-span-7">
             <p className="text-[0.95rem] font-semibold text-accent-text">{study.tagline}</p>
-            <h1 className="mt-3 text-5xl leading-[1.02] font-semibold tracking-[-0.04em] text-ink-strong md:text-7xl">
-              {study.name}
-            </h1>
+            {/* Paired with the project card on the home page, so the card's title morphs into this heading. */}
+            <ViewTransition name={`project-title-${study.slug}`} share="morph" default="none">
+              <h1 className="mt-3 w-fit text-5xl leading-[1.02] font-semibold tracking-[-0.04em] text-ink-strong md:text-7xl">
+                {study.name}
+              </h1>
+            </ViewTransition>
             <p className="mt-6 max-w-2xl text-[1.05rem] leading-[1.75] text-ink-2 lg:text-lg">{study.intro}</p>
 
             {study.links.length > 0 && (
@@ -79,12 +97,14 @@ export default async function CaseStudyPage({ params }: Props) {
           </div>
 
           <div className="lg:col-span-5">
-            <div
-              className="flex aspect-[16/10] items-center justify-center rounded-[14px] ring-1 ring-ink/5 ring-inset"
-              style={{ backgroundColor: study.logo.bg }}
-            >
-              <Image src={study.logo.src} alt={`${study.name} logo`} width={256} height={256} priority className="h-[52%] w-auto" />
-            </div>
+            <ViewTransition name={`project-visual-${study.slug}`} share="morph" default="none">
+              <div
+                className="flex aspect-[16/10] items-center justify-center rounded-[14px] ring-1 ring-ink/5 ring-inset"
+                style={{ backgroundColor: study.logo.bg }}
+              >
+                <Image src={study.logo.src} alt={`${study.name} logo`} width={256} height={256} priority className="h-[52%] w-auto" />
+              </div>
+            </ViewTransition>
 
             <dl className="mt-8 divide-y border-y">
               {study.facts.map((f) => (
@@ -103,7 +123,7 @@ export default async function CaseStudyPage({ params }: Props) {
           </div>
         </header>
 
-        <Block title="Why I built it">
+        <Block title={t("why")}>
           <div className="space-y-5 text-[1.05rem] leading-[1.75] text-ink-2">
             {study.problem.map((p) => (
               <p key={p.slice(0, 24)}>{p}</p>
@@ -128,7 +148,7 @@ export default async function CaseStudyPage({ params }: Props) {
         </Block>
 
         {study.features && (
-          <Block title="What it does">
+          <Block title={t("whatItDoes")}>
             <ul className="grid gap-4 sm:grid-cols-2">
               {study.features.map((f) => (
                 <li key={f.name} className="rounded-[10px] border bg-surface p-5">
@@ -140,7 +160,7 @@ export default async function CaseStudyPage({ params }: Props) {
           </Block>
         )}
 
-        <Block title="The hard parts">
+        <Block title={t("hardParts")}>
           <ul className="space-y-4">
             {study.hardParts.map((h) => (
               <li key={h.name} className="rounded-[10px] border bg-surface p-6">
@@ -151,7 +171,7 @@ export default async function CaseStudyPage({ params }: Props) {
           </ul>
         </Block>
 
-        <Block title="What changed">
+        <Block title={t("whatChanged")}>
           <div className="space-y-5 text-[1.05rem] leading-[1.75] text-ink-2">
             {study.outcome.map((p) => (
               <p key={p.slice(0, 24)}>{p}</p>
@@ -159,7 +179,7 @@ export default async function CaseStudyPage({ params }: Props) {
           </div>
         </Block>
 
-        <Block title="What I learned">
+        <Block title={t("learned")}>
           <ul className="space-y-5">
             {study.lessons.map((l) => (
               <li key={l} className="border-l-2 border-highlight pl-5 text-xl leading-snug font-semibold tracking-[-0.01em] text-ink-strong">
@@ -175,7 +195,7 @@ export default async function CaseStudyPage({ params }: Props) {
             className="group mt-4 flex items-center justify-between gap-6 border-t py-12"
           >
             <span>
-              <span className="block text-[0.85rem] font-semibold text-ink-2">Next story</span>
+              <span className="block text-[0.85rem] font-semibold text-ink-2">{t("nextStory")}</span>
               <span className="mt-1 block text-3xl font-semibold tracking-[-0.03em] text-ink-strong transition-colors group-hover:text-accent-text md:text-4xl">
                 {next.name}
               </span>

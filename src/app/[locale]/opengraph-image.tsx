@@ -1,11 +1,17 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
+import { routing } from "@/i18n/routing";
 
 // Link preview card (WhatsApp, LinkedIn, X, Slack...). Rendered to a static PNG at build time.
 export const alt = "Muhammad Hanif Fauzi | Portfolio";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+
+// One card per language, rendered at build time instead of on every crawler hit.
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
 
 // Same typeface as the site. Google Fonts serves TTF to non-browser clients, which ImageResponse accepts.
 // If the download fails (offline build), the card falls back to the default font instead of breaking the build.
@@ -20,7 +26,8 @@ async function loadJakarta(weight: 600 | 700) {
   }
 }
 
-export default async function OpengraphImage() {
+export default async function OpengraphImage({ params }: { params: Promise<{ locale: string }> }) {
+  const portfolio = (await params).locale === "id" ? "Portofolio" : "Portfolio";
   const logo = await readFile(join(process.cwd(), "public/brand/hnf-light.svg"));
   const logoSrc = `data:image/svg+xml;base64,${logo.toString("base64")}`;
   const fonts = (await Promise.all([loadJakarta(600), loadJakarta(700)])).filter((f) => f !== null);
@@ -63,7 +70,7 @@ export default async function OpengraphImage() {
             color: "#475569",
           }}
         >
-          <span style={{ fontWeight: 700, color: "#0f172a" }}>Portfolio</span>
+          <span style={{ fontWeight: 700, color: "#0f172a" }}>{portfolio}</span>
           <span>haniffauzi.vercel.app</span>
         </div>
       </div>

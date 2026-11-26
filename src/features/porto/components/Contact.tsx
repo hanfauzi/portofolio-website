@@ -1,5 +1,7 @@
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { FiArrowUpRight } from "react-icons/fi";
+import { useTranslations } from "next-intl";
+import { CopyEmailButton } from "@/components/CopyEmailButton";
 import { profile } from "../data";
 
 const channels = [
@@ -9,24 +11,29 @@ const channels = [
 ];
 
 export default function ContactSection() {
+  const t = useTranslations("contact");
+
   return (
     <section id="contact" data-backdrop="contact" className="border-t">
       <div className="mx-auto grid max-w-[1240px] gap-14 px-4 py-24 sm:px-6 lg:grid-cols-2 lg:gap-20 lg:py-32">
         <div>
           <h2 className="text-5xl leading-[1.02] font-semibold tracking-[-0.04em] text-ink-strong md:text-6xl">
-            Let&apos;s
+            {t("titleA")}
             <br />
-            <span className="text-accent-text">talk</span>
+            <span className="text-accent-text">{t("titleB")}</span>
           </h2>
           <p className="mt-6 max-w-md text-base leading-relaxed text-ink-2">
-            Open to fullstack roles, whether remote, hybrid or on-site, and to collaborations. Email reaches me fastest.
+            {t("intro")}
           </p>
-          <a
-            href={`mailto:${profile.email}`}
-            className="mt-8 inline-flex h-11 items-center rounded-full bg-[#09090b] px-6 text-[0.85rem] font-semibold text-white transition-[background-color,transform] duration-300 hover:-translate-y-px hover:bg-[#27272a] dark:bg-white dark:text-[#09090b] dark:hover:bg-slate-200"
-          >
-            {profile.email}
-          </a>
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <a
+              href={`mailto:${profile.email}`}
+              className="inline-flex h-11 items-center rounded-full bg-[#09090b] px-6 text-[0.85rem] font-semibold text-white transition-[background-color,transform] duration-300 hover:-translate-y-px hover:bg-[#27272a] dark:bg-white dark:text-[#09090b] dark:hover:bg-slate-200"
+            >
+              {profile.email}
+            </a>
+            <CopyEmailButton email={profile.email} />
+          </div>
         </div>
 
         <ul className="divide-y self-end border-y">

@@ -1,5 +1,9 @@
 // Long-form stories for selected projects, rendered at /projects/[slug].
 // Only projects with a real story to tell get one; the rest stay as cards on the home page.
+// The Indonesian text lives in ./content/case-studies.id.ts.
+
+import type { Locale } from "@/i18n/routing";
+import { caseStudiesId } from "./content/case-studies.id";
 
 export type CaseStudy = {
   slug: string;
@@ -200,4 +204,6 @@ export const caseStudies: CaseStudy[] = [
   },
 ];
 
-export const getCaseStudy = (slug: string) => caseStudies.find((c) => c.slug === slug);
+export const getCaseStudies = (locale: Locale) => (locale === "id" ? caseStudiesId : caseStudies);
+
+export const getCaseStudy = (slug: string, locale: Locale) => getCaseStudies(locale).find((c) => c.slug === slug);
