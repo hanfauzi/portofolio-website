@@ -1,24 +1,18 @@
 // Portfolio content. Facts follow "Muhammad Hanif Fauzi CV - 2026 v3"; the wording is written for the site, not copied from the CV.
 
-export const profile = {
-  name: "Muhammad Hanif Fauzi",
-  shortName: "Hanif",
-  role: "Fullstack Developer",
-  company: "Notch",
-  location: "South Tangerang, Indonesia",
-  email: "muhaniffauzi@gmail.com",
-  linkedin: "https://www.linkedin.com/in/muhaniffauzi",
-  github: "https://github.com/hanfauzi",
-  instagram: "https://www.instagram.com/hnfzii/",
-  cv: "/Muhammad Hanif Fauzi CV - 2026.pdf",
-  award: "https://drive.google.com/file/d/1DWjDRUceAw04ghVZEJaERn6EqUMCMhE6/view?usp=sharing",
-  certificate: "https://drive.google.com/drive/folders/163KDgxbvyvWc-aaIrjhZyoQhSt6b1kjG?usp=sharing",
-};
+import type { Locale } from "@/i18n/routing";
+import { profile } from "./profile";
+import { factsId, journeyId, projectCopyId } from "./content/data.id";
 
-export const facts = [
+export { profile };
+
+/** highlight: drawn in the pink "current / open" colour. */
+export type Fact = { label: string; value: string; highlight?: boolean };
+
+export const facts: Fact[] = [
   { label: "Role", value: "Fullstack Developer" },
   { label: "Based in", value: "South Tangerang, Indonesia" },
-  { label: "Status", value: "Open to work (remote, hybrid or on-site)" },
+  { label: "Status", value: "Open to work (remote, hybrid or on-site)", highlight: true },
   { label: "Speaks", value: "Indonesian, English, Arabic (basic)" },
 ];
 
@@ -140,3 +134,25 @@ export const projects: Project[] = [
     ],
   },
 ];
+
+/** Text that differs per language for a project; logos, stack and links stay shared. */
+export type ProjectCopy = Pick<Project, "tagline" | "summary"> & { linkLabels?: Record<string, string> };
+
+/** All home-page content in the given language. */
+export function getPorto(locale: Locale) {
+  if (locale === "en") return { facts, journey, projects };
+  return {
+    facts: factsId,
+    journey: journeyId,
+    projects: projects.map((p) => {
+      const copy = projectCopyId[p.name];
+      if (!copy) return p;
+      return {
+        ...p,
+        tagline: copy.tagline,
+        summary: copy.summary,
+        links: p.links.map((l) => ({ ...l, label: copy.linkLabels?.[l.label] ?? l.label })),
+      };
+    }),
+  };
+}

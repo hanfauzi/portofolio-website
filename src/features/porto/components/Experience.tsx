@@ -1,15 +1,19 @@
 import { FiArrowUpRight } from "react-icons/fi";
-import { journey } from "../data";
+import { useLocale, useTranslations } from "next-intl";
+import { getPorto } from "../data";
 
 export const TimelineExperience = () => {
+  const t = useTranslations("work");
+  const { journey } = getPorto(useLocale());
+
   return (
     <section id="work" data-backdrop="work" className="border-t">
       <div className="mx-auto grid max-w-[1240px] gap-14 px-4 py-24 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:py-32">
         <div className="lg:col-span-4">
           <h2 className="text-5xl leading-[1.02] font-semibold tracking-[-0.04em] text-ink-strong md:text-6xl lg:sticky lg:top-32">
-            Professional
+            {t("titleA")}
             <br />
-            <span className="text-accent-text">Journey</span>
+            <span className="text-accent-text">{t("titleB")}</span>
           </h2>
         </div>
 

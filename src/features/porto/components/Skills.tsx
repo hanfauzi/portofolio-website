@@ -21,6 +21,7 @@ import {
   SiTypescript,
   SiVercel,
 } from "react-icons/si";
+import { useTranslations } from "next-intl";
 
 // brand: the logo's own color. null = monochrome logo, drawn in the text color so it flips with the theme.
 const stack: { name: string; href: string; icon: IconType; brand: string | null }[] = [
@@ -47,18 +48,20 @@ const stack: { name: string; href: string; icon: IconType; brand: string | null 
 ];
 
 const Skills = () => {
+  const t = useTranslations("skills");
+
   return (
     <section id="skills" data-backdrop="skills" className="border-t">
       <div className="mx-auto grid max-w-[1240px] gap-14 px-4 py-24 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:py-32">
         <div className="lg:col-span-4">
           <div className="lg:sticky lg:top-32">
             <h2 className="text-5xl leading-[1.02] font-semibold tracking-[-0.04em] text-ink-strong md:text-6xl">
-              Tech
+              {t("titleA")}
               <br />
-              <span className="text-accent-text">I work with</span>
+              <span className="text-accent-text">{t("titleB")}</span>
             </h2>
             <p className="mt-6 max-w-sm text-base leading-relaxed text-ink-2">
-              The languages, frameworks and tools I use every day to build, ship and look after web applications.
+              {t("intro")}
             </p>
           </div>
         </div>

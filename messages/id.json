@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "title": "Muhammad Hanif Fauzi | Portofolio",
+    "description": "Portofolio Muhammad Hanif Fauzi, fullstack developer yang membangun aplikasi web dari awal sampai jadi.",
+    "portfolio": "Portofolio"
+  },
+  "preloader": {
+    "label": "Memuat portofolio"
+  },
+  "nav": {
+    "sections": "Bagian",
+    "about": "Tentang",
+    "work": "Karier",
+    "projects": "Project",
+    "skills": "Skill",
+    "contact": "Kontak",
+    "light": "Terang",
+    "dark": "Gelap",
+    "toLight": "Ganti ke tema terang",
+    "toDark": "Ganti ke tema gelap",
+    "openPalette": "Buka menu dan pencarian",
+    "language": "English",
+    "languageShort": "EN"
+  },
+  "hero": {
+    "intro": "Saya membangun aplikasi web dari awal sampai jadi, mengubah ide menjadi produk yang andal, mudah dipakai, dan siap berkembang.",
+    "downloadCv": "Unduh CV",
+    "seeWork": "Lihat karier dan project saya"
+  },
+  "about": {
+    "titleA": "Cerita",
+    "titleB": "sejauh ini",
+    "p1": "Halo, saya Muhammad <hl>Hanif</hl> Fauzi, fullstack developer yang tinggal di Tangerang Selatan. Saya senang membawa sebuah fitur dari ide pertama sampai ke versi yang benar-benar dipakai orang, dan saya peduli pada apa yang berjalan di balik layar sama besarnya dengan apa yang tampil di layar.",
+    "p2": "Jalan saya ke dunia tech tidak lurus. Saya kuliah Hukum Keluarga Islam, lalu ikut bootcamp fullstack Purwadhika pada 2025 dan lulus sebagai Best Student Batch 33. Sekarang saya bekerja di Notch Creative Digital Agency, tempat saya ikut membangun ulang <strong>platform donasi UNICEF Indonesia</strong>.",
+    "p3": "Perjalanan itu membentuk cara saya membangun: mulai dari sesuatu yang kecil tapi jalan, bangun fondasinya dengan benar, lalu biarkan tumbuh bersama orang-orang yang memakainya.",
+    "quote": "Mulai dari kecil, bangun dengan benar, dan biarkan tumbuh."
+  },
+  "work": {
+    "titleA": "Perjalanan",
+    "titleB": "Karier"
+  },
+  "projects": {
+    "titleA": "Project",
+    "titleB": "Pilihan",
+    "allRepos": "Semua repository di GitHub",
+    "readStory": "Baca ceritanya",
+    "storyOf": "tentang {name}",
+    "linkFor": "untuk {name}",
+    "builtWith": "Dibangun dengan",
+    "screenshot": "Tangkapan layar {name}",
+    "logo": "Logo {name}"
+  },
+  "skills": {
+    "titleA": "Tech",
+    "titleB": "yang saya pakai",
+    "intro": "Bahasa, framework, dan tools yang saya pakai setiap hari untuk membangun, merilis, dan merawat aplikasi web."
+  },
+  "contact": {
+    "titleA": "Mari",
+    "titleB": "ngobrol",
+    "intro": "Terbuka untuk posisi fullstack, baik remote, hybrid, maupun on-site, dan juga untuk kolaborasi. Email adalah cara tercepat menghubungi saya.",
+    "copyEmail": "Salin email",
+    "copied": "Tersalin!"
+  },
+  "caseStudy": {
+    "allProjects": "Semua project",
+    "why": "Kenapa saya membuatnya",
+    "whatItDoes": "Fiturnya",
+    "hardParts": "Bagian tersulit",
+    "whatChanged": "Hasilnya",
+    "learned": "Yang saya pelajari",
+    "nextStory": "Cerita berikutnya"
+  },
+  "palette": {
+    "title": "Menu",
+    "placeholder": "Cari atau lompat ke...",
+    "empty": "Tidak ada hasil.",
+    "navigate": "Pergi ke",
+    "home": "Beranda",
+    "stories": "Cerita project",
+    "actions": "Aksi",
+    "links": "Tautan",
+    "toggleTheme": "Ganti tema terang / gelap",
+    "switchLanguage": "Read in English",
+    "downloadCv": "Unduh CV",
+    "copyEmail": "Salin alamat email",
+    "emailCopied": "Email tersalin ke clipboard",
+    "hint": "untuk membuka menu ini kapan saja"
+  },
+  "scrollTop": "Kembali ke atas"
+}

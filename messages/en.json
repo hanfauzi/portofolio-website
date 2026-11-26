@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "title": "Muhammad Hanif Fauzi | Portfolio",
+    "description": "Portfolio of Muhammad Hanif Fauzi, a fullstack developer who builds web applications from start to finish.",
+    "portfolio": "Portfolio"
+  },
+  "preloader": {
+    "label": "Loading portfolio"
+  },
+  "nav": {
+    "sections": "Sections",
+    "about": "About",
+    "work": "Work",
+    "projects": "Projects",
+    "skills": "Skills",
+    "contact": "Contact",
+    "light": "Light",
+    "dark": "Dark",
+    "toLight": "Switch to light theme",
+    "toDark": "Switch to dark theme",
+    "openPalette": "Open menu and search",
+    "language": "Bahasa Indonesia",
+    "languageShort": "ID"
+  },
+  "hero": {
+    "intro": "I build web applications from start to finish, turning ideas into products that are reliable, easy to use and ready to grow.",
+    "downloadCv": "Download CV",
+    "seeWork": "See my work and projects"
+  },
+  "about": {
+    "titleA": "The story",
+    "titleB": "so far",
+    "p1": "Hi, I'm Muhammad <hl>Hanif</hl> Fauzi, a fullstack developer based in South Tangerang. I like taking a feature from the first idea all the way to the version people actually use, and I care as much about what runs behind the screen as what shows on it.",
+    "p2": "My path into tech wasn't a straight line. I studied Islamic Family Law, then joined Purwadhika's fullstack bootcamp in 2025 and graduated as Best Student of Batch 33. Today I work at Notch Creative Digital Agency, where I helped rebuild <strong>UNICEF Indonesia's donation platform</strong>.",
+    "p3": "That journey shaped how I build: begin with something small that works, get the foundations right, and let it grow with the people who use it.",
+    "quote": "Start small, build it right, and let it grow."
+  },
+  "work": {
+    "titleA": "Professional",
+    "titleB": "Journey"
+  },
+  "projects": {
+    "titleA": "Featured",
+    "titleB": "Projects",
+    "allRepos": "All repositories on GitHub",
+    "readStory": "Read the story",
+    "storyOf": "of {name}",
+    "linkFor": "for {name}",
+    "builtWith": "Built with",
+    "screenshot": "{name} screenshot",
+    "logo": "{name} logo"
+  },
+  "skills": {
+    "titleA": "Tech",
+    "titleB": "I work with",
+    "intro": "The languages, frameworks and tools I use every day to build, ship and look after web applications."
+  },
+  "contact": {
+    "titleA": "Let's",
+    "titleB": "talk",
+    "intro": "Open to fullstack roles, whether remote, hybrid or on-site, and to collaborations. Email reaches me fastest.",
+    "copyEmail": "Copy email",
+    "copied": "Copied!"
+  },
+  "caseStudy": {
+    "allProjects": "All projects",
+    "why": "Why I built it",
+    "whatItDoes": "What it does",
+    "hardParts": "The hard parts",
+    "whatChanged": "What changed",
+    "learned": "What I learned",
+    "nextStory": "Next story"
+  },
+  "palette": {
+    "title": "Menu",
+    "placeholder": "Search or jump to...",
+    "empty": "Nothing found.",
+    "navigate": "Go to",
+    "home": "Home",
+    "stories": "Project stories",
+    "actions": "Actions",
+    "links": "Links",
+    "toggleTheme": "Toggle light / dark theme",
+    "switchLanguage": "Baca dalam Bahasa Indonesia",
+    "downloadCv": "Download CV",
+    "copyEmail": "Copy email address",
+    "emailCopied": "Email copied to clipboard",
+    "hint": "to open this menu anytime"
+  },
+  "scrollTop": "Back to top"
+}

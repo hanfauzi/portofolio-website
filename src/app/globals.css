@@ -258,3 +258,27 @@
     scroll-behavior: auto !important;
   }
 }
+
+/*
+  Project card -> case study header morph (React <ViewTransition share="morph">, see Projects.tsx and
+  projects/[slug]/page.tsx). The blur mid-flight hides the scaling artefacts of the snapshot.
+*/
+::view-transition-group(.morph) {
+  animation-duration: 450ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+::view-transition-image-pair(.morph) {
+  animation-name: morph-blur;
+}
+@keyframes morph-blur {
+  40% {
+    filter: blur(3px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}

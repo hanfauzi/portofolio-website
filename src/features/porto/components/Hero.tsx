@@ -1,18 +1,22 @@
 import Image from "next/image";
 import { FaGithub } from "react-icons/fa";
 import { FiArrowDown, FiDownload } from "react-icons/fi";
+import { useTranslations } from "next-intl";
 import { profile } from "../data";
 
 export const Hero = () => {
+  const t = useTranslations("hero");
+
   return (
     <section data-backdrop="hero" className="relative flex min-h-[max(100svh,640px)] overflow-hidden bg-canvas lg:min-h-[max(100svh,720px)]">
       {/* Portrait: full-bleed on mobile, right-hand side on desktop, faded into the canvas by .hero-scrim */}
       <div className="absolute inset-0 lg:left-auto lg:w-[62%]">
         <Image
-          src="/fotohanif.jpeg"
+          src="/fotohanif-hd.jpg"
           alt="Muhammad Hanif Fauzi"
           fill
           priority
+          quality={90}
           sizes="(min-width: 1024px) 62vw, 100vw"
           className="object-cover object-[50%_15%] brightness-[1.18] contrast-[0.82] saturate-[0.8] dark:brightness-[0.8] dark:contrast-[1.08] dark:saturate-[0.9]"
         />
@@ -32,8 +36,7 @@ export const Hero = () => {
           </h1>
 
           <p className="mt-6 max-w-[440px] text-base leading-relaxed text-ink-2 lg:text-[1.05rem]">
-            I build web applications from start to finish, turning ideas into products that are reliable, easy to use
-            and ready to grow.
+            {t("intro")}
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-3">
@@ -43,7 +46,7 @@ export const Hero = () => {
               className="inline-flex h-11 items-center gap-2 rounded-full bg-[#09090b] px-6 text-[0.85rem] font-semibold text-white transition-[background-color,transform] duration-300 hover:-translate-y-px hover:bg-[#27272a] dark:bg-white dark:text-[#09090b] dark:hover:bg-slate-200"
             >
               <FiDownload className="size-4" aria-hidden="true" />
-              Download CV
+              {t("downloadCv")}
             </a>
             <a
               href={profile.github}
@@ -60,7 +63,7 @@ export const Hero = () => {
             href="#work"
             className="group mt-8 inline-flex items-center gap-2 text-[0.85rem] font-semibold text-ink-2 transition-colors hover:text-ink-strong"
           >
-            See my work and projects
+            {t("seeWork")}
             <FiArrowDown className="size-4 transition-transform group-hover:translate-y-0.5" aria-hidden="true" />
           </a>
         </div>
